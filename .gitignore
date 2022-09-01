@@ -127,3 +127,43 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Custom
+
+!data/
+data/*
+
+# data/words/*
+# data/words/a01/*
+# data/words/a01/a01-000u/*
+
+# !data/words/
+# !data/words/a01/
+# !data/words/a01/a01-000u/
+# !data/words/a01/a01-000u/a01-000u-00-00.png
+
+# data/sentences/*
+# data/sentences/a01/*
+# data/sentences/a01/a01-000u/*
+
+# !data/sentences/
+# !data/sentences/a01/
+# !data/sentences/a01/a01-000u/
+# !data/sentences/a01/a01-000u/a01-000u-s00-00.png
+
+# data/lines/*
+# data/lines/a01/*
+# data/lines/a01/a01-000u/*
+
+# !data/lines/
+# !data/lines/a01/
+# !data/lines/a01/a01-000u/
+# !data/lines/a01/a01-000u/a01-000u-00.png
+
+# data/formsE-H/*
+# !data/formsE-H/
+# !data/formsE-H/e01-014.png
+
+.DS_Store
+hs_err_*
