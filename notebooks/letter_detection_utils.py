@@ -8,7 +8,7 @@ import re
 import contextlib
 import os
 import matplotlib.patches as patches
-
+import random
 
 def plot_avg_width_per_string_length(df):
     biggest_word_size = df['length'].max()
@@ -39,6 +39,18 @@ def show_df_form_img(df, row_index):
     ) ) 
     plt.axis('off')
     plt.show()
+
+def show_preprocess_img_from_df(df, row_index, img_size = (32, 128)):
+    row = df.iloc[row_index]
+    new_row = preprocess(row.word_img_path, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
+    plt.title(row.transcription + ' [' + str(row.length) + ']')
+    plt.imshow(new_row, cmap='gray');
+    plt.axis('off');
+
+def show_preprocess_img_from_data(data, row_index, img_size = (32, 128)):
+    img = data['preprocessed_imgs'][row_index].reshape(img_size)
+    plt.imshow(img, cmap='gray');
+    plt.axis('off');
 
 def show_df_word_img(df, row_index):
     selected_row = df.iloc[row_index]
@@ -93,7 +105,7 @@ def get_dataframe_with_preprocessed_imgs(nb_rows = 1000, img_size = (32, 128), l
     if debug: 
         print("Using", nb_rows, "rows")
 
-    df = df.iloc[np.random.choice(nb_rows, nb_rows)]
+    df = df.iloc[random.sample(range(nb_rows), nb_rows)]
 
     df['length'] = df['transcription'].apply(lambda x: len(x.strip()))
     df.rename(columns = {'form_img_path_y': 'form_img_path'}, inplace = True)
