@@ -21,7 +21,7 @@ def prepro_form(form_df):
 
     return form_df
 
-# Fonction rassemblant les étapes de preprocessing pour les formulaires
+# Fonction rassemblant les étapes de preprocessing pour les mots
 def prepro_word(word_df):
     word_df['x'] = word_df['x'].astype(int)
     word_df['y'] = word_df['y'].astype(int)
