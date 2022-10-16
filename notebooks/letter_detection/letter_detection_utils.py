@@ -96,6 +96,8 @@ def get_dataframe_with_preprocessed_imgs(nb_rows = 1000, img_size = (32, 128), l
     df = full_df[full_df['transcription'].str.contains(r)]
     np.random.seed(seed=42)
 
+    if nb_rows == -1:
+        nb_rows = len(df)
     # reducing row
     if nb_rows >= len(df):
         nb_rows = len(df)
@@ -114,7 +116,7 @@ def get_dataframe_with_preprocessed_imgs(nb_rows = 1000, img_size = (32, 128), l
     if debug: 
         print("Starting preprocessing of images with tensorflow")
     
-    preprocessed_imgs = process_df_img(df, img_size, with_edge_detection=with_edge_detection)
+    preprocessed_imgs = process_df_images(df, img_size, with_edge_detection=with_edge_detection)
     data = {
         'df': df,
         'preprocessed_imgs': preprocessed_imgs
@@ -156,17 +158,17 @@ def plot_avg_width_per_string_length(df):
     plt.ylabel('Largeur du mot')
     plt.plot(xaxis, width_means, ls='--', color='navy');
 
-    
 ### Processing
-def process_df_img(df, img_size = (32, 128), with_edge_detection=True):
+def process_df_images(df, img_size = (32, 128), with_edge_detection=True):
     nb_features = img_size[0] * img_size[1]
     data = np.empty((0, nb_features), float)
     for index, row in df.iterrows():
-        path = row.word_img_path
+        path = '../' +row.word_img_path
         new_row = preprocess(path, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
         if with_edge_detection:
             # new_row = cv2.Sobel(new_row,cv2.CV_64F,1,0, ksize=3)  # Sobel X
             new_row = cv2.Sobel(new_row,cv2.CV_64F,0,1, ksize=5) # Sobel Y
+        cv2.imwrite('preprocessed_imgs/' + row.word_id + '.png', new_row)
         new_row = new_row.reshape(-1)
         data = np.append(data, [new_row], axis=0)
     return data
