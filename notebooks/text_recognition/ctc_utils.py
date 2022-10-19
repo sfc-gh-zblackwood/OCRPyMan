@@ -66,10 +66,13 @@ def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8,
     return img
 
 
-def generate_preprocessed_imgs_from_df(df, img_size = (32, 128), folder_name = 'preprocessed_text_imgs'):
+def generate_preprocessed_imgs_from_df(df, img_size = (32, 128), folder_name = 'preprocessed_text_imgs', offset=0):
     # for index, row in (df.iterrows()):
     for index, row in tqdm(df.iterrows()):
+        if index < offset :
+            continue
         path = '../' +row.word_img_path
         img_array = preprocess(path, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
         # new_row = cv2.Sobel(new_row,cv2.CV_64F,0,1, ksize=5) # Sobel Y
+        # cv2.imwrite(folder_name + '/' + row.word_id + '.png', cv2.cvtColor(img_array * 255, cv2.COLOR))
         cv2.imwrite(folder_name + '/' + row.word_id + '.png', cv2.cvtColor(img_array * 255, cv2.COLOR_RGB2BGR))
