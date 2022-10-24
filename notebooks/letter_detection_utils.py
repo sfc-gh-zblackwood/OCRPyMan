@@ -112,6 +112,9 @@ def get_dataframe_with_preprocessed_imgs(nb_rows = 1000, img_size = (32, 128), l
     df = df[['michelson_contrast', 'gray_level_mot', 'word_id', 'gray_level', 'x', 'y', 'w', 'h', 'transcription', 'word_img_path', 'form_img_path', 'length']]
     df.reset_index(inplace=True)
 
+    #filtrer les transcriptions vides
+    df = df[df['length'] > 0]
+    
     if debug: 
         print("Starting preprocessing of images with tensorflow")
         
@@ -186,6 +189,26 @@ def process_df_img(df, img_size = (32, 128), with_edge_detection=True):
         new_row = new_row.reshape(-1)
         data = np.append(data, [new_row], axis=0)
     return data
+
+
+# Compte les majuscules et minuscules dans une chaine
+def upper_lower(string): 
+    upper = 0
+    lower = 0
+ 
+    for i in range(len(string)):         
+        # For lower letters
+        if (ord(string[i]) >= 97 and
+            ord(string[i]) <= 122):
+            lower += 1
+ 
+        # For upper letters
+        elif (ord(string[i]) >= 65 and
+              ord(string[i]) <= 90):
+            upper += 1
+ 
+    print('Lower case characters = %s' %lower,
+          'Upper case characters = %s' %upper)
 
 @tf.function
 def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8, is_threshold=False, with_edge_detection=True):
