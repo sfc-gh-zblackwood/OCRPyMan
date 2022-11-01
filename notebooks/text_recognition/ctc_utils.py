@@ -76,3 +76,74 @@ def generate_preprocessed_imgs_from_df(df, img_size = (32, 128), folder_name = '
         # new_row = cv2.Sobel(new_row,cv2.CV_64F,0,1, ksize=5) # Sobel Y
         # cv2.imwrite(folder_name + '/' + row.word_id + '.png', cv2.cvtColor(img_array * 255, cv2.COLOR))
         cv2.imwrite(folder_name + '/' + row.word_id + '.png', cv2.cvtColor(img_array * 255, cv2.COLOR_RGB2BGR))
+
+
+def encode_labels(labels, char_list):
+    # Hash Table
+    table = tf.lookup.StaticHashTable(
+        tf.lookup.KeyValueTensorInitializer(
+            char_list,
+            np.arange(len(char_list)),
+            value_dtype=tf.int32
+        ),
+        -1,
+        name='char2id'
+    )
+    return table.lookup(
+    tf.compat.v1.string_split(labels, sep=''))
+
+def decode_codes(codes, charList):
+    table = tf.lookup.StaticHashTable(
+        tf.lookup.KeyValueTensorInitializer(
+            np.arange(len(charList)),
+            charList,
+            key_dtype=tf.int32
+        ),
+        '',
+        name='id2char'
+    )
+    return table.lookup(codes)
+    
+def greedy_decoder(logits, char_list):
+    # ctc beam search decoder
+    predicted_codes, _ = tf.nn.ctc_greedy_decoder(
+        # shape of tensor [max_time x batch_size x num_classes] 
+        tf.transpose(logits, (1, 0, 2)),
+        [logits.shape[1]]*logits.shape[0]
+    )
+    # convert to int32
+    codes = tf.cast(predicted_codes[0], tf.int32)
+    # Decode the index of caracter
+    text = decode_codes(codes, char_list)
+    # Convert a SparseTensor to string
+    text = tf.sparse.to_dense(text).numpy().astype(str)
+    return list(map(lambda x: ''.join(x), text))
+
+
+def levenshtein_distance(s, t):
+    m, n = len(s) + 1, len(t) + 1
+    d = [[0] * n for _ in range(m)]
+
+    for i in range(1, m):
+        d[i][0] = i
+
+    for j in range(1, n):
+        d[0][j] = j
+
+    for j in range(1, n):
+        for i in range(1, m):
+            substitution_cost = 0 if s[i - 1] == t[j - 1] else 1
+            d[i][j] = min(d[i - 1][j] + 1,
+                          d[i][j - 1] + 1,
+                          d[i - 1][j - 1] + substitution_cost)
+
+    return d[m - 1][n - 1]
+
+def evaluate_character_level_accuracy(original, predicted):
+    original_length = len(original)
+    if original_length == 0:
+        return 1
+    distance = levenshtein_distance(original, predicted)
+    if distance > original_length:
+        return 0
+    return 1 - (distance / original_length)
