@@ -168,7 +168,6 @@ data/*
 .DS_Store
 hs_err_*
 
-notebooks/text_recognition/
-notebooks/text_recognition/preprocessed_texts_imgs
-notebooks/text_recognition/preprocessed_texts_imgs/
-notebooks/text_recognition/preprocessed_texts_imgs/*
+
+notebooks/text_recognition/tmp_model
+
