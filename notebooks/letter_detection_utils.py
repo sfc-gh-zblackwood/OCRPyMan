@@ -9,6 +9,7 @@ import contextlib
 import os
 import matplotlib.patches as patches
 import random
+import sys
 
 
 ### Image rendering
@@ -118,7 +119,11 @@ def get_dataframe_with_preprocessed_imgs(nb_rows = 1000, img_size = (32, 128), l
     if debug: 
         print("Starting preprocessing of images with tensorflow")
         
-    preprocessed_imgs = process_df_img(df, img_size, with_edge_detection=with_edge_detection)
+    try:
+        preprocessed_imgs = process_df_img(df, img_size, with_edge_detection=with_edge_detection)
+    except:
+        print("Unexpected error:", sys.exc_info()[0])
+        
     data = {
         'df': df,
         'preprocessed_imgs': preprocessed_imgs
@@ -169,25 +174,28 @@ def process_df_img(df, img_size = (32, 128), with_edge_detection=True):
         path = row.word_img_path
 
         if with_edge_detection:
+            file_name = path.split('/')[-1]
+            path_tmp = '../data/temp/' + file_name 
             # new_row = cv2.Sobel(new_row,cv2.CV_64F,1,0, ksize=3)  # Sobel X
             # new_row = cv2.Sobel(new_row,cv2.CV_64F,0,1, ksize=5) # Sobel Y
 
-            image = cv2.imread(path) 
-            # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            edged = cv2.Canny(image, 30, 200)
-              
-            file_name = path.split('/')[-1]
-            path = '../data/temp/' + file_name 
-
-            cv2.imwrite(path, edged)
+            if not os.path.exists(path_tmp):
+                image = cv2.imread(path) 
+                # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+                edged = cv2.Canny(image, 30, 200)
+                cv2.imwrite(path_tmp, edged)
+            path = path_tmp
             # contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
 
-           
-        new_row = preprocess(path, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
-        
-        new_row = new_row.reshape(-1)
-        data = np.append(data, [new_row], axis=0)
+          
+        try:
+            new_row = preprocess(path, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
+            new_row = new_row.reshape(-1)
+            data = np.append(data, [new_row], axis=0)
+        except :
+            print("Unexpected error:", sys.exc_info()[0])
+        #     time.sleep(0.5)
     return data
 
 
