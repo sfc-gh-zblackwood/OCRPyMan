@@ -57,6 +57,7 @@ def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8,
             dy1 = tf.random.uniform([1], 0, dy, tf.int32)[0]
         img = tf.pad(img[..., 0], [[dx1, dx-dx1], [dy1, dy-dy1]], constant_values=1)
     else:
+        # Padding à droite
         img = tf.pad(img[..., 0], [[0, dx], [0, dy]], constant_values=1)
 
     if is_threshold:
@@ -103,7 +104,7 @@ def decode_codes(codes, charList):
         name='id2char'
     )
     return table.lookup(codes)
-    
+
 def greedy_decoder(logits, char_list):
     # ctc beam search decoder
     predicted_codes, _ = tf.nn.ctc_greedy_decoder(
