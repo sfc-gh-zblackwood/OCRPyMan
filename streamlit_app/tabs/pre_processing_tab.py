@@ -2,10 +2,28 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from PIL import Image
-
+import cv2
+import matplotlib.pyplot as plt
 
 title = "Pre-Processing"
 sidebar_name = "Pre-Processing"
+
+def show_bad_constrast_imgs():
+    bad_contrast_df = pd.read_pickle('../pickle/preprocessing_word_df_bad_contrast.pickle')
+    bad_contrast_df = bad_contrast_df[bad_contrast_df['michelson_contrast'] == 0]
+    st.dataframe(bad_contrast_df.head(5))
+    nb_rows = 2
+    nb_cols = 3
+    fig, axs = plt.subplots(nb_rows, nb_cols)
+    for i in range(0, nb_rows):
+        for j in range(0, nb_cols):
+            path = bad_contrast_df.iloc[i + nb_cols * j].word_img_path[3:]
+            ax = axs[i, j]
+            img = plt.imread(path)
+            ax.axis('off')
+            ax.imshow(img, cmap='gray')
+    st.pyplot(fig)
+
 
 
 def run():
@@ -14,54 +32,72 @@ def run():
 
     st.markdown(
         """
-        This is your app's second tab. Fill it in `tabs/second_tab.py`.
-        You can and probably should rename the file.
+        The first step is to analyse our dataset. 
+        In the `preprocessing` notebook, we are reading the numerous files and folders in order to
+        build a dataframe out of it.
 
-        ## Test
-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse gravida urna vel tincidunt vestibulum. Nunc malesuada molestie odio, vel tincidunt arcu fringilla hendrerit. Sed leo velit, elementum nec ipsum id, sagittis tempus leo. Quisque viverra ipsum arcu, et ullamcorper arcu volutpat maximus. Donec volutpat porttitor mi in tincidunt. Ut sodales commodo magna, eu volutpat lacus sodales in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam interdum libero non leo iaculis bibendum. Suspendisse in leo posuere risus viverra suscipit.
-
-        Nunc eu tortor dolor. Etiam molestie id enim ut convallis. Pellentesque aliquet malesuada ipsum eget commodo. Ut at eros elit. Quisque non blandit magna. Aliquam porta, turpis ac maximus varius, risus elit sagittis leo, eu interdum lorem leo sit amet sapien. Nam vestibulum cursus magna, a dapibus augue pellentesque sed. Integer tincidunt scelerisque urna non viverra. Sed faucibus leo augue, ac suscipit orci cursus sed. Mauris sit amet consectetur nisi.
+        We have gathered together the information on a specific word in the context of its 
+        own form.  
         """
     )
 
-    chart_data = pd.DataFrame(np.random.randn(20, 3), columns=list("abc"))
-
-    st.line_chart(chart_data)
+    df_before = pd.read_pickle('../pickle/preprocessing_word_df_before.pickle')
+    st.dataframe(df_before.head(5))
+    # st.write(
+    #     df_before.describe()
+    # )
 
     st.markdown(
         """
-        ## Test 2
-
-        Proin malesuada diam blandit orci auctor, ac auctor lacus porttitor. Aenean id faucibus tortor. Morbi ac odio leo. Proin consequat facilisis magna eu elementum. Proin arcu sapien, venenatis placerat blandit vitae, pharetra ac ipsum. Proin interdum purus non eros condimentum, sit amet luctus quam iaculis. Quisque vitae sapien felis. Vivamus ut tortor accumsan, dictum mi a, semper libero. Morbi sed fermentum ligula, quis varius quam. Suspendisse rutrum, sapien at scelerisque vestibulum, ipsum nibh fermentum odio, vel pellentesque arcu erat at sapien. Maecenas aliquam eget metus ut interdum.
-        
-        ```python
-
-        def my_awesome_function(a, b):
-            return a + b
-        ```
-
-        Sed lacinia suscipit turpis sit amet gravida. Etiam quis purus in magna elementum malesuada. Nullam fermentum, sapien a maximus pharetra, mauris tortor maximus velit, a tempus dolor elit ut lectus. Cras ut nulla eget dolor malesuada congue. Quisque placerat, nulla in pharetra dapibus, nunc ligula semper massa, eu euismod dui risus non metus. Curabitur pretium lorem vel luctus dictum. Maecenas a dui in odio congue interdum. Sed massa est, rutrum eu risus et, pharetra pulvinar lorem.
+        However the dataset was far from being clean and some images were either not readable
+        or simply of poor quality. We have therefore:
+        - remove the pictures where the segmentation was faulty to be sure that our labels are correct
+        - calculate for each image the michelson contrast to filter the picture where the contrast was 0. 
         """
     )
+    show_bad_constrast_imgs()
 
-    st.area_chart(chart_data)
+
+    df = pd.read_pickle('../pickle/df.pickle')
+    st.markdown(
+        "Thus, after cleaning our dataset, only **{}** pictures of words remain out of the **{}** given.".format(len(df), len(df_before))
+    )
+    st.dataframe(df.head(5))
 
     st.markdown(
         """
-        ## Test 3
-
-        You can also display images using [Pillow](https://pillow.readthedocs.io/en/stable/index.html).
-
-        ```python
-        import streamlit as st
-        from PIL import Image
-
-        st.image(Image.open("assets/sample-image.jpg"))
-
-        ```
-
+        Now, we can take a look at th
         """
     )
 
-    st.image(Image.open("assets/sample-image.jpg"))
+    # chart_data = pd.DataFrame(np.random.randn(20, 3), columns=list("abc"))
+    # st.line_chart(chart_data)
+
+    # st.markdown(
+    #     """
+    #     ## Test 2
+    #     The dataset is not perfect and some pictures were not 
+
+    #     """
+    # )
+
+    # st.area_chart(chart_data)
+
+    # st.markdown(
+    #     """
+    #     ## Test 3
+
+    #     You can also display images using [Pillow](https://pillow.readthedocs.io/en/stable/index.html).
+
+    #     ```python
+    #     import streamlit as st
+    #     from PIL import Image
+
+    #     st.image(Image.open("assets/sample-image.jpg"))
+
+    #     ```
+
+    #     """
+    # )
+
+    # st.image(Image.open("assets/sample-image.jpg"))

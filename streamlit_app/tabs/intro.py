@@ -1,31 +1,24 @@
 import streamlit as st
 
 
-title = "My Awesome DataScientest project."
+title = "OCRpyMAN"
 sidebar_name = "Introduction"
 
 
 def run():
-
-    # TODO: choose between one of these GIFs
-    # st.image("https://dst-studio-template.s3.eu-west-3.amazonaws.com/1.gif")
-    st.image("https://dst-studio-template.s3.eu-west-3.amazonaws.com/2.gif")
-    # st.image("https://dst-studio-template.s3.eu-west-3.amazonaws.com/3.gif")
-
     st.title(title)
 
     st.markdown("---")
 
     st.markdown(
         """
-        Here is a bootsrap template for your DataScientest project, built with [Streamlit](https://streamlit.io).
+        **Optical Character Recognition (OCR)** is nowadays heavily used in many different fields. 
+        **Recognizing the text in an image** can be used to digitalise it and even detects a specific
+        structure so as to categorize the text into a specific kind of document.
 
-        You can browse streamlit documentation and demos to get some inspiration:
-        - Check out [streamlit.io](https://streamlit.io)
-        - Jump into streamlit [documentation](https://docs.streamlit.io)
-        - Use a neural net to [analyze the Udacity Self-driving Car Image
-          Dataset] (https://github.com/streamlit/demo-self-driving)
-        - Explore a [New York City rideshare dataset]
-          (https://github.com/streamlit/demo-uber-nyc-pickups)
+        In this project, we are trying to **implement from scratch** an Handwritten Text Recognition
+        (HTR) model to better understand the underlying deep learning algorithms used in this task.
+
+        To achieve this, we will use the *IAM Dataset*.
         """
     )

@@ -37,7 +37,8 @@ def run():
         "https://dst-studio-template.s3.eu-west-3.amazonaws.com/logo-datascientest.png",
         width=200,
     )
-    tab_name = st.sidebar.radio("", list(TABS.keys()), 0)
+    # TODO Change to 0 to get on introduction first on reload
+    tab_name = st.sidebar.radio("", list(TABS.keys()), 1)
     st.sidebar.markdown("---")
     st.sidebar.markdown(f"## {config.PROMOTION}")
 
