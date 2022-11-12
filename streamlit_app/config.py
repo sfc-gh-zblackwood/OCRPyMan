@@ -7,15 +7,14 @@ Config file for Streamlit App
 from member import Member
 
 
-TITLE = "My Awesome App"
+TITLE = "OCRpyMAN"
 
 TEAM_MEMBERS = [
     Member(
-        name="John Doe",
-        linkedin_url="https://www.linkedin.com/in/charlessuttonprofile/",
-        github_url="https://github.com/charlessutton",
+        name="Jean-Paul BELLA",
+        linkedin_url="https://www.linkedin.com/in/jean-paul-bella-84986a129/",
+        github_url="https://github.com/Jpec57",
     ),
-    Member("Jane Doe"),
 ]
 
-PROMOTION = "Promotion Bootcamp Data Scientist - April 2021"
+PROMOTION = "Promotion Continue Data Scientist - Juin 2022"
