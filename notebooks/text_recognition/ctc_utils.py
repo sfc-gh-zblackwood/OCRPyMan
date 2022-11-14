@@ -11,11 +11,104 @@ import matplotlib.patches as patches
 import random
 from tqdm import tqdm
 
+import sys
+import matplotlib.pyplot as plt
+import numpy as np
+from PIL import Image as im
+from scipy.ndimage import interpolation as inter
+
 @tf.function
 def load_image(filepath):
     im = tf.io.read_file(filepath)
     im = tf.image.decode_png(im, channels=0)
     return im
+
+##
+def find_score(arr, angle):
+    data = inter.rotate(arr, angle, reshape=False, order=0)
+    hist = np.sum(data, axis=1)
+    score = np.sum((hist[1:] - hist[:-1]) ** 2)
+    return hist, score
+
+def deskew_img(path):
+    img = im.open(path)
+    # convert to binary
+    wd, ht = img.size
+    pix = np.array(img.convert('1').getdata(), np.uint8)
+    bin_img = 1 - (pix.reshape((ht, wd)) / 255.0)
+    plt.imshow(bin_img, cmap='gray')
+    plt.savefig('binary.png')
+
+    delta = 1
+    limit = 5
+    angles = np.arange(-limit, limit+delta, delta)
+    scores = []
+    for angle in angles:
+        hist, score = find_score(bin_img, angle)
+        scores.append(score)
+    best_score = max(scores)
+    best_angle = angles[scores.index(best_score)]
+    print('Best angle: {}'.formate(best_angle))
+    # correct skew
+    data = inter.rotate(bin_img, best_angle, reshape=False, order=0)
+    img = im.fromarray((255 * data).astype("uint8")).convert("RGB")
+    img.save('skew_corrected.png')
+
+def thin_and_skeletonize_img(word_img_path):
+    img = cv2.imread(word_img_path, 0)
+    kernel = np.ones((5,5),np.uint8)
+    erosion = cv2.erode(img, kernel, iterations = 1)
+    return erosion
+
+@tf.function
+def preprocess2(img, img_size=(32, 128), data_augmentation=False, scale=0.8, is_threshold=False, with_edge_detection=True):
+    img_original_size = tf.shape(img)
+
+    # there are damaged files in IAM dataset - just use black image instead
+    if img is None:
+        img = tf.ones([img_size[0], img_size[1], 1])
+        res = tf.expand_dims(img, -1)
+        return res
+
+    # increase dataset size by applying random stretches to the images
+    if data_augmentation:
+        stretch = scale*(tf.random.uniform([1], 0, 1)[0] - 0.3) # -0.5 .. +0.5
+        w_stretched = tf.maximum(int(float(img_original_size[0]) * (1 + stretch)), 1) # random width, but at least 1
+        img = tf.image.resize(img, (w_stretched, img_original_size[1])) # stretch horizontally by factor 0.5 .. 1.5
+
+
+    # Rescale
+    # create target image and copy sample image into it
+    (wt, ht) = img_size
+    w, h = float(tf.shape(img)[0]), float(tf.shape(img)[1])
+    fx = w / wt
+    fy = h / ht
+    f = tf.maximum(fx, fy)
+    newSize = (tf.maximum(tf.minimum(wt, int(w / f)), 1), tf.maximum(tf.minimum(ht, int(h / f)), 1)) # scale according to f (result at least 1 and at most wt or ht)
+    img = tf.image.resize(img, newSize)
+
+    # Add padding
+    dx = wt - newSize[0]
+    dy = ht - newSize[1]
+    if data_augmentation:
+        dx1=0
+        dy1=0
+        if dx != 0:
+            dx1 = tf.random.uniform([1], 0, dx, tf.int32)[0]
+        if dy != 0:
+            dy1 = tf.random.uniform([1], 0, dy, tf.int32)[0]
+        img = tf.pad(img[..., 0], [[dx1, dx-dx1], [dy1, dy-dy1]], constant_values=1)
+    else:
+        # Padding à droite
+        img = tf.pad(img[..., 0], [[0, dx], [0, dy]], constant_values=1)
+
+    if is_threshold:
+        img = 1-(1-img)*tf.cast(img < 0.8, tf.float32)
+
+    img = tf.expand_dims(img, -1)
+    return img
+
+
 
 @tf.function
 def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8, is_threshold=False, with_edge_detection=True):
