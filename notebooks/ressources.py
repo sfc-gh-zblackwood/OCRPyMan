@@ -24,6 +24,6 @@ def init():
 
     ### traitement par lot
     global charList
-    
+    charList = list(string.ascii_letters)+[' ', ',', '.']
     
 

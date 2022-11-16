@@ -211,9 +211,7 @@ def extract_allowed_chars_from_string(char_list, str):
             res += letter
     return res
 # load du pickle de base, generation d'un dataset avec X="les chemins d'accès aux images", et y="la transcription"
-def get_dataset():
-    
-    charList = list(string.ascii_letters)+[' ', ',', '.']
+def get_dataset():    
     
     df = pd.read_pickle('../pickle/df.pickle')
 
@@ -251,13 +249,39 @@ def get_dataset():
   
     
     
-    return dataset_train, dataset_test
+    return dataset_train, dataset_test, y_test
 
 @tf.function
 def process_1_img(x, y):
     # a parametriser?
     img_size = (128, 32)
     with_edge_detection=False
+    ###################
+    path = x
+    if with_edge_detection:
+        file_name = path.split('/')[-1]
+        path_tmp = '../data/temp/' + file_name 
+
+        if not os.path.exists(path_tmp):
+            image = cv2.imread(path) 
+            edged = cv2.Canny(image, 30, 200)
+            cv2.imwrite(path_tmp, edged)
+        path = path_tmp
+          
+    # try:
+    img = preprocess(path, img_size=img_size,  data_augmentation=True, is_threshold=True)
+    # img = img.reshape(-1)
+    
+    # except :
+    #     print("Unexpected error:", sys.exc_info()[0])
+        
+    return img, y
+
+@tf.function
+def process_1_img_canny(x, y):
+    # a parametriser?
+    img_size = (128, 32)
+    with_edge_detection=True
     ###################
     path = x
     if with_edge_detection:
@@ -376,3 +400,17 @@ def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8,
     img = tf.expand_dims(img, -1)
     return img
 
+def greedy_decoder(logits, char_list):
+    # ctc beam search decoder
+    predicted_codes, _ = tf.nn.ctc_greedy_decoder(
+        # shape of tensor [max_time x batch_size x num_classes] 
+        tf.transpose(logits, (1, 0, 2)),
+        [logits.shape[1]]*logits.shape[0]
+    )
+    # convert to int32
+    codes = tf.cast(predicted_codes[0], tf.int32)
+    # Decode the index of caracter
+    text = decode_codes(codes, char_list)
+    # Convert a SparseTensor to string
+    text = tf.sparse.to_dense(text).numpy().astype(str)
+    return list(map(lambda x: ''.join(x), text))
