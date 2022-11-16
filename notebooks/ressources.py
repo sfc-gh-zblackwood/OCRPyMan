@@ -1,4 +1,4 @@
-
+import string
 
 def init():
     global DATA_PATH
@@ -22,4 +22,8 @@ def init():
     global FORMS_COLUMNS
     FORMS_COLUMNS = ['form_id', 'writer_id', 'number_of_sentences', 'word_seg', 'total_lines', 'correct_lines', 'total_words', 'correct_words']
 
+    ### traitement par lot
+    global charList
+    
+    
 

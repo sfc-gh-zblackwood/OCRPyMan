@@ -10,6 +10,8 @@ import os
 import matplotlib.patches as patches
 import random
 import sys
+import string
+from sklearn.model_selection import train_test_split
 
 
 ### Image rendering
@@ -133,6 +135,8 @@ def get_dataframe_with_preprocessed_imgs(nb_rows = 1000, img_size = (32, 128), l
     pickle.dump(data, open(pickle_path, "wb" ))
     return data
 
+
+
 ### Specific methods
 
 def show_mlp_result_for_row(X_test, y_test, y_pred, y_pred_proba, selected_row_index=0):
@@ -198,6 +202,112 @@ def process_df_img(df, img_size = (32, 128), with_edge_detection=True):
         #     time.sleep(0.5)
     return data
 
+
+
+def extract_allowed_chars_from_string(char_list, str):
+    res = ''
+    for letter in str:
+        if letter in char_list:
+            res += letter
+    return res
+# load du pickle de base, generation d'un dataset avec X="les chemins d'accès aux images", et y="la transcription"
+def get_dataset():
+    
+    charList = list(string.ascii_letters)+[' ', ',', '.']
+    
+    df = pd.read_pickle('../pickle/df.pickle')
+
+    # on filtre les chaines vides
+    df['length'] = df['transcription'].apply(lambda x: len(x.strip()))
+    df = df[df['length'] > 0]
+    
+    #CLEAN DE JEANPOL
+    df['clean_trans'] = df.transcription.apply(lambda x: extract_allowed_chars_from_string(charList, x))
+    df = df[(df['clean_trans'] != "") & (df['clean_trans'] == df['transcription'])]
+
+    #fix temporaire, à finaliser avec l'archi du projet
+    # df['word_img_path'] = df['word_img_path'].apply(lambda x: x[3:])
+    
+    X_train, X_test, y_train, y_test = train_test_split(df['word_img_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
+    dataset_train = tf.data.Dataset.from_tensor_slices((X_train, y_train))
+    dataset_test = tf.data.Dataset.from_tensor_slices((X_test, y_test))
+
+    # dataset = tf.data.Dataset.from_tensor_slices((df['word_img_path'].values, df['transcription'].values))
+
+    dataset_train = dataset_train.map(process_1_img)
+    dataset_train = dataset_train.batch(64)
+    dataset_train = dataset_train.map(process_trancription)
+    
+    dataset_test = dataset_test.map(process_1_img)
+    dataset_test = dataset_test.batch(64)
+    dataset_test = dataset_test.map(process_trancription)
+    
+    
+    # for x,y in dataset:
+    #     process_trancription(x,y)
+    #     # print(x.numpy())
+    #     # print(y)
+    #     break
+  
+    
+    
+    return dataset_train, dataset_test
+
+@tf.function
+def process_1_img(x, y):
+    # a parametriser?
+    img_size = (128, 32)
+    with_edge_detection=False
+    ###################
+    path = x
+    if with_edge_detection:
+        file_name = path.split('/')[-1]
+        path_tmp = '../data/temp/' + file_name 
+
+        if not os.path.exists(path_tmp):
+            image = cv2.imread(path) 
+            edged = cv2.Canny(image, 30, 200)
+            cv2.imwrite(path_tmp, edged)
+        path = path_tmp
+          
+    # try:
+    img = preprocess(path, img_size=img_size,  data_augmentation=True, is_threshold=True)
+    # img = img.reshape(-1)
+    
+    # except :
+    #     print("Unexpected error:", sys.exc_info()[0])
+        
+    return img, y
+
+def process_trancription(x, y):
+    charList = list(string.ascii_letters)+[' ', ',', '.']
+    return x, encode_labels(y, charList)
+    
+def encode_labels(labels, charList):
+    # Hash Table
+    table = tf.lookup.StaticHashTable(
+        tf.lookup.KeyValueTensorInitializer(
+            charList,
+            np.arange(len(charList)),
+            value_dtype=tf.int32
+        ),
+        -1,  ### !!!!! pourquoi -1? ça echoue dans la ctc loss a cause de labels négatifs...  !!!!!!!!!!!!!!!!!!!! ????????????
+        name='char2id'
+    )
+    return table.lookup(
+    tf.compat.v1.string_split(labels, delimiter=''))
+    
+def decode_codes(codes, charList):
+    table = tf.lookup.StaticHashTable(
+        tf.lookup.KeyValueTensorInitializer(
+            np.arange(len(charList)),
+            charList,
+            key_dtype=tf.int32
+        ),
+        '',
+        name='id2char'
+    )
+    return table.lookup(codes)
 
 # Compte les majuscules et minuscules dans une chaine
 def upper_lower(string): 
