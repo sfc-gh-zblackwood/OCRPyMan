@@ -23,11 +23,7 @@ def get_dataset(canny = False):
     
     df = pd.read_pickle('../pickle/df.pickle')
 
-    # on filtre les chaines vides
-    df['length'] = df['transcription'].apply(lambda x: len(x.strip()))
-    df = df[df['length'] > 0]
-    
-    #CLEAN DE JEANPOL
+    # on filtre les chaines vides et les caractères inconnus (TODO à déplacer dans le preprocess du dataframe?)
     df['clean_trans'] = df.transcription.apply(lambda x: extract_allowed_chars_from_string(rss.charList, x))
     df = df[(df['clean_trans'] != "") & (df['clean_trans'] == df['transcription'])]
 
