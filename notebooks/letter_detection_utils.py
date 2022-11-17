@@ -28,8 +28,8 @@ def get_dataset(canny = False):
     df = df[df['length'] > 0]
     
     #CLEAN DE JEANPOL
-    # df['clean_trans'] = df.transcription.apply(lambda x: extract_allowed_chars_from_string(rss.charList, x))
-    # df = df[(df['clean_trans'] != "") & (df['clean_trans'] == df['transcription'])]
+    df['clean_trans'] = df.transcription.apply(lambda x: extract_allowed_chars_from_string(rss.charList, x))
+    df = df[(df['clean_trans'] != "") & (df['clean_trans'] == df['transcription'])]
 
     X_train, X_test, y_train, y_test = train_test_split(df['word_img_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
     dataset_train = tf.data.Dataset.from_tensor_slices((X_train, y_train))
