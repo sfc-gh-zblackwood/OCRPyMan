@@ -5,6 +5,13 @@ import pandas as pd
 import glob  # pour la fonction get_files()
 from lxml import etree  # pour la fonction get_words_from_xml_form()
 import cv2
+import pickle
+import contextlib
+import os
+import sys
+import random
+
+import letter_detection_utils as ld_util
 
 
 # Fonction rassemblant les étapes de preprocessing pour les formulaires
@@ -274,7 +281,7 @@ def get_dataframe_with_preprocessed_imgs(nb_rows = 1000, img_size = (32, 128), l
         print("Starting preprocessing of images with tensorflow")
         
     try:
-        preprocessed_imgs = process_df_img(df, img_size, with_edge_detection=with_edge_detection)
+        preprocessed_imgs = ld_util.process_df_img(df, img_size, with_edge_detection=with_edge_detection)
     except:
         print("Unexpected error:", sys.exc_info()[0])
         

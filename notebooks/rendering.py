@@ -3,6 +3,7 @@ import matplotlib.patches as patches
 import numpy as np
 import preprocessing as pp
 
+import letter_detection_utils as ld_util
 
 def show_img(path):
     img = plt.imread(path)
@@ -297,7 +298,7 @@ def show_df_form_img(df, row_index):
 
 def show_preprocess_img_from_df(df, row_index, img_size = (32, 128)):
     row = df.iloc[row_index]
-    new_row = preprocess(row.word_img_path, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
+    new_row = ld_util.preprocess(row.word_img_path, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
     plt.title(row.transcription + ' [' + str(row.length) + ']')
     plt.imshow(new_row, cmap='gray');
     plt.axis('off');
