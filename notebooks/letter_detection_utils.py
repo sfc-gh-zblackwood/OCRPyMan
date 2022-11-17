@@ -175,8 +175,7 @@ def extract_allowed_chars_from_string(char_list, str):
 
 
 def process_trancription(x, y):
-    charList = list(string.ascii_letters)+[' ', ',', '.']
-    return x, encode_labels(y, charList)
+    return x, encode_labels(y, rss.charList)
     
 def encode_labels(labels, charList):
     # Hash Table
@@ -186,7 +185,7 @@ def encode_labels(labels, charList):
             np.arange(len(charList)),
             value_dtype=tf.int32
         ),
-        -1,  ### !!!!! pourquoi -1? ça echoue dans la ctc loss a cause de labels négatifs...  !!!!!!!!!!!!!!!!!!!! ????????????
+        -1,  #TJ si label inconnu, alors -1 
         name='char2id'
     )
     return table.lookup(

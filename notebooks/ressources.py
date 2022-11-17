@@ -24,7 +24,7 @@ def init():
 
     ### traitement par lot
     global charList
-    charList = list(string.ascii_letters)+[' ', ',', '.']
+    charList = list(string.ascii_letters)+[' ', ',', '.', '\'', '"', '-', '#']
     
     global img_size 
     img_size = (128, 32)
