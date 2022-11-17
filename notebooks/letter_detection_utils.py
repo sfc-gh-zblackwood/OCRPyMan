@@ -13,128 +13,89 @@ import sys
 import string
 from sklearn.model_selection import train_test_split
 
+import ressources as rss
 
-### Image rendering
-def show_plt_img(img):
-    plt.imshow(img, cmap='gray');
-    plt.axis('off');
 
-def show_df_form_img(df, row_index):
-    selected_row = df.iloc[row_index]
-    img = plt.imread(selected_row.form_img_path)
-    fig, ax = plt.subplots(figsize=(20,15))
-    fig.figsize=(20,10)
-    ax.imshow(img, cmap='gray')
-    ax.add_patch(
-    patches.Rectangle(
-        (selected_row.x-8, selected_row.y-8),
-        selected_row.w+16,
-        selected_row.h+16,
-        fill=False,
-        color = 'red'      
-    ) ) 
-    plt.axis('off')
-    plt.show()
 
-def show_preprocess_img_from_df(df, row_index, img_size = (32, 128)):
-    row = df.iloc[row_index]
-    new_row = preprocess(row.word_img_path, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
-    plt.title(row.transcription + ' [' + str(row.length) + ']')
-    plt.imshow(new_row, cmap='gray');
-    plt.axis('off');
+# load du pickle de base, generation d'un dataset avec X="les chemins d'accès aux images", et y="la transcription"
+# puis map des fonctions de preprocessing et création des lots
+def get_dataset(canny = False):    
+    
+    df = pd.read_pickle('../pickle/df.pickle')
 
-def show_preprocess_img_from_data(data, row_index, img_size = (32, 128)):
-    img = data['preprocessed_imgs'][row_index].reshape(img_size)
-    plt.imshow(img, cmap='gray');
-    plt.axis('off');
+    # on filtre les chaines vides
+    df['length'] = df['transcription'].apply(lambda x: len(x.strip()))
+    df = df[df['length'] > 0]
+    
+    #CLEAN DE JEANPOL
+    # df['clean_trans'] = df.transcription.apply(lambda x: extract_allowed_chars_from_string(rss.charList, x))
+    # df = df[(df['clean_trans'] != "") & (df['clean_trans'] == df['transcription'])]
 
-def show_df_word_img(df, row_index):
-    selected_row = df.iloc[row_index]
-    img = plt.imread(selected_row.word_img_path)
-    plt.figure(figsize = (10,8))
-    plt.title("Texte: \"{}\" au format {} avec h={}, w={}".format(selected_row.transcription, img.shape, selected_row.h, selected_row.w));
-    plt.axis('off')
-    plt.imshow(img, cmap='gray');
+    X_train, X_test, y_train, y_test = train_test_split(df['word_img_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
+    dataset_train = tf.data.Dataset.from_tensor_slices((X_train, y_train))
+    dataset_test = tf.data.Dataset.from_tensor_slices((X_test, y_test))
 
-def basic_bw_tensor_img_show(tensor_img, ax = None):
-    if ax is None:
-        ax = plt
-    ax.axis('off')
-    ax.imshow(tensor_img.numpy(), cmap='gray');
+    if canny:
+        dataset_train = dataset_train.map(process_1_img_canny)
+        dataset_test = dataset_test.map(process_1_img_canny)
+    else:
+        dataset_train = dataset_train.map(process_1_img)
+        dataset_test = dataset_test.map(process_1_img)
+        
+    dataset_train = dataset_train.batch(64)
+    dataset_train = dataset_train.map(process_trancription)
+    
+    dataset_test = dataset_test.batch(64)
+    dataset_test = dataset_test.map(process_trancription)
+    
+    
+    # DEBUG :
+    # for x,y in dataset:
+    #     process_trancription(x,y)
+    #     # print(x.numpy())
+    #     # print(y)
+    #     break
+    
+    # on renvoie aussi y_test car il sera utilisé plus tard pour des comparaisons
+    return dataset_train, dataset_test, y_test
+
+
+
+@tf.function
+def process_1_img(x, y):
+    path = x
+              
+    img = preprocess(path, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)
+
+    return img, y
+
+@tf.function
+def process_1_img_canny(x, y):
+
+    try:
+        path = x     
+        file_name = path.split('/')[-1]
+        path_tmp = '../data/canny/' + file_name  # toutes les images au format canny seront stockées dans ce dossier
+
+        if not os.path.exists(path_tmp):
+            image = cv2.imread(path) 
+            edged = cv2.Canny(image, 30, 200)
+            cv2.imwrite(path_tmp, edged)
+        path = path_tmp
+            
+    except :
+        print("Unexpected error:", sys.exc_info()[0])
+    
+    img = preprocess(path, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)  
+    
+    return img, y
+
 
 @tf.function
 def load_image(filepath):
     im = tf.io.read_file(filepath)
     im = tf.image.decode_png(im, channels=0)
     return im
-
-
-### Utility
-
-def silence_method_call(callback=None, cargs=()):
-    with open(os.devnull, 'w') as devnull_file:
-        with contextlib.redirect_stdout(devnull_file):
-            if callback is not None:
-                return callback(*cargs)
-
-def get_dataframe_with_preprocessed_imgs(nb_rows = 1000, img_size = (32, 128), load_pickle_if_exists = True, debug=True, pickle_name="letter_detection_data", with_edge_detection=True):
-    full_df = pd.read_pickle('../pickle/df.pickle')
-    if not pickle_name:
-        raise Exception("Cannot have an empty pickle name")
-    pickle_path = "../pickle/" + pickle_name + ".pickle"
-
-    file_exists = os.path.exists(pickle_path)
-    if file_exists and load_pickle_if_exists:
-        if debug: 
-            print("Loading existing data from ", pickle_path, "...")
-        return pickle.load(open(pickle_path, "rb"))
-
-    if debug: 
-        print("Generating data...")
-        
-
-     # Only interested in letters, not punctation or decimal for the moment
-    if debug: 
-        print("Filtering data: taking only letters")
-    r = r'[a-zA-Z]+'
-    df = full_df[full_df['transcription'].str.contains(r)]
-    np.random.seed(seed=42)
-
-    # reducing row
-    if nb_rows >= len(df):
-        nb_rows = len(df)
-        print('DataFrame only contains', len(df), ' rows => using full dataframe')
-    if debug: 
-        print("Using", nb_rows, "rows")
-
-    df = df.iloc[random.sample(range(nb_rows), nb_rows)]
-
-    df['length'] = df['transcription'].apply(lambda x: len(x.strip()))
-    df.rename(columns = {'form_img_path_y': 'form_img_path'}, inplace = True)
-    # reducing columns
-    df = df[['michelson_contrast', 'gray_level_mot', 'word_id', 'gray_level', 'x', 'y', 'w', 'h', 'transcription', 'word_img_path', 'form_img_path', 'length']]
-    df.reset_index(inplace=True)
-
-    #filtrer les transcriptions vides
-    df = df[df['length'] > 0]
-    
-    if debug: 
-        print("Starting preprocessing of images with tensorflow")
-        
-    try:
-        preprocessed_imgs = process_df_img(df, img_size, with_edge_detection=with_edge_detection)
-    except:
-        print("Unexpected error:", sys.exc_info()[0])
-        
-    data = {
-        'df': df,
-        'preprocessed_imgs': preprocessed_imgs
-    }
-    if debug: 
-        print("Creating pickle dump", pickle_path)
-    pickle.dump(data, open(pickle_path, "wb" ))
-    return data
-
 
 
 ### Specific methods
@@ -204,104 +165,14 @@ def process_df_img(df, img_size = (32, 128), with_edge_detection=True):
 
 
 
+# renvoie une chaine de caractere dont les caracteres non-autorisés (donc non présents dans char_list) ont été retirés
 def extract_allowed_chars_from_string(char_list, str):
     res = ''
     for letter in str:
         if letter in char_list:
             res += letter
     return res
-# load du pickle de base, generation d'un dataset avec X="les chemins d'accès aux images", et y="la transcription"
-def get_dataset():    
-    
-    df = pd.read_pickle('../pickle/df.pickle')
 
-    # on filtre les chaines vides
-    df['length'] = df['transcription'].apply(lambda x: len(x.strip()))
-    df = df[df['length'] > 0]
-    
-    #CLEAN DE JEANPOL
-    df['clean_trans'] = df.transcription.apply(lambda x: extract_allowed_chars_from_string(charList, x))
-    df = df[(df['clean_trans'] != "") & (df['clean_trans'] == df['transcription'])]
-
-    #fix temporaire, à finaliser avec l'archi du projet
-    # df['word_img_path'] = df['word_img_path'].apply(lambda x: x[3:])
-    
-    X_train, X_test, y_train, y_test = train_test_split(df['word_img_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
-    dataset_train = tf.data.Dataset.from_tensor_slices((X_train, y_train))
-    dataset_test = tf.data.Dataset.from_tensor_slices((X_test, y_test))
-
-    # dataset = tf.data.Dataset.from_tensor_slices((df['word_img_path'].values, df['transcription'].values))
-
-    dataset_train = dataset_train.map(process_1_img)
-    dataset_train = dataset_train.batch(64)
-    dataset_train = dataset_train.map(process_trancription)
-    
-    dataset_test = dataset_test.map(process_1_img)
-    dataset_test = dataset_test.batch(64)
-    dataset_test = dataset_test.map(process_trancription)
-    
-    
-    # for x,y in dataset:
-    #     process_trancription(x,y)
-    #     # print(x.numpy())
-    #     # print(y)
-    #     break
-  
-    
-    
-    return dataset_train, dataset_test, y_test
-
-@tf.function
-def process_1_img(x, y):
-    # a parametriser?
-    img_size = (128, 32)
-    with_edge_detection=False
-    ###################
-    path = x
-    if with_edge_detection:
-        file_name = path.split('/')[-1]
-        path_tmp = '../data/temp/' + file_name 
-
-        if not os.path.exists(path_tmp):
-            image = cv2.imread(path) 
-            edged = cv2.Canny(image, 30, 200)
-            cv2.imwrite(path_tmp, edged)
-        path = path_tmp
-          
-    # try:
-    img = preprocess(path, img_size=img_size,  data_augmentation=True, is_threshold=True)
-    # img = img.reshape(-1)
-    
-    # except :
-    #     print("Unexpected error:", sys.exc_info()[0])
-        
-    return img, y
-
-@tf.function
-def process_1_img_canny(x, y):
-    # a parametriser?
-    img_size = (128, 32)
-    with_edge_detection=True
-    ###################
-    path = x
-    if with_edge_detection:
-        file_name = path.split('/')[-1]
-        path_tmp = '../data/temp/' + file_name 
-
-        if not os.path.exists(path_tmp):
-            image = cv2.imread(path) 
-            edged = cv2.Canny(image, 30, 200)
-            cv2.imwrite(path_tmp, edged)
-        path = path_tmp
-          
-    # try:
-    img = preprocess(path, img_size=img_size,  data_augmentation=True, is_threshold=True)
-    # img = img.reshape(-1)
-    
-    # except :
-    #     print("Unexpected error:", sys.exc_info()[0])
-        
-    return img, y
 
 def process_trancription(x, y):
     charList = list(string.ascii_letters)+[' ', ',', '.']
@@ -355,6 +226,9 @@ def upper_lower(string):
 @tf.function
 def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8, is_threshold=False, with_edge_detection=True):
     img = load_image(filepath)/255 # To work with values between 0 and 1
+    #Ajout TJ
+    img = tf.transpose(img, [1, 0, 2])  # np.swapaxes(img, 0, 1)
+    #####
     img_original_size = tf.shape(img)
 
     # there are damaged files in IAM dataset - just use black image instead

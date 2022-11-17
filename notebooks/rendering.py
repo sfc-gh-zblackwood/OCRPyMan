@@ -273,5 +273,52 @@ def show_100min_box_size_words_images(word_df):
     fig.suptitle(t = 'Affichage des ' + str(n_images) + ' images de taille la plus basse', fontsize = 20);
 
 
+### Image rendering
+def show_plt_img(img):
+    plt.imshow(img, cmap='gray');
+    plt.axis('off');
+
+def show_df_form_img(df, row_index):
+    selected_row = df.iloc[row_index]
+    img = plt.imread(selected_row.form_img_path)
+    fig, ax = plt.subplots(figsize=(20,15))
+    fig.figsize=(20,10)
+    ax.imshow(img, cmap='gray')
+    ax.add_patch(
+    patches.Rectangle(
+        (selected_row.x-8, selected_row.y-8),
+        selected_row.w+16,
+        selected_row.h+16,
+        fill=False,
+        color = 'red'      
+    ) ) 
+    plt.axis('off')
+    plt.show()
+
+def show_preprocess_img_from_df(df, row_index, img_size = (32, 128)):
+    row = df.iloc[row_index]
+    new_row = preprocess(row.word_img_path, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
+    plt.title(row.transcription + ' [' + str(row.length) + ']')
+    plt.imshow(new_row, cmap='gray');
+    plt.axis('off');
+
+def show_preprocess_img_from_data(data, row_index, img_size = (32, 128)):
+    img = data['preprocessed_imgs'][row_index].reshape(img_size)
+    plt.imshow(img, cmap='gray');
+    plt.axis('off');
+
+def show_df_word_img(df, row_index):
+    selected_row = df.iloc[row_index]
+    img = plt.imread(selected_row.word_img_path)
+    plt.figure(figsize = (10,8))
+    plt.title("Texte: \"{}\" au format {} avec h={}, w={}".format(selected_row.transcription, img.shape, selected_row.h, selected_row.w));
+    plt.axis('off')
+    plt.imshow(img, cmap='gray');
+
+def basic_bw_tensor_img_show(tensor_img, ax = None):
+    if ax is None:
+        ax = plt
+    ax.axis('off')
+    ax.imshow(tensor_img.numpy(), cmap='gray');
 
 

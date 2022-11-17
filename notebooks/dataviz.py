@@ -330,4 +330,3 @@ def show_caracters_distribution_per_writer(df_all):
     plt.show()
 
 
-

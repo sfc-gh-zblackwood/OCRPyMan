@@ -26,4 +26,7 @@ def init():
     global charList
     charList = list(string.ascii_letters)+[' ', ',', '.']
     
+    global img_size 
+    img_size = (128, 32)
+    
 
