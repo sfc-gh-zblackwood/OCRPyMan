@@ -1,0 +1,4 @@
+doctr/
+doctr/*
+text_detection_train/images/
+text_detection_val/images/
