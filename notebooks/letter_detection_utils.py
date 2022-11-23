@@ -234,9 +234,13 @@ def upper_lower(string):
 @tf.function
 def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8, is_threshold=False, with_edge_detection=True):
     img = load_image(filepath)/255 # To work with values between 0 and 1
-    #Ajout TJ
+    ### Ajout TJ
     img = tf.transpose(img, [1, 0, 2])  # np.swapaxes(img, 0, 1)
     # tf.image.rot90 !! a tester!!
+    if with_edge_detection:
+        padding_value = 0
+    else:
+        padding_value = 1
     #####
     img_original_size = tf.shape(img)
 
@@ -273,9 +277,9 @@ def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8,
             dx1 = tf.random.uniform([1], 0, dx, tf.int32)[0]
         if dy != 0:
             dy1 = tf.random.uniform([1], 0, dy, tf.int32)[0]
-        img = tf.pad(img[..., 0], [[dx1, dx-dx1], [dy1, dy-dy1]], constant_values=1)
+        img = tf.pad(img[..., 0], [[dx1, dx-dx1], [dy1, dy-dy1]], constant_values=padding_value)
     else:
-        img = tf.pad(img[..., 0], [[0, dx], [0, dy]], constant_values=1)
+        img = tf.pad(img[..., 0], [[0, dx], [0, dy]], constant_values=padding_value)
 
     if is_threshold:
         img = 1-(1-img)*tf.cast(img < 0.8, tf.float32)
