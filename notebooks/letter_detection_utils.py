@@ -22,7 +22,6 @@ import ressources as rss
 def get_dataset(canny = False):    
     
     df = pd.read_pickle('../pickle/df.pickle')
-
     # on filtre les chaines vides et les caractères inconnus (TODO à déplacer dans le preprocess du dataframe?)
     df['clean_trans'] = df.transcription.apply(lambda x: extract_allowed_chars_from_string(rss.charList, x))
     df = df[(df['clean_trans'] != "") & (df['clean_trans'] == df['transcription'])]
@@ -234,24 +233,38 @@ def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8,
 
     # increase dataset size by applying random stretches to the images
     if data_augmentation:
-        stretch = scale*(tf.random.uniform([1], 0, 1)[0] - 0.3) # -0.5 .. +0.5
-        w_stretched = tf.maximum(int(float(img_original_size[0]) * (1 + stretch)), 1) # random width, but at least 1
-        img = tf.image.resize(img, (w_stretched, img_original_size[1])) # stretch horizontally by factor 0.5 .. 1.5
+        # CODE INITIAL : 
+        #stretch = scale*(tf.random.uniform([1], 0, 1)[0] - 0.3) # -0.5 .. +0.5
+        #w_stretched = tf.maximum(int(float(img_original_size[0]) * (1 + stretch)), 1) # random width, but at least 1
+        #img = tf.image.resize(img, (w_stretched, img_original_size[1])) # stretch horizontally by factor 0.5 .. 1.5
+        
+        #DEBUG DB
+        scale=.8
+
+        # PROPOSITION DB : le code initial était écrit pour des images 128*32
+        stretch = scale*(tf.random.uniform([1], 0, 1)[0] - 0.5) # -0.5 .. +0.5
+        w_stretched = tf.maximum(int(float(img_original_size[1]) * (1 + stretch)), 1) # random width, but at least 1
+        img = tf.image.resize(img, (img_original_size[0],w_stretched)) # stretch horizontally by factor 0.5 .. 1.5
 
 
+    # PROPOSITION DB : adaption du code rescale et padding pour des images 32*128
+    
     # Rescale
     # create target image and copy sample image into it
-    (wt, ht) = img_size
-    w, h = float(tf.shape(img)[0]), float(tf.shape(img)[1])
-    fx = w / wt
-    fy = h / ht
+    
+    (ht, wt) = img_size
+    h, w = float(tf.shape(img)[0]), float(tf.shape(img)[1])
+    fx = h / ht
+    fy = w / wt
     f = tf.maximum(fx, fy)
-    newSize = (tf.maximum(tf.minimum(wt, int(w / f)), 1), tf.maximum(tf.minimum(ht, int(h / f)), 1)) # scale according to f (result at least 1 and at most wt or ht)
+    #newSize = (tf.maximum(tf.minimum(wt, int(w / f)), 1), tf.maximum(tf.minimum(ht, int(h / f)), 1)) # scale according to f (result at least 1 and at most wt or ht)
+    # PROPOSITION DB : correction de cette ligne
+    newSize = (tf.minimum(ht,tf.maximum(1,int(h/f))),tf.minimum(wt,tf.maximum(1,int(w/f))))
     img = tf.image.resize(img, newSize)
 
     # Add padding
-    dx = wt - newSize[0]
-    dy = ht - newSize[1]
+    dx = ht - newSize[0]
+    dy = wt - newSize[1]
     if data_augmentation:
         dx1=0
         dy1=0
@@ -262,6 +275,9 @@ def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8,
         img = tf.pad(img[..., 0], [[dx1, dx-dx1], [dy1, dy-dy1]], constant_values=1)
     else:
         img = tf.pad(img[..., 0], [[0, dx], [0, dy]], constant_values=1)
+
+
+
 
     if is_threshold:
         img = 1-(1-img)*tf.cast(img < 0.8, tf.float32)
