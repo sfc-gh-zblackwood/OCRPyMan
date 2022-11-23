@@ -31,8 +31,13 @@ def get_dataset(canny = False):
     dataset_test = tf.data.Dataset.from_tensor_slices((X_test, y_test))
 
     if canny:
-        dataset_train = dataset_train.map(process_1_img_canny)
-        dataset_test = dataset_test.map(process_1_img_canny)
+        # dataset_train = dataset_train.map(process_1_img_canny)
+        # dataset_test = dataset_test.map(process_1_img_canny)
+        
+        dataset_train = dataset_train.map(lambda x,y: tf.py_function(process_1_img_canny, [x, y], [tf.float32, tf.string]))
+        # img, y = tf.py_function(process_1_img_canny, [x, y], [tf.float32, tf.string])
+                
+        dataset_test = dataset_test.map(lambda x,y: tf.py_function(process_1_img_canny, [x, y], [tf.float32, tf.string]))
     else:
         dataset_train = dataset_train.map(process_1_img)
         dataset_test = dataset_test.map(process_1_img)
@@ -56,7 +61,7 @@ def get_dataset(canny = False):
 
 
 
-@tf.function
+# @tf.function
 def process_1_img(x, y):
     path = x
               
@@ -64,11 +69,13 @@ def process_1_img(x, y):
 
     return img, y
 
-@tf.function
+# @tf.function
 def process_1_img_canny(x, y):
-
+    
+    path_tmp = ''
+    path= ''
     try:
-        path = x     
+        path = x.numpy().decode('utf-8')
         file_name = path.split('/')[-1]
         path_tmp = '../data/canny/' + file_name  # toutes les images au format canny seront stockées dans ce dossier
 
@@ -77,12 +84,12 @@ def process_1_img_canny(x, y):
             edged = cv2.Canny(image, 30, 200)
             cv2.imwrite(path_tmp, edged)
         path = path_tmp
-            
+                
+        
     except :
         print("Unexpected error:", sys.exc_info()[0])
     
     img = preprocess(path, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)  
-    
     return img, y
 
 
@@ -129,7 +136,13 @@ def plot_avg_width_per_string_length(df):
 ### Processing
 def process_df_img(df, img_size = (32, 128), with_edge_detection=True):
     nb_features = img_size[0] * img_size[1]
-    data = np.empty((0, nb_features), float)
+    
+    # TJ à revoir : les images canny sont sur fond noir... il faudra surement les regénérer en inversant blanc/noir
+    if with_edge_detection:
+        data = np.ones((0, nb_features), float)
+    else:
+        data = np.empty((0, nb_features), float)
+    
     for index, row in df.iterrows():
         path = row.word_img_path
 
@@ -220,8 +233,13 @@ def upper_lower(string):
 @tf.function
 def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8, is_threshold=False, with_edge_detection=True):
     img = load_image(filepath)/255 # To work with values between 0 and 1
-    #Ajout TJ
+    ### Ajout TJ
     img = tf.transpose(img, [1, 0, 2])  # np.swapaxes(img, 0, 1)
+    # tf.image.rot90 !! a tester!!
+    if with_edge_detection:
+        padding_value = 0
+    else:
+        padding_value = 1
     #####
     img_original_size = tf.shape(img)
 
@@ -272,9 +290,9 @@ def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8,
             dx1 = tf.random.uniform([1], 0, dx, tf.int32)[0]
         if dy != 0:
             dy1 = tf.random.uniform([1], 0, dy, tf.int32)[0]
-        img = tf.pad(img[..., 0], [[dx1, dx-dx1], [dy1, dy-dy1]], constant_values=1)
+        img = tf.pad(img[..., 0], [[dx1, dx-dx1], [dy1, dy-dy1]], constant_values=padding_value)
     else:
-        img = tf.pad(img[..., 0], [[0, dx], [0, dy]], constant_values=1)
+        img = tf.pad(img[..., 0], [[0, dx], [0, dy]], constant_values=padding_value)
 
 
 
@@ -299,3 +317,32 @@ def greedy_decoder(logits, char_list):
     # Convert a SparseTensor to string
     text = tf.sparse.to_dense(text).numpy().astype(str)
     return list(map(lambda x: ''.join(x), text))
+
+
+def levenshtein_distance(s, t):
+    m, n = len(s) + 1, len(t) + 1
+    d = [[0] * n for _ in range(m)]
+
+    for i in range(1, m):
+        d[i][0] = i
+
+    for j in range(1, n):
+        d[0][j] = j
+
+    for j in range(1, n):
+        for i in range(1, m):
+            substitution_cost = 0 if s[i - 1] == t[j - 1] else 1
+            d[i][j] = min(d[i - 1][j] + 1,
+                          d[i][j - 1] + 1,
+                          d[i - 1][j - 1] + substitution_cost)
+
+    return d[m - 1][n - 1]
+
+def evaluate_character_level_accuracy(original, predicted):
+    original_length = len(original)
+    if original_length == 0:
+        return 1
+    distance = levenshtein_distance(original, predicted)
+    if distance > original_length:
+        return 0
+    return 1 - (distance / original_length)
