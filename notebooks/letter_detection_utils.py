@@ -137,7 +137,13 @@ def plot_avg_width_per_string_length(df):
 ### Processing
 def process_df_img(df, img_size = (32, 128), with_edge_detection=True):
     nb_features = img_size[0] * img_size[1]
-    data = np.empty((0, nb_features), float)
+    
+    # TJ à revoir : les images canny sont sur fond noir... il faudra surement les regénérer en inversant blanc/noir
+    if with_edge_detection:
+        data = np.ones((0, nb_features), float)
+    else:
+        data = np.empty((0, nb_features), float)
+    
     for index, row in df.iterrows():
         path = row.word_img_path
 
