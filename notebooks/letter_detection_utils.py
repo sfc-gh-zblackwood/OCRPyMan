@@ -234,8 +234,7 @@ def upper_lower(string):
 def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8, is_threshold=False, with_edge_detection=True):
     img = load_image(filepath)/255 # To work with values between 0 and 1
     ### Ajout TJ
-    img = tf.transpose(img, [1, 0, 2])  # np.swapaxes(img, 0, 1)
-    # tf.image.rot90 !! a tester!!
+    # img = tf.transpose(img, [1, 0, 2])  # np.swapaxes(img, 0, 1)    
     if with_edge_detection:
         padding_value = 0
     else:
@@ -261,28 +260,28 @@ def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8,
 
         # PROPOSITION DB : le code initial était écrit pour des images 128*32
         stretch = scale*(tf.random.uniform([1], 0, 1)[0] - 0.5) # -0.5 .. +0.5
-        w_stretched = tf.maximum(int(float(img_original_size[1]) * (1 + stretch)), 1) # random width, but at least 1
-        img = tf.image.resize(img, (img_original_size[0],w_stretched)) # stretch horizontally by factor 0.5 .. 1.5
+        w_stretched = tf.maximum(int(float(img_original_size[0]) * (1 + stretch)), 1) # random width, but at least 1
+        img = tf.image.resize(img, (w_stretched, img_original_size[1])) # stretch horizontally by factor 0.5 .. 1.5
 
 
     # PROPOSITION DB : adaption du code rescale et padding pour des images 32*128
     
     # Rescale
     # create target image and copy sample image into it
-    
-    (ht, wt) = img_size
-    h, w = float(tf.shape(img)[0]), float(tf.shape(img)[1])
-    fx = h / ht
-    fy = w / wt
+    # le nom des variables n'est pas bon? : wt est la hauteur, pas la largeur
+    (wt, ht) = img_size
+    w, h = float(tf.shape(img)[0]), float(tf.shape(img)[1])
+    fx = w / wt
+    fy = h / ht
     f = tf.maximum(fx, fy)
-    #newSize = (tf.maximum(tf.minimum(wt, int(w / f)), 1), tf.maximum(tf.minimum(ht, int(h / f)), 1)) # scale according to f (result at least 1 and at most wt or ht)
+    newSize = (tf.maximum(tf.minimum(wt, int(w / f)), 1), tf.maximum(tf.minimum(ht, int(h / f)), 1)) # scale according to f (result at least 1 and at most wt or ht)
     # PROPOSITION DB : correction de cette ligne
-    newSize = (tf.minimum(ht,tf.maximum(1,int(h/f))),tf.minimum(wt,tf.maximum(1,int(w/f))))
+    # newSize = (tf.minimum(ht,tf.maximum(1,int(w/f))),tf.minimum(wt,tf.maximum(1,int(h/f))))
     img = tf.image.resize(img, newSize)
 
     # Add padding
-    dx = ht - newSize[0]
-    dy = wt - newSize[1]
+    dx = wt - newSize[0]
+    dy = ht - newSize[1]
     if data_augmentation:
         dx1=0
         dy1=0
@@ -295,13 +294,12 @@ def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8,
         img = tf.pad(img[..., 0], [[0, dx], [0, dy]], constant_values=padding_value)
 
 
-
-
     if is_threshold:
         img = 1-(1-img)*tf.cast(img < 0.8, tf.float32)
 
     img = tf.expand_dims(img, -1)
     return img
+
 
 def greedy_decoder(logits, char_list):
     # ctc beam search decoder

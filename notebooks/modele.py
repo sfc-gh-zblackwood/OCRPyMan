@@ -26,8 +26,8 @@ class CTCLoss(tf.keras.losses.Loss):
 
 
 
-
-def create_modele():
+# creation du modele, qui prend une image 128*32
+def create_modele_128_32():
     model = tf.keras.Sequential()
 
     ############
@@ -65,6 +65,53 @@ def create_modele():
 
     # Remove axis 2
     model.add(Lambda(lambda x :tf.squeeze(x, axis=2)))
+    numHidden = 256
+    # Bidirectionnal RNN
+    model.add(Bidirectional(GRU(numHidden, return_sequences=True)))
+    model.add(Dense(100))
+    model.summary()
+    
+    return model
+
+# creation du modele, qui prend une image 32*128
+def create_modele():
+    model = tf.keras.Sequential()
+
+    ############
+    # Layer 1
+    model.add(Conv2D(filters=32, kernel_size=(5,5), padding='SAME', input_shape = (32, 128, 1)))
+    model.add(BatchNormalization())
+    model.add(LeakyReLU())
+    model.add(MaxPooling2D(pool_size=(2,2), strides=(2,2)))
+
+    # Layer 2
+    model.add(Conv2D(filters=64, kernel_size=(5,5), padding='SAME'))
+    model.add(BatchNormalization())
+    model.add(LeakyReLU())
+    model.add(MaxPooling2D(pool_size=(2,2), strides=(2,2)))
+
+    # Layer 3
+    model.add(Conv2D(filters=128, kernel_size=(3,3), padding='SAME'))
+    model.add(BatchNormalization())
+    model.add(LeakyReLU())
+    model.add(MaxPooling2D(pool_size=(2,1), strides=(2,1)))
+
+    # Layer 4
+    model.add(Conv2D(filters=128, kernel_size=(3,3), padding='SAME'))
+    model.add(BatchNormalization())
+    model.add(LeakyReLU())
+    model.add(MaxPooling2D(pool_size=(2,1), strides=(2,1)))
+
+    # Layer 5
+    model.add(Conv2D(filters=256, kernel_size=(3,3), padding='SAME'))
+    model.add(BatchNormalization())
+    model.add(LeakyReLU())
+    model.add(MaxPooling2D(pool_size=(2,1), strides=(2,1)))
+    #####################
+
+
+    # Remove axis 2
+    model.add(Lambda(lambda x :tf.squeeze(x, axis=1)))
     numHidden = 256
     # Bidirectionnal RNN
     model.add(Bidirectional(GRU(numHidden, return_sequences=True)))

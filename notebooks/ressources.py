@@ -27,6 +27,6 @@ def init():
     charList = list(string.ascii_letters)+[' ', ',', '.', '\'', '"', '-', '#']
     
     global img_size 
-    img_size = (128, 32)
+    img_size = (32, 128)
     
 
