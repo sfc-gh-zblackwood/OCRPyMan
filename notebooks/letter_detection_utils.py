@@ -291,3 +291,32 @@ def greedy_decoder(logits, char_list):
     # Convert a SparseTensor to string
     text = tf.sparse.to_dense(text).numpy().astype(str)
     return list(map(lambda x: ''.join(x), text))
+
+
+def levenshtein_distance(s, t):
+    m, n = len(s) + 1, len(t) + 1
+    d = [[0] * n for _ in range(m)]
+
+    for i in range(1, m):
+        d[i][0] = i
+
+    for j in range(1, n):
+        d[0][j] = j
+
+    for j in range(1, n):
+        for i in range(1, m):
+            substitution_cost = 0 if s[i - 1] == t[j - 1] else 1
+            d[i][j] = min(d[i - 1][j] + 1,
+                          d[i][j - 1] + 1,
+                          d[i - 1][j - 1] + substitution_cost)
+
+    return d[m - 1][n - 1]
+
+def evaluate_character_level_accuracy(original, predicted):
+    original_length = len(original)
+    if original_length == 0:
+        return 1
+    distance = levenshtein_distance(original, predicted)
+    if distance > original_length:
+        return 0
+    return 1 - (distance / original_length)

@@ -1,4 +1,6 @@
 import tensorflow as tf
+import matplotlib.pyplot as plt
+
 from tensorflow.keras.layers import GRU, Bidirectional, Dense, Lambda
 from tensorflow.keras.layers import Conv2D, BatchNormalization, MaxPooling2D, LeakyReLU, Dropout
 
@@ -70,3 +72,14 @@ def create_modele():
     model.summary()
     
     return model
+
+
+def show_loss(history):
+    plt.figure(figsize=(12,4))
+    plt.plot(history['loss'])
+    plt.plot(history['val_loss'])
+    plt.title('Model loss by epoch')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='right')
+    plt.show();
