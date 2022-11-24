@@ -79,17 +79,18 @@ def process_1_img_canny(x, y):
         file_name = path.split('/')[-1]
         path_tmp = '../data/canny/' + file_name  # toutes les images au format canny seront stockées dans ce dossier
 
-        if not os.path.exists(path_tmp):
-            image = cv2.imread(path) 
-            edged = cv2.Canny(image, 30, 200)
-            cv2.imwrite(path_tmp, edged)
+        ### Bloc retiré pour le moment, les images canny ont été générées indépendament
+        # if not os.path.exists(path_tmp):
+        #     image = cv2.imread(path) 
+        #     edged = cv2.Canny(image, 30, 200)
+        #     cv2.imwrite(path_tmp, edged)
         path = path_tmp
                 
         
     except :
         print("Unexpected error:", sys.exc_info()[0])
     
-    img = preprocess(path, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)  
+    img = preprocess(path, img_size=rss.img_size,  data_augmentation=True, is_threshold=True, with_edge_detection=True)  
     return img, y
 
 
@@ -231,7 +232,7 @@ def upper_lower(string):
           'Upper case characters = %s' %upper)
 
 @tf.function
-def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8, is_threshold=False, with_edge_detection=True):
+def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8, is_threshold=False, with_edge_detection=False):
     img = load_image(filepath)/255 # To work with values between 0 and 1
     ### Ajout TJ
     # img = tf.transpose(img, [1, 0, 2])  # np.swapaxes(img, 0, 1)    
