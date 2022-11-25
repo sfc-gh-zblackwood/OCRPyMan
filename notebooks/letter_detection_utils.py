@@ -26,18 +26,24 @@ def get_dataset(canny = False):
     df['clean_trans'] = df.transcription.apply(lambda x: extract_allowed_chars_from_string(rss.charList, x))
     df = df[(df['clean_trans'] != "") & (df['clean_trans'] == df['transcription'])]
 
-    X_train, X_test, y_train, y_test = train_test_split(df['word_img_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
+    if canny:
+        df['canny_path'] = df['word_img_path'].apply(lambda x : '../data/canny/' + x.split('/')[-1])  # toutes les images au format canny seront stockées dans ce dossier
+        X_train, X_test, y_train, y_test = train_test_split(df['canny_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
+    else:
+        X_train, X_test, y_train, y_test = train_test_split(df['word_img_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
+        
     dataset_train = tf.data.Dataset.from_tensor_slices((X_train, y_train))
     dataset_test = tf.data.Dataset.from_tensor_slices((X_test, y_test))
 
     if canny:
-        # dataset_train = dataset_train.map(process_1_img_canny)
-        # dataset_test = dataset_test.map(process_1_img_canny)
+        dataset_train = dataset_train.map(process_1_img_canny)
+        dataset_test = dataset_test.map(process_1_img_canny)
         
-        dataset_train = dataset_train.map(lambda x,y: tf.py_function(process_1_img_canny, [x, y], [tf.float32, tf.string]))
-        # img, y = tf.py_function(process_1_img_canny, [x, y], [tf.float32, tf.string])
-                
-        dataset_test = dataset_test.map(lambda x,y: tf.py_function(process_1_img_canny, [x, y], [tf.float32, tf.string]))
+        # dataset_train = dataset_train.map(lambda x,y: tf.py_function(process_1_img_canny, [x, y], [tf.float32, tf.string]))            
+        # dataset_test = dataset_test.map(lambda x,y: tf.py_function(process_1_img_canny, [x, y], [tf.float32, tf.string]))
+        
+        # pour debug :
+        # img, y = tf.py_function(process_1_img_canny, [x, y], [tf.float32, tf.string])    
     else:
         dataset_train = dataset_train.map(process_1_img)
         dataset_test = dataset_test.map(process_1_img)
@@ -56,8 +62,8 @@ def get_dataset(canny = False):
     #     # print(y)
     #     break
     
-    # on renvoie aussi y_test car il sera utilisé plus tard pour des comparaisons
-    return dataset_train, dataset_test, y_test
+    # on renvoie aussi X_test, y_test car ils seront utilisés plus tard pour des comparaisons (à revoir!)
+    return dataset_train, dataset_test, X_test, y_test
 
 
 
@@ -72,25 +78,24 @@ def process_1_img(x, y):
 # @tf.function
 def process_1_img_canny(x, y):
     
-    path_tmp = ''
-    path= ''
-    try:
-        path = x.numpy().decode('utf-8')
-        file_name = path.split('/')[-1]
-        path_tmp = '../data/canny/' + file_name  # toutes les images au format canny seront stockées dans ce dossier
+    # path_tmp = ''
+    # path= ''
+    
+    # path = x #.numpy().decode('utf-8')
+    # file_name = path.split('/')[-1]
+    # path_tmp = '../data/canny/' + file_name  # toutes les images au format canny seront stockées dans ce dossier
 
-        ### Bloc retiré pour le moment, les images canny ont été générées indépendament
-        # if not os.path.exists(path_tmp):
-        #     image = cv2.imread(path) 
-        #     edged = cv2.Canny(image, 30, 200)
-        #     cv2.imwrite(path_tmp, edged)
-        path = path_tmp
+    # if not os.path.exists(path_tmp):
+    #     image = cv2.imread(path) 
+    #     edged = cv2.Canny(image, 30, 200)
+    #     cv2.imwrite(path_tmp, edged)
+    # path = path_tmp
                 
         
-    except :
-        print("Unexpected error:", sys.exc_info()[0])
+    # except :
+    #     print("Unexpected error:", sys.exc_info()[0])
     
-    img = preprocess(path, img_size=rss.img_size,  data_augmentation=True, is_threshold=True, with_edge_detection=True)  
+    img = preprocess(x, img_size=rss.img_size,  data_augmentation=True, is_threshold=True, with_edge_detection=True)  
     return img, y
 
 

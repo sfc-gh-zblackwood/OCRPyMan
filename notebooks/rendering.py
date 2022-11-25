@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
 import preprocessing as pp
+from matplotlib import cm
+import cv2
 
 import letter_detection_utils as ld_util
 
@@ -323,3 +325,25 @@ def basic_bw_tensor_img_show(tensor_img, ax = None):
     ax.imshow(tensor_img.numpy(), cmap='gray');
 
 
+### Modele deep learning
+
+# Affiche les mots mal prédits avec leur transcription et leur prédiction
+def show_words_predictions_errors(X_test, y_test, y_pred, predicted_transcriptions):
+    error_indexes = []
+    for i in range(len(y_pred)):
+        if (predicted_transcriptions[i] != y_test[i]):
+            error_indexes += [i]
+
+    j = 1
+    plt.figure(figsize=(20, 10))
+    for i in np.random.choice(error_indexes, size = 20):
+        img = cv2.imread(X_test[i]) 
+        # img = img.reshape(32, 128)
+        
+        plt.subplot(4, 5, j)
+        j = j + 1
+        plt.axis('off')
+        plt.imshow(img, cmap=cm.binary, interpolation='None')
+        plt.title('True Label: ' + str(y_test[i]) \
+                + '\n' + 'Prediction: '+ str(predicted_transcriptions[i])) #\
+                #   + '\n' + 'Confidence: '+ str(round(test_pred[i][test_pred_class[i]], 2)))
