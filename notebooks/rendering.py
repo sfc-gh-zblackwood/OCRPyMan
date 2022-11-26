@@ -4,8 +4,10 @@ import numpy as np
 import preprocessing as pp
 from matplotlib import cm
 import cv2
+import tensorflow as tf
 
 import letter_detection_utils as ld_util
+import ressources as rss
 
 def show_img(path):
     img = plt.imread(path)
@@ -347,3 +349,27 @@ def show_words_predictions_errors(X_test, y_test, y_pred, predicted_transcriptio
         plt.title('True Label: ' + str(y_test[i]) \
                 + '\n' + 'Prediction: '+ str(predicted_transcriptions[i])) #\
                 #   + '\n' + 'Confidence: '+ str(round(test_pred[i][test_pred_class[i]], 2)))
+
+
+def show_iterator_batch(x,y, batch_id, batch_size=64):
+    
+    lin = 11
+    col = 6
+
+    #liste_i = range(64)
+    fig = plt.figure(figsize=(20,12))
+
+    for i in range(batch_size):
+        # préparation de l'image
+        img = x[i]
+        # préparation des labels
+        text = ld_util.decode_codes(y, rss.charList)
+        text = tf.sparse.to_dense(text).numpy().astype(str)
+        liste_label = list(map(lambda x: ''.join(x), text))
+    
+        fig.add_subplot(lin,col,i+1)
+        plt.imshow(img,cmap='gray')
+        plt.title(str(i)+' : '+str(liste_label[i]))
+        plt.xticks([], [])
+        plt.yticks([], [])
+        plt.suptitle('Affichage du batch numéro '+str(batch_id), size = 20);
