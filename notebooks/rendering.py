@@ -351,7 +351,7 @@ def show_words_predictions_errors(X_test, y_test, y_pred, predicted_transcriptio
                 #   + '\n' + 'Confidence: '+ str(round(test_pred[i][test_pred_class[i]], 2)))
 
 
-def show_iterator_batch(x,y, bacth_size=64):
+def show_iterator_batch(x,y, batch_id, batch_size=64):
     
     lin = 11
     col = 6
@@ -359,7 +359,7 @@ def show_iterator_batch(x,y, bacth_size=64):
     #liste_i = range(64)
     fig = plt.figure(figsize=(20,12))
 
-    for i in range(bacth_size):
+    for i in range(batch_size):
         # préparation de l'image
         img = x[i]
         # préparation des labels
@@ -372,4 +372,4 @@ def show_iterator_batch(x,y, bacth_size=64):
         plt.title(str(i)+' : '+str(liste_label[i]))
         plt.xticks([], [])
         plt.yticks([], [])
-        plt.suptitle('Affichage d\'un batch d\'images', size = 20);
+        plt.suptitle('Affichage du batch numéro '+str(batch_id), size = 20);
