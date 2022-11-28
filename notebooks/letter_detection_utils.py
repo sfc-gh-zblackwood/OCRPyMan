@@ -256,38 +256,28 @@ def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8,
 
     # increase dataset size by applying random stretches to the images
     if data_augmentation:
-        # CODE INITIAL : 
-        #stretch = scale*(tf.random.uniform([1], 0, 1)[0] - 0.3) # -0.5 .. +0.5
-        #w_stretched = tf.maximum(int(float(img_original_size[0]) * (1 + stretch)), 1) # random width, but at least 1
-        #img = tf.image.resize(img, (w_stretched, img_original_size[1])) # stretch horizontally by factor 0.5 .. 1.5
-        
-        #DEBUG DB
-        scale=.8
 
-        # PROPOSITION DB : le code initial était écrit pour des images 128*32
-        stretch = scale*(tf.random.uniform([1], 0, 1)[0] - 0.5) # -0.5 .. +0.5
-        w_stretched = tf.maximum(int(float(img_original_size[0]) * (1 + stretch)), 1) # random width, but at least 1
-        img = tf.image.resize(img, (w_stretched, img_original_size[1])) # stretch horizontally by factor 0.5 .. 1.5
-
-
-    # PROPOSITION DB : adaption du code rescale et padding pour des images 32*128
+        # CHANGEMENT D'ASPECT RATIO
+        # DEBUG DB : code initial corrigé pour fonctionner avec des images 32*128
+        # INFO : scale est un scalaire entre 0 et +inf qui amplifie la distribution uniforme entre -50% et +50% de taille horizontale. si scale=1, pas d'effet sur la distribution uniforme
     
-    # Rescale
-    # create target image and copy sample image into it
-    # le nom des variables n'est pas bon? : wt est la hauteur, pas la largeur
-    (wt, ht) = img_size
-    w, h = float(tf.shape(img)[0]), float(tf.shape(img)[1])
-    fx = w / wt
-    fy = h / ht
+        stretch = scale*(tf.random.uniform([1], 0, 1)[0] - 0.5) # -0.5 .. +0.5
+        w_stretched = tf.maximum(int(float(img_original_size[1]) * (1 + stretch)), 1) # random width, but at least 1
+        img = tf.image.resize(img, (img_original_size[0] ,w_stretched)) # stretch horizontally by factor 0.5 .. 1.5
+
+
+    # RESIZE DE L'IMAGE
+    (ht, wt) = img_size
+    h, w = float(tf.shape(img)[0]), float(tf.shape(img)[1])
+    fx = h / ht
+    fy = w / wt
     f = tf.maximum(fx, fy)
-    newSize = (tf.maximum(tf.minimum(wt, int(w / f)), 1), tf.maximum(tf.minimum(ht, int(h / f)), 1)) # scale according to f (result at least 1 and at most wt or ht)
-    # PROPOSITION DB : correction de cette ligne
-    # newSize = (tf.minimum(ht,tf.maximum(1,int(w/f))),tf.minimum(wt,tf.maximum(1,int(h/f))))
+    newSize = (tf.minimum(ht,tf.maximum(1,int(h/f))),tf.minimum(wt,tf.maximum(1,int(w/f))))
     img = tf.image.resize(img, newSize)
 
-    # Add padding
-    dx = wt - newSize[0]
-    dy = ht - newSize[1]
+    # AJOUT PADDING
+    dx = ht - newSize[0]
+    dy = wt - newSize[1]
     if data_augmentation:
         dx1=0
         dy1=0
@@ -299,7 +289,7 @@ def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8,
     else:
         img = tf.pad(img[..., 0], [[0, dx], [0, dy]], constant_values=padding_value)
 
-
+    # FILTRE DU BRUIT DE L'IMAGE
     if is_threshold:
         img = 1-(1-img)*tf.cast(img < 0.8, tf.float32)
 
