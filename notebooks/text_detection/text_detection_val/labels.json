@@ -1,6 +1,10 @@
 {
     "l07-131.png": {
-        "img_name": "l07-131.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "fbc87c63f8e6c265f6bbd1d1660c843c1df621a862efb98a787da0aae38d1b84",
         "polygons": [
             [
                 [
@@ -23,7 +27,11 @@
         ]
     },
     "l07-135.png": {
-        "img_name": "l07-135.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "3d7bc1db6723afd7ea03b3cd8f766d5728bcd2abf5525948797320c491ab4708",
         "polygons": [
             [
                 [
@@ -46,7 +54,11 @@
         ]
     },
     "l07-138.png": {
-        "img_name": "l07-138.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "17b6c0265c89c22d63b15eaf8237f223ed8fb3483f08e2e8d1fcc9fbc76d4868",
         "polygons": [
             [
                 [
@@ -69,7 +81,11 @@
         ]
     },
     "l07-172.png": {
-        "img_name": "l07-172.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "3c0beda368638e5c986378364448e2608dba7cfd94ff013bc07d623597ab3cef",
         "polygons": [
             [
                 [
@@ -92,7 +108,11 @@
         ]
     },
     "l07-176.png": {
-        "img_name": "l07-176.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "bbf18f17ddcb93f4924f6cb186294d8a83d8f1759dee9982aacfdd5020671bd3",
         "polygons": [
             [
                 [
@@ -115,7 +135,11 @@
         ]
     },
     "l07-181.png": {
-        "img_name": "l07-181.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "abefe365b12768ab1e4da1d853f4fe9839ed099de006b774e75386a44648cd33",
         "polygons": [
             [
                 [
@@ -138,7 +162,11 @@
         ]
     },
     "l07-187.png": {
-        "img_name": "l07-187.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "83b594eba77ea1f864dfb73b4ac88292417b8e66bfa83ddb4d824885e737f70f",
         "polygons": [
             [
                 [
@@ -161,7 +189,11 @@
         ]
     },
     "l07-190.png": {
-        "img_name": "l07-190.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b264190fa338b48eb53f065f012229d2a13f70e16a6243c2e05b2cea8f7f5838",
         "polygons": [
             [
                 [
@@ -184,7 +216,11 @@
         ]
     },
     "m01-000.png": {
-        "img_name": "m01-000.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "97549251767e5435339e879e16fc70c31230a89a8c64d534cad774def65c231b",
         "polygons": [
             [
                 [
@@ -207,7 +243,11 @@
         ]
     },
     "m01-012.png": {
-        "img_name": "m01-012.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "34b46c18d2c3e9135c8970e294fdc72b109f7fff50e074b51962f3b0a59dae2f",
         "polygons": [
             [
                 [
@@ -230,7 +270,11 @@
         ]
     },
     "m01-017.png": {
-        "img_name": "m01-017.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8815efe7c8605f537b4b78e4b4214303046bc0798eb5b24bc4125303f7064ef4",
         "polygons": [
             [
                 [
@@ -253,7 +297,11 @@
         ]
     },
     "m01-022.png": {
-        "img_name": "m01-022.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "ba280355ec4e637f35b3c879d1231ad6db244c9457fedb96aef3c3bdf917f873",
         "polygons": [
             [
                 [
@@ -276,7 +324,11 @@
         ]
     },
     "m01-026.png": {
-        "img_name": "m01-026.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "36aa72c0616a282c18f6fa70be0ac9d1c1f3618f024dc48c6400fd617049acdf",
         "polygons": [
             [
                 [
@@ -299,7 +351,11 @@
         ]
     },
     "m01-032.png": {
-        "img_name": "m01-032.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a1365a5578bfdb276b33f6b9bc3555442b762bffae21dceb4e34d0322b630e55",
         "polygons": [
             [
                 [
@@ -322,7 +378,11 @@
         ]
     },
     "m01-038.png": {
-        "img_name": "m01-038.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "c4fbb2af146fa2d697d3bce557856f6a1e067e7e7c404ae41e655ee57c9e1ae3",
         "polygons": [
             [
                 [
@@ -345,7 +405,11 @@
         ]
     },
     "m01-049.png": {
-        "img_name": "m01-049.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "6e4f1cd07ba67b6ca45eb4079b60eb1f76b4ee60eb6272802afc96c42c88de7b",
         "polygons": [
             [
                 [
@@ -368,7 +432,11 @@
         ]
     },
     "m01-060.png": {
-        "img_name": "m01-060.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "61f6a333c62cdcac031ef63fa150d96c318337ed373972dab754e64e74430f78",
         "polygons": [
             [
                 [
@@ -391,7 +459,11 @@
         ]
     },
     "m01-079.png": {
-        "img_name": "m01-079.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f98702d29c395fbf0ca19ce9a376c953a7699ec7621fa38f565ef72ca9409175",
         "polygons": [
             [
                 [
@@ -414,7 +486,11 @@
         ]
     },
     "m01-084.png": {
-        "img_name": "m01-084.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "ef2c770ee756d825aba3f86c492b869dd5bb33481ddf63c5b2ffee0305670097",
         "polygons": [
             [
                 [
@@ -437,7 +513,11 @@
         ]
     },
     "m01-090.png": {
-        "img_name": "m01-090.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "45b36dd4afb1c9d2a73d0b90141204f8c3b83e9bce24b64b95027d485080b46e",
         "polygons": [
             [
                 [
@@ -460,7 +540,11 @@
         ]
     },
     "m01-095.png": {
-        "img_name": "m01-095.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "bb418174111ac604186b772bc40b664439049b105cf4a7f2fb3f1c7852aee692",
         "polygons": [
             [
                 [
@@ -483,7 +567,11 @@
         ]
     },
     "m01-100.png": {
-        "img_name": "m01-100.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "68e1bba4c21872a75aa374f452541277ba964ca0f0f495e9c46b3b8246e60588",
         "polygons": [
             [
                 [
@@ -506,7 +594,11 @@
         ]
     },
     "m01-104.png": {
-        "img_name": "m01-104.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "bded304e9473806d04a616bb834c8c3979f294b27f96ac6e9a81679fd898c89f",
         "polygons": [
             [
                 [
@@ -529,7 +621,11 @@
         ]
     },
     "m01-110.png": {
-        "img_name": "m01-110.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9fb3e2893c1bee953d41ef789932051759062df009801ca87541600b9d856261",
         "polygons": [
             [
                 [
@@ -552,7 +648,11 @@
         ]
     },
     "m01-115.png": {
-        "img_name": "m01-115.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "e57b386ad424fda67cf3f7d50a91ced166cd3dfbed78c8714dbb3e1cc49e509a",
         "polygons": [
             [
                 [
@@ -575,7 +675,11 @@
         ]
     },
     "m01-121.png": {
-        "img_name": "m01-121.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "6439a8e3d288cfbd19f0e285ae6ca99480de7ffe57e9f7ad166b001128fa0a38",
         "polygons": [
             [
                 [
@@ -598,7 +702,11 @@
         ]
     },
     "m01-125.png": {
-        "img_name": "m01-125.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "6f3ebe4c846dfdd307ce70e5d0c60716ab091757204f7d1fea1e77a83f54686f",
         "polygons": [
             [
                 [
@@ -621,7 +729,11 @@
         ]
     },
     "m01-131.png": {
-        "img_name": "m01-131.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "c4b9a4a211e0dc02c8be7b5af4176773d0f5c6ebaeaf95235357b6c42ddd9265",
         "polygons": [
             [
                 [
@@ -644,7 +756,11 @@
         ]
     },
     "m01-136.png": {
-        "img_name": "m01-136.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "24487ecd182bb77a1c3b011f74140bf5f2cf10e493513487031f860f0a996c26",
         "polygons": [
             [
                 [
@@ -667,7 +783,11 @@
         ]
     },
     "m01-149.png": {
-        "img_name": "m01-149.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "29f0c14c276f14d9a67d136fc7191f7639c9bf4e114c3ae178ec311a54ed34a2",
         "polygons": [
             [
                 [
@@ -690,7 +810,11 @@
         ]
     },
     "m01-160.png": {
-        "img_name": "m01-160.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "48b49becfc4f4a842225d321aa3bfd02c2cc2b542247bb3417fab62951f10b3f",
         "polygons": [
             [
                 [
@@ -713,7 +837,11 @@
         ]
     },
     "m02-048.png": {
-        "img_name": "m02-048.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "2550a9515de5e348525aee007eb93fa45cecdf19b725a65773877054f9ad63b9",
         "polygons": [
             [
                 [
@@ -736,7 +864,11 @@
         ]
     },
     "m02-052.png": {
-        "img_name": "m02-052.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "021f42b2a432a7910f8e2afda9402571c681471569453af057e5393ec5d75db1",
         "polygons": [
             [
                 [
@@ -759,7 +891,11 @@
         ]
     },
     "m02-055.png": {
-        "img_name": "m02-055.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "41853dd4247a09a0b139f1aacde99d052565acf83ce99d75cdc820aaf5091bf5",
         "polygons": [
             [
                 [
@@ -782,7 +918,11 @@
         ]
     },
     "m02-059.png": {
-        "img_name": "m02-059.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cb639d0d6d487779d65df18a0459163008d6a9049a757954cdd0c021cca9afde",
         "polygons": [
             [
                 [
@@ -805,7 +945,11 @@
         ]
     },
     "m02-066.png": {
-        "img_name": "m02-066.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "814f3684c8f7fc6ffaade32e22fa53fb253d5553e0815260211e433feaf983c7",
         "polygons": [
             [
                 [
@@ -828,7 +972,11 @@
         ]
     },
     "m02-069.png": {
-        "img_name": "m02-069.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "26ba51c0a61907d55d319c764616a08654c94bd9936b5217371038044f963d05",
         "polygons": [
             [
                 [
@@ -851,7 +999,11 @@
         ]
     },
     "m02-072.png": {
-        "img_name": "m02-072.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "915490366a20b957d43486c26f12fb03e2bffbe7e010771a80136ac61743e2f5",
         "polygons": [
             [
                 [
@@ -874,7 +1026,11 @@
         ]
     },
     "m02-075.png": {
-        "img_name": "m02-075.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "6d57b5b51f9781f8b5a125f652dc0e76ec933c588cf12862eabf5e78084258e7",
         "polygons": [
             [
                 [
@@ -897,7 +1053,11 @@
         ]
     },
     "m02-080.png": {
-        "img_name": "m02-080.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "e2fc5f5bf928df52d2e4e068be7a6a1a5e2a8c1db8348880d64349f160cffbf9",
         "polygons": [
             [
                 [
@@ -920,7 +1080,11 @@
         ]
     },
     "m02-083.png": {
-        "img_name": "m02-083.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "3c62b2753ee56e040e62eba71f9240affe2c2bb50ffc081d8cb3ad2f8365ceee",
         "polygons": [
             [
                 [
@@ -943,7 +1107,11 @@
         ]
     },
     "m02-087.png": {
-        "img_name": "m02-087.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "73406e11d081f556be1f2a458bf6d3b1717922cb0c97f933dfc5674d46af4ff0",
         "polygons": [
             [
                 [
@@ -966,7 +1134,11 @@
         ]
     },
     "m02-090.png": {
-        "img_name": "m02-090.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a147506d2d608adde5fc735c6c4df430cb3fc747096e1af9f07e91838da8914a",
         "polygons": [
             [
                 [
@@ -989,7 +1161,11 @@
         ]
     },
     "m02-095.png": {
-        "img_name": "m02-095.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "4be1240bff05641db169916547d67b63f74c3b543fef5d1eb628811adc727cbc",
         "polygons": [
             [
                 [
@@ -1012,7 +1188,11 @@
         ]
     },
     "m02-102.png": {
-        "img_name": "m02-102.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "133385c529773a130f8958e204b0d3c3a4ce350bed11879be9f228be90b90328",
         "polygons": [
             [
                 [
@@ -1035,7 +1215,11 @@
         ]
     },
     "m02-106.png": {
-        "img_name": "m02-106.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cd3b4874943c12f50a6aa4ce897800ab1f82dcbcfde9e02de1259077343f3e8d",
         "polygons": [
             [
                 [
@@ -1058,7 +1242,11 @@
         ]
     },
     "m02-109.png": {
-        "img_name": "m02-109.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8013a1cc363b04a86f19ff2f254f5c1810a96e86b3233fc785f8aa5cc551e61d",
         "polygons": [
             [
                 [
@@ -1081,7 +1269,11 @@
         ]
     },
     "m02-112.png": {
-        "img_name": "m02-112.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "7c94a8de7f782c4ae2a63c18e5df8e1d87ee7ca6a314b2005d062822c160f74a",
         "polygons": [
             [
                 [
@@ -1104,7 +1296,11 @@
         ]
     },
     "m03-006.png": {
-        "img_name": "m03-006.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "7ccbd85a4644c173e16527e0a9c43996df513b11268166d803594fb28660fe0c",
         "polygons": [
             [
                 [
@@ -1127,7 +1323,11 @@
         ]
     },
     "m03-013.png": {
-        "img_name": "m03-013.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "7b1b6f83162796fd1c57c7ef0eda69cfe32156f53e25ab1de45851acc1be8b9e",
         "polygons": [
             [
                 [
@@ -1150,7 +1350,11 @@
         ]
     },
     "m03-020.png": {
-        "img_name": "m03-020.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "65b99727ef9a1f8fbf6b371bbdb9267265dd64511ae82eab4326f667f7736c80",
         "polygons": [
             [
                 [
@@ -1173,7 +1377,11 @@
         ]
     },
     "m03-033.png": {
-        "img_name": "m03-033.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cdf4b38ca7254dbd99883d12cc126411736949e4df8a9acaf97070da1ebc9ec7",
         "polygons": [
             [
                 [
@@ -1196,7 +1404,11 @@
         ]
     },
     "m03-062.png": {
-        "img_name": "m03-062.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d4ecb712eb93d19e5f0f855d5551ce933afdd9f0879fa03f9193a4b28f53408a",
         "polygons": [
             [
                 [
@@ -1219,7 +1431,11 @@
         ]
     },
     "m03-095.png": {
-        "img_name": "m03-095.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a23e6140063ebe1b7caa1e2b40d7e44b4d9e1202377ea59dcfcb5555510ba70a",
         "polygons": [
             [
                 [
@@ -1242,7 +1458,11 @@
         ]
     },
     "m03-110.png": {
-        "img_name": "m03-110.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cc4c1a00018fdce7cb3d9502aab80d3def51b89a966fe3852450aa5219bd6924",
         "polygons": [
             [
                 [
@@ -1265,7 +1485,11 @@
         ]
     },
     "m03-114.png": {
-        "img_name": "m03-114.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "acca5bec728a8d3d963eb56fa0633430e0c0038c8b93b2d147253dde6b127adc",
         "polygons": [
             [
                 [
@@ -1288,7 +1512,11 @@
         ]
     },
     "m03-118.png": {
-        "img_name": "m03-118.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d8dca1c813db1775a280cac276e7b056c5715409f8ce233a0aa926716f926de1",
         "polygons": [
             [
                 [
@@ -1311,7 +1539,11 @@
         ]
     },
     "m04-000.png": {
-        "img_name": "m04-000.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a0a2ab0b5030e4d8923e5ff455b89718ba44be8b7df1dc8f165acedc6e58c2ab",
         "polygons": [
             [
                 [
@@ -1334,7 +1566,11 @@
         ]
     },
     "m04-007.png": {
-        "img_name": "m04-007.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b2e7838472ab7eb33c36b2a039c83901cf5e5fc06db7626a8b8f281f98d993b7",
         "polygons": [
             [
                 [
@@ -1357,7 +1593,11 @@
         ]
     },
     "m04-012.png": {
-        "img_name": "m04-012.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "5032f53d8c42cf34321d939c384b65a8257c59dbcb448b9a33a03851d9b32663",
         "polygons": [
             [
                 [
@@ -1380,7 +1620,11 @@
         ]
     },
     "m04-019.png": {
-        "img_name": "m04-019.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "2160874bc059ae61f023ee324b74077500ea5770089a8b29442023f41a3de756",
         "polygons": [
             [
                 [
@@ -1403,7 +1647,11 @@
         ]
     },
     "m04-024.png": {
-        "img_name": "m04-024.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "2a285e8680bad56409ab4620a31a76e6d4cc9fbc1db19158d90155985faa313d",
         "polygons": [
             [
                 [
@@ -1426,7 +1674,11 @@
         ]
     },
     "m04-030.png": {
-        "img_name": "m04-030.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b7d6ef4d63eb16fff3ba89285c8654f1ff86bb3edbfad802346db649ee488d00",
         "polygons": [
             [
                 [
@@ -1449,7 +1701,11 @@
         ]
     },
     "m04-038.png": {
-        "img_name": "m04-038.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "ecd5e21fe459d4c5d22c2c22692a8d948248482be20b63e8befd3bc11682e91d",
         "polygons": [
             [
                 [
@@ -1472,7 +1728,11 @@
         ]
     },
     "m04-043.png": {
-        "img_name": "m04-043.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "60a31158801b47af417980c99959233339217d104a65db0da4bb82018ea6cd6d",
         "polygons": [
             [
                 [
@@ -1495,7 +1755,11 @@
         ]
     },
     "m04-061.png": {
-        "img_name": "m04-061.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "ddd9b416d15044d6a6ebfb63bb662676628966d469f8ef64e31436a1ee233a62",
         "polygons": [
             [
                 [
@@ -1518,7 +1782,11 @@
         ]
     },
     "m04-072.png": {
-        "img_name": "m04-072.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "7d792a983728f7b2e267d5740cde54891581d477f4fd00f37924df9ac5ee37da",
         "polygons": [
             [
                 [
@@ -1541,7 +1809,11 @@
         ]
     },
     "m04-078.png": {
-        "img_name": "m04-078.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b0df8167825ccae893cb8d3745cf1991ed0e7141d199f74974b4628d47e49b62",
         "polygons": [
             [
                 [
@@ -1564,7 +1836,11 @@
         ]
     },
     "m04-081.png": {
-        "img_name": "m04-081.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "7d04df86fc1de157a271d90f28c875535cfdec469b59c058493ca1e69361df36",
         "polygons": [
             [
                 [
@@ -1587,7 +1863,11 @@
         ]
     },
     "m04-093.png": {
-        "img_name": "m04-093.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "1117b43a80c3964d27981578ad0d9d813ccaf77e6ac4a27970d68e00aad2777a",
         "polygons": [
             [
                 [
@@ -1610,7 +1890,11 @@
         ]
     },
     "m04-100.png": {
-        "img_name": "m04-100.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "e6011bbebf4ded02b131c1d84c493f60a3f8cb5af683d9fcd1df16d353c3bfed",
         "polygons": [
             [
                 [
@@ -1633,7 +1917,11 @@
         ]
     },
     "m04-107.png": {
-        "img_name": "m04-107.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "bb558d4945119b54a1140da036c3e758598035e1c771f59ee40d7f07ae309b9b",
         "polygons": [
             [
                 [
@@ -1656,7 +1944,11 @@
         ]
     },
     "m04-113.png": {
-        "img_name": "m04-113.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "4dd8bd680f520a8889301c25e5b15c75697d13046b0994c2904a812a8fb36e07",
         "polygons": [
             [
                 [
@@ -1679,7 +1971,11 @@
         ]
     },
     "m04-123.png": {
-        "img_name": "m04-123.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "3bd0f5472ac2d8b21438fe5c38dd9d29b176384d4471fb4c09429fc5555a7cdf",
         "polygons": [
             [
                 [
@@ -1702,7 +1998,11 @@
         ]
     },
     "m04-131.png": {
-        "img_name": "m04-131.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "22085462597bcad534fa0b00edef780d01d2e5c5a2e3ec4128b880c3095e818d",
         "polygons": [
             [
                 [
@@ -1725,7 +2025,11 @@
         ]
     },
     "m04-138.png": {
-        "img_name": "m04-138.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "887cd2c7db948e38fb3c6e20a48f0aa4005a97b8bdcb56ca655b420c92ee1604",
         "polygons": [
             [
                 [
@@ -1748,7 +2052,11 @@
         ]
     },
     "m04-145.png": {
-        "img_name": "m04-145.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "5b1c3681c66ddc10eb0b3b99de9d0ef8937239a6560eff1c83db1d646651edd5",
         "polygons": [
             [
                 [
@@ -1771,7 +2079,11 @@
         ]
     },
     "m04-152.png": {
-        "img_name": "m04-152.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "61d5cd4db02830455f3656cdc00a71d2918eceb561b4de1845e7d74373e14a52",
         "polygons": [
             [
                 [
@@ -1794,7 +2106,11 @@
         ]
     },
     "m04-164.png": {
-        "img_name": "m04-164.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "545dea7a59d3f4f773094e5f614ce90e06bb483bbe19ded7aedb3339857c25f3",
         "polygons": [
             [
                 [
@@ -1817,7 +2133,11 @@
         ]
     },
     "m04-180.png": {
-        "img_name": "m04-180.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cc8bd620b762d00e0144294431e63738ca09a8423a7f446a9abc2b9c52b9b026",
         "polygons": [
             [
                 [
@@ -1840,7 +2160,11 @@
         ]
     },
     "m04-190.png": {
-        "img_name": "m04-190.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "338c3dd39d23cb0d2403d825420fd4a386764b4dc058c5a5176cff99034b8204",
         "polygons": [
             [
                 [
@@ -1863,7 +2187,11 @@
         ]
     },
     "m04-200.png": {
-        "img_name": "m04-200.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "800e5becef9d5f62b81f5675f19bb692dcb32df5f6966ef51279302437b983c3",
         "polygons": [
             [
                 [
@@ -1886,7 +2214,11 @@
         ]
     },
     "m04-209.png": {
-        "img_name": "m04-209.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a66c2f90b52227bac70b84cd8e036a6ae782dbfb6bf29ecfe1f2ae35b5821519",
         "polygons": [
             [
                 [
@@ -1909,7 +2241,11 @@
         ]
     },
     "m04-216.png": {
-        "img_name": "m04-216.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a8c8c21720b85f7054814a927534af51db663594bd967a1c2746e8c950ca5d5a",
         "polygons": [
             [
                 [
@@ -1932,7 +2268,11 @@
         ]
     },
     "m04-222.png": {
-        "img_name": "m04-222.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cb3ad7791434905fbff5e1553187047b07d5286d006b868c682b2e6869d938d4",
         "polygons": [
             [
                 [
@@ -1955,7 +2295,11 @@
         ]
     },
     "m04-231.png": {
-        "img_name": "m04-231.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "3d09e2dd8e5621789a2b0400c04d4228da6dd3f4a6d192790f773bf908880fd0",
         "polygons": [
             [
                 [
@@ -1978,7 +2322,11 @@
         ]
     },
     "m04-238.png": {
-        "img_name": "m04-238.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8b1991be3aa751b65d852fe676d68815423ff572267685950a32017612fdc03a",
         "polygons": [
             [
                 [
@@ -2001,7 +2349,11 @@
         ]
     },
     "m04-246.png": {
-        "img_name": "m04-246.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "be9976ed12d5431859fb6145c212e43b31bdbd7bd9cb0659b8d15be61f39384e",
         "polygons": [
             [
                 [
@@ -2024,7 +2376,11 @@
         ]
     },
     "m04-251.png": {
-        "img_name": "m04-251.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f8ee96c408159d4deb0818f808c97392fd5248cdf5dd408c4ded0b1ec44b6861",
         "polygons": [
             [
                 [
@@ -2047,7 +2403,11 @@
         ]
     },
     "m06-019.png": {
-        "img_name": "m06-019.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b173e52301d8c9518559f58bc9425ddca08adbd8222234af8594ec6460ed95a2",
         "polygons": [
             [
                 [
@@ -2070,7 +2430,11 @@
         ]
     },
     "m06-031.png": {
-        "img_name": "m06-031.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "6850f187c5f9d4911ab5d2689a935a4a6f50095859a81138f208ab8da7a05752",
         "polygons": [
             [
                 [
@@ -2093,7 +2457,11 @@
         ]
     },
     "m06-042.png": {
-        "img_name": "m06-042.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "e5022a3270a7e9c9c51e4ac14c4b2b6d0227904ae363dddf0d57cf9caa82ddf9",
         "polygons": [
             [
                 [
@@ -2116,7 +2484,11 @@
         ]
     },
     "m06-048.png": {
-        "img_name": "m06-048.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "3a0a6fd97083b0224e048f7cb3e82b62be34b32e87b92702cd7768426e17ebb4",
         "polygons": [
             [
                 [
@@ -2139,7 +2511,11 @@
         ]
     },
     "m06-056.png": {
-        "img_name": "m06-056.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "30c897fb7494af87e2f9c7d1d318643d7f8088c3329136b72cdce49793385453",
         "polygons": [
             [
                 [
@@ -2162,7 +2538,11 @@
         ]
     },
     "m06-067.png": {
-        "img_name": "m06-067.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "20d7dce8226101b62b4e3b947dc452907455268496714dc4699131a0dfa25bc2",
         "polygons": [
             [
                 [
@@ -2185,7 +2565,11 @@
         ]
     },
     "m06-076.png": {
-        "img_name": "m06-076.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9ca26e6e5751a7558a0e3f67a32624ce721a0ca89939a093b68e1d819e82c9be",
         "polygons": [
             [
                 [
@@ -2208,7 +2592,11 @@
         ]
     },
     "m06-083.png": {
-        "img_name": "m06-083.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8635c4c9e08aa4abcdb928136f1048372ec9d1b01ed426f7beeeeeb41a1a01fe",
         "polygons": [
             [
                 [
@@ -2231,7 +2619,11 @@
         ]
     },
     "m06-091.png": {
-        "img_name": "m06-091.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a3b181786a7f7c9f9e65ddf3d616741d20f38e28cb413c71cd8e2d2a735cedb2",
         "polygons": [
             [
                 [
@@ -2254,7 +2646,11 @@
         ]
     },
     "m06-098.png": {
-        "img_name": "m06-098.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cf2b7bc2b1c908aabcd3590c035e11af508cd5acc94fe1437ac6261fa9b354d7",
         "polygons": [
             [
                 [
@@ -2277,7 +2673,11 @@
         ]
     },
     "m06-106.png": {
-        "img_name": "m06-106.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "5332f4d5dcdc3446e55a2459d0fadfa074604a858feb541ef9a8df94bb2878bb",
         "polygons": [
             [
                 [
@@ -2300,7 +2700,11 @@
         ]
     },
     "n01-000.png": {
-        "img_name": "n01-000.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8b0e0375aa867356f9bdb4a0b84a958f15048f54e440cd432af78d66bb2d626e",
         "polygons": [
             [
                 [
@@ -2323,7 +2727,11 @@
         ]
     },
     "n01-004.png": {
-        "img_name": "n01-004.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "0bc7c49f5fd72ea1384671a73d2195ca70ab2ee736151ba98683801b11b5cce2",
         "polygons": [
             [
                 [
@@ -2346,7 +2754,11 @@
         ]
     },
     "n01-009.png": {
-        "img_name": "n01-009.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "16f4c1ee5511452d97eef6869e6d5492a473343964872c094fde66b8f9d0dd2d",
         "polygons": [
             [
                 [
@@ -2369,7 +2781,11 @@
         ]
     },
     "n01-020.png": {
-        "img_name": "n01-020.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "babd8988d4d5e88e3134786b515ec2fc8799c1d2c97ca3232668d540201fb9e5",
         "polygons": [
             [
                 [
@@ -2392,7 +2808,11 @@
         ]
     },
     "n01-031.png": {
-        "img_name": "n01-031.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cba537499bc9ee07251fe9c54167292865497f082b48f80ee95706c48d007e34",
         "polygons": [
             [
                 [
@@ -2415,7 +2835,11 @@
         ]
     },
     "n01-036.png": {
-        "img_name": "n01-036.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d48ec8c86b56c8d570bc15179e0469049b00cb0365b18b7c8127352268f136a5",
         "polygons": [
             [
                 [
@@ -2438,7 +2862,11 @@
         ]
     },
     "n01-045.png": {
-        "img_name": "n01-045.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "7fff3ee3909e6cb21b82753eb9a339353f7af197bce6c6158ef57cdb8d6b5fb9",
         "polygons": [
             [
                 [
@@ -2461,7 +2889,11 @@
         ]
     },
     "n01-052.png": {
-        "img_name": "n01-052.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "30571cd59911d4edabd97852b64e5fa88c5fc63e6b424ad37c44a96d0fcd3a1d",
         "polygons": [
             [
                 [
@@ -2484,7 +2916,11 @@
         ]
     },
     "n01-057.png": {
-        "img_name": "n01-057.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "eb3dbe0b0109d9f5f2273d7e110b39258f21a7bf3e173e8a7d76d1dcfde69e7b",
         "polygons": [
             [
                 [
@@ -2507,7 +2943,11 @@
         ]
     },
     "n02-000.png": {
-        "img_name": "n02-000.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "33f04752c8fdd3ef681e9ebeafa5e732b5d94aa8e22a172bb0debcbd3f4a5394",
         "polygons": [
             [
                 [
@@ -2530,7 +2970,11 @@
         ]
     },
     "n02-004.png": {
-        "img_name": "n02-004.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b9e16fc4e902e0209c8f0c08a95787ea025acfb346496bd7eb3e684dc656f581",
         "polygons": [
             [
                 [
@@ -2553,7 +2997,11 @@
         ]
     },
     "n02-009.png": {
-        "img_name": "n02-009.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "4aa00682e819f8d38cd5dbe706843dd8aad4532823997971991a46a350b03ab8",
         "polygons": [
             [
                 [
@@ -2576,7 +3024,11 @@
         ]
     },
     "n02-016.png": {
-        "img_name": "n02-016.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b9b38a1f52c911abba1cb10c2231bfa1eb52477d5cf9f8bfb6278128a6f9006e",
         "polygons": [
             [
                 [
@@ -2599,7 +3051,11 @@
         ]
     },
     "n02-028.png": {
-        "img_name": "n02-028.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "46ac5c0baebc86ed3a387c6997884bb2924cbf59709374eb61ad4939f69ef29c",
         "polygons": [
             [
                 [
@@ -2622,7 +3078,11 @@
         ]
     },
     "n02-033.png": {
-        "img_name": "n02-033.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "67261e3e1e6d9ff087d95aab18cc545b1dd3ab2298a951c024fac9e246fd6af0",
         "polygons": [
             [
                 [
@@ -2645,7 +3105,11 @@
         ]
     },
     "n02-037.png": {
-        "img_name": "n02-037.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8647de3b5bb0d75a6d868f1d15dbde0ba3fffaa003237c86c8237b3bff361503",
         "polygons": [
             [
                 [
@@ -2668,7 +3132,11 @@
         ]
     },
     "n02-040.png": {
-        "img_name": "n02-040.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "5d232646457267fa00d73aca8c20446895be97c09b6225c39f9e572107898bdf",
         "polygons": [
             [
                 [
@@ -2691,7 +3159,11 @@
         ]
     },
     "n02-045.png": {
-        "img_name": "n02-045.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "65b0c38c56c1c532030a6074e14eb6e8d89baa4fb720b762701da47a8fcd9ab2",
         "polygons": [
             [
                 [
@@ -2714,7 +3186,11 @@
         ]
     },
     "n02-049.png": {
-        "img_name": "n02-049.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "0b39f06f680520288edd8595905954b38c5fa7deefae03e1b985f75299f95ed3",
         "polygons": [
             [
                 [
@@ -2737,7 +3213,11 @@
         ]
     },
     "n02-054.png": {
-        "img_name": "n02-054.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "75314c9bab125ee1e310b7edccc759865daad025b489e5eddd71afe3fee488ee",
         "polygons": [
             [
                 [
@@ -2760,7 +3240,11 @@
         ]
     },
     "n02-062.png": {
-        "img_name": "n02-062.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "6d0ae0f4614f426d7377f647f323077a6ffd2a05c23a90f40fcdbd62536bc156",
         "polygons": [
             [
                 [
@@ -2783,7 +3267,11 @@
         ]
     },
     "n02-082a.png": {
-        "img_name": "n02-082a.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cce883ef54941cc1145a9995642e55eb52008f09a1d9d4411201529575ea5863",
         "polygons": [
             [
                 [
@@ -2806,7 +3294,11 @@
         ]
     },
     "n02-098.png": {
-        "img_name": "n02-098.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a7e56e390c8a0578319194763d77bac08a70323dbb0d2f19d2e616680157f510",
         "polygons": [
             [
                 [
@@ -2829,7 +3321,11 @@
         ]
     },
     "n02-104.png": {
-        "img_name": "n02-104.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "10a5e921e2b727ac31c49af1124ba440bd0085a16c91e88dd552cb5323d4d40d",
         "polygons": [
             [
                 [
@@ -2852,7 +3348,11 @@
         ]
     },
     "n02-109.png": {
-        "img_name": "n02-109.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "63541355e9117d4503f4082a52a3275d24ef9759ade5f7b362a1a0278df7c1c1",
         "polygons": [
             [
                 [
@@ -2875,7 +3375,11 @@
         ]
     },
     "n02-114.png": {
-        "img_name": "n02-114.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "4663d8760b7ca9fa07481efe04af1f35639925a8a925928bc2370c30fcb1f253",
         "polygons": [
             [
                 [
@@ -2898,7 +3402,11 @@
         ]
     },
     "n02-120.png": {
-        "img_name": "n02-120.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9f7256be186fbddaefa2c0a358ffe4464eda31611d6aa7ee2caeb4a39ecdd0dc",
         "polygons": [
             [
                 [
@@ -2921,7 +3429,11 @@
         ]
     },
     "n02-127.png": {
-        "img_name": "n02-127.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "df434f1ed101da855ac569845b89c7b409e1bfbf5a78f771de705cbb13824b41",
         "polygons": [
             [
                 [
@@ -2944,7 +3456,11 @@
         ]
     },
     "n02-146.png": {
-        "img_name": "n02-146.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "65eaccf82d612eabcd4b2d33fc26f644a894b3783adbf8a06ff9c37b8d9e7821",
         "polygons": [
             [
                 [
@@ -2967,7 +3483,11 @@
         ]
     },
     "n02-151.png": {
-        "img_name": "n02-151.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b14ae8286b7af9508857a1f2244f9f47213e27710254c390f9dfd834667391a8",
         "polygons": [
             [
                 [
@@ -2990,7 +3510,11 @@
         ]
     },
     "n02-154.png": {
-        "img_name": "n02-154.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "6988aa9a58ab1d3aeb0570dd43ddf71205a0f24cf5e2bd100c7bf55c6b5fd862",
         "polygons": [
             [
                 [
@@ -3013,7 +3537,11 @@
         ]
     },
     "n02-157.png": {
-        "img_name": "n02-157.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "74fd34490dcec57a40e26a204d75ec38d560fba3298fc13e4d5964164fe5af23",
         "polygons": [
             [
                 [
@@ -3036,7 +3564,11 @@
         ]
     },
     "n03-038.png": {
-        "img_name": "n03-038.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "5cfa26ee506c9b0ec27bc7085e1a2e5759b2d32bbf438033563da717b5918f39",
         "polygons": [
             [
                 [
@@ -3059,7 +3591,11 @@
         ]
     },
     "n03-064.png": {
-        "img_name": "n03-064.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "1698abd6d7ee70f500929c7241dc17fe87864040203e42e4eb2b42961bf241eb",
         "polygons": [
             [
                 [
@@ -3082,7 +3618,11 @@
         ]
     },
     "n03-066.png": {
-        "img_name": "n03-066.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9729deb8794b72b46a6cc0845c06bb2fac00a850779d558966bfacbc21181394",
         "polygons": [
             [
                 [
@@ -3105,7 +3645,11 @@
         ]
     },
     "n03-079.png": {
-        "img_name": "n03-079.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "642f78adb293dbd8e67120e4da1780c561a9d7f7fc5778126db6a0f234171b4e",
         "polygons": [
             [
                 [
@@ -3128,7 +3672,11 @@
         ]
     },
     "n03-082.png": {
-        "img_name": "n03-082.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "976bb6e38dbc584463a9ada8aacd6883daa95bd697eea1720eaeb7eeea7a48e6",
         "polygons": [
             [
                 [
@@ -3151,7 +3699,11 @@
         ]
     },
     "n03-091.png": {
-        "img_name": "n03-091.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "5e0a5066ca1767a1cd957b4a4f27b3ef392e9218a699724864e25f27fddb7bf7",
         "polygons": [
             [
                 [
@@ -3174,7 +3726,11 @@
         ]
     },
     "n03-097.png": {
-        "img_name": "n03-097.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "4034e642c9f3500cbe785d5b21ee3ddc5e7c36a8894577543afb9d15486872f7",
         "polygons": [
             [
                 [
@@ -3197,7 +3753,11 @@
         ]
     },
     "n03-103.png": {
-        "img_name": "n03-103.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "96597533527a8df9add906e86e5f8c6316fc3c3e282b09e01bed136686e26eea",
         "polygons": [
             [
                 [
@@ -3220,7 +3780,11 @@
         ]
     },
     "n03-106.png": {
-        "img_name": "n03-106.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "c1da5e7c2090c7d92dcd2dec4f28ffa2ea88a34a31fa78ca3e9f52331abc33ac",
         "polygons": [
             [
                 [
@@ -3243,7 +3807,11 @@
         ]
     },
     "n03-113.png": {
-        "img_name": "n03-113.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "24b08a37fc46c9a2b10a1cf00689e1529824ce1e28467a3633b1304f14939b69",
         "polygons": [
             [
                 [
@@ -3266,7 +3834,11 @@
         ]
     },
     "n03-120.png": {
-        "img_name": "n03-120.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "24e473518b7a3f4ac095592359f8cbcd53ca77cb5a50a9b84867ace14c6e844e",
         "polygons": [
             [
                 [
@@ -3289,7 +3861,11 @@
         ]
     },
     "n03-126.png": {
-        "img_name": "n03-126.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "302853a36c762d2a270bc09a600bb0a553de30b6b05e431e6d666491fff905b2",
         "polygons": [
             [
                 [
@@ -3312,7 +3888,11 @@
         ]
     },
     "n04-000.png": {
-        "img_name": "n04-000.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "6264dc8d9bf6e09dd80dda3363398b918f2bf0baa4246505f8dd27cee882e34f",
         "polygons": [
             [
                 [
@@ -3335,7 +3915,11 @@
         ]
     },
     "n04-009.png": {
-        "img_name": "n04-009.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "ecf1a58d10a0ac1fa6c12f766640ebd03b0c9f96fdf4895601a8a1874b423614",
         "polygons": [
             [
                 [
@@ -3358,7 +3942,11 @@
         ]
     },
     "n04-015.png": {
-        "img_name": "n04-015.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "0008774008fc5b8fc19ca00d4da57f79cc1033c989ad0f76caa62e80a03a6e71",
         "polygons": [
             [
                 [
@@ -3381,7 +3969,11 @@
         ]
     },
     "n04-022.png": {
-        "img_name": "n04-022.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "33031d9c9e5b99dfc7aab180721f854c4028cd76ed9f28d27b208d35c38afdba",
         "polygons": [
             [
                 [
@@ -3404,7 +3996,11 @@
         ]
     },
     "n04-031.png": {
-        "img_name": "n04-031.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "6a012c107ae11bdae16f00579a9af40909b7c6fef614ec09b5e43bf7a876a328",
         "polygons": [
             [
                 [
@@ -3427,7 +4023,11 @@
         ]
     },
     "n04-039.png": {
-        "img_name": "n04-039.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "4bba051341b19cb9fe93a5ef5d2a908972dd4cb669f62e3bdc820fa08615757b",
         "polygons": [
             [
                 [
@@ -3450,7 +4050,11 @@
         ]
     },
     "n04-044.png": {
-        "img_name": "n04-044.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a84b027232a2550965db37b4b9975a1c719a4a457b305011ba8b35f94378847e",
         "polygons": [
             [
                 [
@@ -3473,7 +4077,11 @@
         ]
     },
     "n04-048.png": {
-        "img_name": "n04-048.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "adf60be32be069d6c55499f9d4d5de2d39a2ad5f5b70f66cf7ece3d0e8fb7d32",
         "polygons": [
             [
                 [
@@ -3496,7 +4104,11 @@
         ]
     },
     "n04-052.png": {
-        "img_name": "n04-052.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "1d4819b42321c3feaf0e1dd0d1a86658b9d76cf3496202cbc06c11135953cdec",
         "polygons": [
             [
                 [
@@ -3519,7 +4131,11 @@
         ]
     },
     "n04-060.png": {
-        "img_name": "n04-060.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "37c0a31ffbafd688bde1e12bf20ebe240a801c801acb971b98c5434a58d0f52a",
         "polygons": [
             [
                 [
@@ -3542,7 +4158,11 @@
         ]
     },
     "n04-068.png": {
-        "img_name": "n04-068.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "60a6656a30fbbef063abfdc8c1431ab7b14fd9faaba17950e4d7c365888964f1",
         "polygons": [
             [
                 [
@@ -3565,7 +4185,11 @@
         ]
     },
     "n04-075.png": {
-        "img_name": "n04-075.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "c0a9c899a8bf87ffcabebb9829b0d22617be13971e83d5de0a2b9b1a6299e956",
         "polygons": [
             [
                 [
@@ -3588,7 +4212,11 @@
         ]
     },
     "n04-084.png": {
-        "img_name": "n04-084.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f5e5989a3c89367bebece628ae9bd9669a80eaf15462eee60e723718e19be207",
         "polygons": [
             [
                 [
@@ -3611,7 +4239,11 @@
         ]
     },
     "n04-092.png": {
-        "img_name": "n04-092.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b8dc8a705feba62ee165b58a1c64cdf9122c8fbb173333dd23df81687f3ae3b1",
         "polygons": [
             [
                 [
@@ -3634,7 +4266,11 @@
         ]
     },
     "n04-100.png": {
-        "img_name": "n04-100.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9dca4a0eceec6353002a07436a0814cb5b372f5812522427c6473798841edfc0",
         "polygons": [
             [
                 [
@@ -3657,7 +4293,11 @@
         ]
     },
     "n04-107.png": {
-        "img_name": "n04-107.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "04bb6514e1359d141165fdf535ae71bdb5781a0432605f18df309c4b2587b686",
         "polygons": [
             [
                 [
@@ -3680,7 +4320,11 @@
         ]
     },
     "n04-114.png": {
-        "img_name": "n04-114.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "138332da0f78236badaa563f32aa3d819bbdea7cd16ec3f7c89245a1ddce742e",
         "polygons": [
             [
                 [
@@ -3703,7 +4347,11 @@
         ]
     },
     "n04-130.png": {
-        "img_name": "n04-130.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "4f02a389405548271da352e125b2cbd7057e398f9fc269c4a55929848d33cad9",
         "polygons": [
             [
                 [
@@ -3726,7 +4374,11 @@
         ]
     },
     "n04-139.png": {
-        "img_name": "n04-139.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b278b9a76ebc90f9539ebff41622318df97d0ab724c6caed7ae1a8c0e1c760cd",
         "polygons": [
             [
                 [
@@ -3749,7 +4401,11 @@
         ]
     },
     "n04-149.png": {
-        "img_name": "n04-149.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "df868f2a3d00a7f06c4d1f4eb5efaa867bd98048edd793610055511441dceb10",
         "polygons": [
             [
                 [
@@ -3772,7 +4428,11 @@
         ]
     },
     "n04-156.png": {
-        "img_name": "n04-156.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "66cd9104737f0a10f3784b8dc2dc6299945b9e18797176f05122857b64aabb9e",
         "polygons": [
             [
                 [
@@ -3795,7 +4455,11 @@
         ]
     },
     "n04-163.png": {
-        "img_name": "n04-163.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "66c5502a5b5a43769cad62409f590109d891ebbec716bade3c677b7e4c7e0faf",
         "polygons": [
             [
                 [
@@ -3818,7 +4482,11 @@
         ]
     },
     "n04-171.png": {
-        "img_name": "n04-171.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "86db1053155234f5970853aebfadd3fa986f38a9a09edfdab425c25667a9379d",
         "polygons": [
             [
                 [
@@ -3841,7 +4509,11 @@
         ]
     },
     "n04-183.png": {
-        "img_name": "n04-183.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f1c3fa7e33d80a4933d602b8433f9f56ff5dce7bbaf05fbe2192218bc0d5bdd2",
         "polygons": [
             [
                 [
@@ -3864,7 +4536,11 @@
         ]
     },
     "n04-190.png": {
-        "img_name": "n04-190.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cb77d68e1f307eef7234452f39d602b91cfd5890a96be49ff5fe00ea29ce1aec",
         "polygons": [
             [
                 [
@@ -3887,7 +4563,11 @@
         ]
     },
     "n04-195.png": {
-        "img_name": "n04-195.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d6f5d57bab6d3ebdfe16f7351bacdaba9b26f566ce622929194b63c90d1cbe05",
         "polygons": [
             [
                 [
@@ -3910,7 +4590,11 @@
         ]
     },
     "n04-202.png": {
-        "img_name": "n04-202.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "231b3785c633374c03a640661fddceb534b9876ee7f313b2125e54fb8ecbe19d",
         "polygons": [
             [
                 [
@@ -3933,7 +4617,11 @@
         ]
     },
     "n04-209.png": {
-        "img_name": "n04-209.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "0d630f1509bcb823334bbf16e677eb0c914da023fc567bebc22de5c0f5209526",
         "polygons": [
             [
                 [
@@ -3956,7 +4644,11 @@
         ]
     },
     "n04-213.png": {
-        "img_name": "n04-213.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "1d4dae34fccd300a5aae67f33c60ada74696db2cfde887dd08dbae2a56117b1f",
         "polygons": [
             [
                 [
@@ -3979,7 +4671,11 @@
         ]
     },
     "n04-218.png": {
-        "img_name": "n04-218.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9fdcab8b4b56445aeb956243042bfbc08bb55125756f9e54c991a579c092af2b",
         "polygons": [
             [
                 [
@@ -4002,7 +4698,11 @@
         ]
     },
     "n06-074.png": {
-        "img_name": "n06-074.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "36c7a969bfcc94c02aad6a4398a18b3225a6c6db6e24b2e9d5479d70398a5eb5",
         "polygons": [
             [
                 [
@@ -4025,7 +4725,11 @@
         ]
     },
     "n06-082.png": {
-        "img_name": "n06-082.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "331ef60928984c060f4f69c7a80207880f9a480c89cc62b7e2dcadca9d774b19",
         "polygons": [
             [
                 [
@@ -4048,7 +4752,11 @@
         ]
     },
     "n06-092.png": {
-        "img_name": "n06-092.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "29e3c4f17e1b5d0cc65fa5e4aaee2eadaa8077abcf449f2e4f7dda1d5f6fc3da",
         "polygons": [
             [
                 [
@@ -4071,7 +4779,11 @@
         ]
     },
     "n06-100.png": {
-        "img_name": "n06-100.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "0809c1d96f6eac2092c0f4680b68a9200f7153f939045bdbf8d017f324819af6",
         "polygons": [
             [
                 [
@@ -4094,7 +4806,11 @@
         ]
     },
     "n06-111.png": {
-        "img_name": "n06-111.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "5b14a31b7332a41197aca053d9f2accac6785f2938a2171535f28a3da8c6f4b8",
         "polygons": [
             [
                 [
@@ -4117,7 +4833,11 @@
         ]
     },
     "n06-119.png": {
-        "img_name": "n06-119.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "14e52343d4738c3d30259a47eb2d20971f474773db487d0bb0a69bed5bff0e3c",
         "polygons": [
             [
                 [
@@ -4140,7 +4860,11 @@
         ]
     },
     "n06-123.png": {
-        "img_name": "n06-123.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "617a46141986e8ecc5bcd0b72059b2df8d4585e2d2f3183bcf21a517c9e5b2cc",
         "polygons": [
             [
                 [
@@ -4163,7 +4887,11 @@
         ]
     },
     "n06-128.png": {
-        "img_name": "n06-128.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "741db1d7079c5408b46e2eae91cbd35340fb427adba0a82a4f20156795b254a4",
         "polygons": [
             [
                 [
@@ -4186,7 +4914,11 @@
         ]
     },
     "n06-133.png": {
-        "img_name": "n06-133.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9e9d096626c0ae452c10d8aee8e143d8297d776c8980ba564d58b58330f48e28",
         "polygons": [
             [
                 [
@@ -4209,7 +4941,11 @@
         ]
     },
     "n06-140.png": {
-        "img_name": "n06-140.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "5dd82e689e36bd28a3e474ed27820f1b67c7103a8fa6e1d81bfa2ecb0ae76709",
         "polygons": [
             [
                 [
@@ -4232,7 +4968,11 @@
         ]
     },
     "n06-148.png": {
-        "img_name": "n06-148.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "2e5972f8ae180738d78bce5dd19debc1d407e16bf8c73f9dd5f469247a16b88a",
         "polygons": [
             [
                 [
@@ -4255,7 +4995,11 @@
         ]
     },
     "n06-156.png": {
-        "img_name": "n06-156.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "53b116029a238b909eab7a1103c1b800b139c16bf19ae088f0f1b527f2f69bf7",
         "polygons": [
             [
                 [
@@ -4278,7 +5022,11 @@
         ]
     },
     "n06-163.png": {
-        "img_name": "n06-163.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "daecd547897863b51849f22b7958fbda3248ecd4734501e66b1b0b639808a15a",
         "polygons": [
             [
                 [
@@ -4301,7 +5049,11 @@
         ]
     },
     "n06-169.png": {
-        "img_name": "n06-169.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a4b30b9bd4ee94c7310aafdf19c4c6f843cb1a50b5d8c1f32e165ab5c05228b0",
         "polygons": [
             [
                 [
@@ -4324,7 +5076,11 @@
         ]
     },
     "n06-175.png": {
-        "img_name": "n06-175.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "7221bfc4b9ccf30371e45a38e41a6d39bf45cd62a631d7b872d9bfce9ae2fe7b",
         "polygons": [
             [
                 [
@@ -4347,7 +5103,11 @@
         ]
     },
     "n06-182.png": {
-        "img_name": "n06-182.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "39a921765092bd5f0fea4c35004eb3b2a8e2da3af3b4db436834f7b9efd1d853",
         "polygons": [
             [
                 [
@@ -4370,7 +5130,11 @@
         ]
     },
     "n06-186.png": {
-        "img_name": "n06-186.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b75c98d9322b9e84fa68fbd955ae563826efcb09f7c227c98fd8c02b821ec687",
         "polygons": [
             [
                 [
@@ -4393,7 +5157,11 @@
         ]
     },
     "n06-194.png": {
-        "img_name": "n06-194.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d73655d8c5e2f85649e2337679796cbd8a7bf3409adbcb288087de29bc005879",
         "polygons": [
             [
                 [
@@ -4416,7 +5184,11 @@
         ]
     },
     "n06-201.png": {
-        "img_name": "n06-201.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "182e7e8a07ea500ce845469936ec5a2d730f4bd19f8cf2132972b11a6ec2e3f4",
         "polygons": [
             [
                 [
@@ -4439,7 +5211,11 @@
         ]
     },
     "p01-147.png": {
-        "img_name": "p01-147.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "3821c954f6a47937876b0699f3c4cdb421d2a15dbe240e382d2a6aa4dd77eed0",
         "polygons": [
             [
                 [
@@ -4462,7 +5238,11 @@
         ]
     },
     "p01-155.png": {
-        "img_name": "p01-155.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "e82b010b6bfba2c690fd931371a424e45981078e2813c7ba743c35d8a49b6516",
         "polygons": [
             [
                 [
@@ -4485,7 +5265,11 @@
         ]
     },
     "p01-168.png": {
-        "img_name": "p01-168.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "da4af8a3c518573ad159429f5314e4f076e41002dfdfed0cc9fb89936b1af5a8",
         "polygons": [
             [
                 [
@@ -4508,7 +5292,11 @@
         ]
     },
     "p01-174.png": {
-        "img_name": "p01-174.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b22f059c7c2c3c9e30049d47516aa4f9669af923089c33d5fcdb42e72d487818",
         "polygons": [
             [
                 [
@@ -4531,7 +5319,11 @@
         ]
     },
     "p02-000.png": {
-        "img_name": "p02-000.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d0d83bf37bf828fdd9fe821bcca79b4bae9b70c3417e21cdbc40defafa07409b",
         "polygons": [
             [
                 [
@@ -4554,7 +5346,11 @@
         ]
     },
     "p02-008.png": {
-        "img_name": "p02-008.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f79ea124536080d95d1b40308d68982d34ee875e5030948fda2aacbbd0d494a9",
         "polygons": [
             [
                 [
@@ -4577,7 +5373,11 @@
         ]
     },
     "p02-017.png": {
-        "img_name": "p02-017.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "594ce2c3f559752485c1370b3ab0a8fd859f83dda908f53387b796c6f9b5bc78",
         "polygons": [
             [
                 [
@@ -4600,7 +5400,11 @@
         ]
     },
     "p02-022.png": {
-        "img_name": "p02-022.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "3d2acd7fcdbeb9bb53d153ca24eb4f9404930fcc3ce528679ef172440546b7c7",
         "polygons": [
             [
                 [
@@ -4623,7 +5427,11 @@
         ]
     },
     "p02-027.png": {
-        "img_name": "p02-027.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "eaf2f66d675b8460acb7ba783f9573da2cd12ee886b8c903c4001f4ceb933cf6",
         "polygons": [
             [
                 [
@@ -4646,7 +5454,11 @@
         ]
     },
     "p02-069.png": {
-        "img_name": "p02-069.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "025ab6c17a4a27924ed0d3de60e7b292646a60eadbfdeab30b9924cd59cf8661",
         "polygons": [
             [
                 [
@@ -4669,7 +5481,11 @@
         ]
     },
     "p02-076.png": {
-        "img_name": "p02-076.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "79a695d86eee5dc5b84b79f2daec0d60dc7340bb7bcbb940a2ea71c15232d564",
         "polygons": [
             [
                 [
@@ -4692,7 +5508,11 @@
         ]
     },
     "p02-081.png": {
-        "img_name": "p02-081.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a1fa9f2b46e5b0412f430480e03eb86ccfdff1cdf4b77da767a103b851c29479",
         "polygons": [
             [
                 [
@@ -4715,7 +5535,11 @@
         ]
     },
     "p02-090.png": {
-        "img_name": "p02-090.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "60347a695673e030c606bd8d31aab3d7bafaddad39d554253c29bc424a75952d",
         "polygons": [
             [
                 [
@@ -4738,7 +5562,11 @@
         ]
     },
     "p02-101.png": {
-        "img_name": "p02-101.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8b42ce21e4bec73cb4841ab8a2d6bf2aec11d837943f56062a5d260da04adf5e",
         "polygons": [
             [
                 [
@@ -4761,7 +5589,11 @@
         ]
     },
     "p02-105.png": {
-        "img_name": "p02-105.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d314959c4c02eba8f2d44bba3661b4e637df3940b830dd93fb643434be4c8775",
         "polygons": [
             [
                 [
@@ -4784,7 +5616,11 @@
         ]
     },
     "p02-109.png": {
-        "img_name": "p02-109.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "bc9c736ecd624a410f76454c28c43f2bd093b6a74458eb8a0f941ef5bcc65d3f",
         "polygons": [
             [
                 [
@@ -4807,7 +5643,11 @@
         ]
     },
     "p02-115.png": {
-        "img_name": "p02-115.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "3d5aa8b13203070fa64cd594056609c55d91f023df986336b33f76c73bc85d7d",
         "polygons": [
             [
                 [
@@ -4830,7 +5670,11 @@
         ]
     },
     "p02-121.png": {
-        "img_name": "p02-121.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f28de068555b37e117853653b0453e76639b6a19eec9213605a7ffcbe5922c5a",
         "polygons": [
             [
                 [
@@ -4853,7 +5697,11 @@
         ]
     },
     "p02-127.png": {
-        "img_name": "p02-127.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b631c6bd119373d138d8d1f5e5f5a4cd1d59ced1d6fd8b7db86924feaa32f4d7",
         "polygons": [
             [
                 [
@@ -4876,7 +5724,11 @@
         ]
     },
     "p02-131.png": {
-        "img_name": "p02-131.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "80a9bd28b611252f747e4b5fa8edb3c39bb25d542de0053888a3231fd8fb5962",
         "polygons": [
             [
                 [
@@ -4899,7 +5751,11 @@
         ]
     },
     "p02-135.png": {
-        "img_name": "p02-135.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a2b10ea19c4fb9d9bb72f30b2e2102797ce4b59f8c6231b889b1cef6fd0ef98a",
         "polygons": [
             [
                 [
@@ -4922,7 +5778,11 @@
         ]
     },
     "p02-139.png": {
-        "img_name": "p02-139.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8f6365b24adeca9f81bb014a40324f147dd255770f185d25cc685824738fc8c0",
         "polygons": [
             [
                 [
@@ -4945,7 +5805,11 @@
         ]
     },
     "p02-144.png": {
-        "img_name": "p02-144.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "707269797ec531d3a04756d34a1f7f5ced10b87c727f8219d3b7da5bcf59f130",
         "polygons": [
             [
                 [
@@ -4968,7 +5832,11 @@
         ]
     },
     "p02-150.png": {
-        "img_name": "p02-150.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "4163279824c52c4a2a7213139db32fd3160f645ba2b076734830ed023970fceb",
         "polygons": [
             [
                 [
@@ -4991,7 +5859,11 @@
         ]
     },
     "p02-155.png": {
-        "img_name": "p02-155.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "7682e9b4ed0774a9b2ebfbcd7ebbed814f812651b98d09492c52ce97543ca480",
         "polygons": [
             [
                 [
@@ -5014,7 +5886,11 @@
         ]
     },
     "p03-004.png": {
-        "img_name": "p03-004.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "709fc2150d3c52751e561afda8e0b8b3504688c684ef332e952a08d21b554f0e",
         "polygons": [
             [
                 [
@@ -5037,7 +5913,11 @@
         ]
     },
     "p03-009.png": {
-        "img_name": "p03-009.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "944dc1ed65162f57e09039a65895c462cb446ff158efcc34fb7ab3536195e25b",
         "polygons": [
             [
                 [
@@ -5060,7 +5940,11 @@
         ]
     },
     "p03-012.png": {
-        "img_name": "p03-012.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9cfca6e01b428e3779dc9d72f65ceaf7f57a03d1c9f2a5b0b1d78d5f6f9ab80d",
         "polygons": [
             [
                 [
@@ -5083,7 +5967,11 @@
         ]
     },
     "p03-023.png": {
-        "img_name": "p03-023.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8131bfe68bec4ba58ae886d02fdfd40d5ca15afd99c9a7644f2a5a288fdd4bf0",
         "polygons": [
             [
                 [
@@ -5106,7 +5994,11 @@
         ]
     },
     "p03-027.png": {
-        "img_name": "p03-027.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8325018affe506f67c2ba0ce3736cd8cc8ac6fb1c4df97ce0ed3c0d91d972857",
         "polygons": [
             [
                 [
@@ -5129,7 +6021,11 @@
         ]
     },
     "p03-029.png": {
-        "img_name": "p03-029.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8a33380b85ed50172ea0839bd81a03d9f320a2d02d24fe55156513b420df9ec2",
         "polygons": [
             [
                 [
@@ -5152,7 +6048,11 @@
         ]
     },
     "p03-033.png": {
-        "img_name": "p03-033.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cafe2126598ecd6c138214a09eccb8b10670aff2bd41b84cf6cb98c17ac2c854",
         "polygons": [
             [
                 [
@@ -5175,7 +6075,11 @@
         ]
     },
     "p03-040.png": {
-        "img_name": "p03-040.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "84800f7e5a2aa0852ffc2edca1a4cf3490097f703ebbb8279f54ac4e6330ca41",
         "polygons": [
             [
                 [
@@ -5198,7 +6102,11 @@
         ]
     },
     "p03-047.png": {
-        "img_name": "p03-047.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "e9be3840fb3171daeee857ddb9f8d9906aeeacc26ac7cf8954fcd8466c006c9a",
         "polygons": [
             [
                 [
@@ -5221,7 +6129,11 @@
         ]
     },
     "p03-057.png": {
-        "img_name": "p03-057.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "766cc1ad66e09ec7908b02a7b2bcb68400255d18cd785813769c10291ed63bc4",
         "polygons": [
             [
                 [
@@ -5244,7 +6156,11 @@
         ]
     },
     "p03-069.png": {
-        "img_name": "p03-069.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "ea39320baa1e0133293024ff5094a3bcd2afd8b588fee98e75e14a640ac3295e",
         "polygons": [
             [
                 [
@@ -5267,7 +6183,11 @@
         ]
     },
     "p03-072.png": {
-        "img_name": "p03-072.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d461008cc489c26795de3fed8c1643874441ce9bc9bd04f51322140b72b69451",
         "polygons": [
             [
                 [
@@ -5290,7 +6210,11 @@
         ]
     },
     "p03-080.png": {
-        "img_name": "p03-080.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "bba753e121183102ee52d9c0ce120f08121233d8566fe4b160ee3e04cb26348e",
         "polygons": [
             [
                 [
@@ -5313,7 +6237,11 @@
         ]
     },
     "p03-087.png": {
-        "img_name": "p03-087.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "332417794077c4aa072ca8d5d1d8c8af48dc1c6d8b23c6beefc8ce53f8676a63",
         "polygons": [
             [
                 [
@@ -5336,7 +6264,11 @@
         ]
     },
     "p03-096.png": {
-        "img_name": "p03-096.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "980d11dc0937a971ce1cae3c369c0dd70a496eb5575cb3e492775731c2a805fb",
         "polygons": [
             [
                 [
@@ -5359,7 +6291,11 @@
         ]
     },
     "p03-103.png": {
-        "img_name": "p03-103.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "6a9b4b0ae6ad2b19d2efe41b7f045dfb2657a7c07518b430d9b0fb24b1c90fec",
         "polygons": [
             [
                 [
@@ -5382,7 +6318,11 @@
         ]
     },
     "p03-112.png": {
-        "img_name": "p03-112.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "847a0ac2e8ce864990c1d8d8d2a8e54dd644d28ae941631fbaab743e0b7906c8",
         "polygons": [
             [
                 [
@@ -5405,7 +6345,11 @@
         ]
     },
     "p03-121.png": {
-        "img_name": "p03-121.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d825a4d98add21c2eb61219e958f186cd018cf47b81e3ee73987145a922a0d05",
         "polygons": [
             [
                 [
@@ -5428,7 +6372,11 @@
         ]
     },
     "p03-135.png": {
-        "img_name": "p03-135.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "974a6aa64af5a12393ea5b0d37fafa9eade382e5c20dd9b2cb8b1f0ae69430f1",
         "polygons": [
             [
                 [
@@ -5451,7 +6399,11 @@
         ]
     },
     "p03-142.png": {
-        "img_name": "p03-142.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "da56ce06f504841ae5e1cb932694c979fe25464212fe9dd53ff91b0147f1a40f",
         "polygons": [
             [
                 [
@@ -5474,7 +6426,11 @@
         ]
     },
     "p03-151.png": {
-        "img_name": "p03-151.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "86d131a7e4fc1eee9991599c9d44d4fc9fdb014bb7dd47dd3edc60e0070372c1",
         "polygons": [
             [
                 [
@@ -5497,7 +6453,11 @@
         ]
     },
     "p03-158.png": {
-        "img_name": "p03-158.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "6b43e9852ae8937d620358a2d04acc8da98a34242046226be68f25262a73a7c6",
         "polygons": [
             [
                 [
@@ -5520,7 +6480,11 @@
         ]
     },
     "p03-163.png": {
-        "img_name": "p03-163.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d7f71df0172ab88e36cb52ae2819e886d5a6671edf461ce6c01ad334dcc0752a",
         "polygons": [
             [
                 [
@@ -5543,7 +6507,11 @@
         ]
     },
     "p03-173.png": {
-        "img_name": "p03-173.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "1f3035598f950d2942f50c16fee9cf68bcb9e6a2b3fac2ff221ded90aca7460b",
         "polygons": [
             [
                 [
@@ -5566,7 +6534,11 @@
         ]
     },
     "p03-181.png": {
-        "img_name": "p03-181.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b24275e9928c206ef5534d5c48bb6b0e69d67133831f683c80f3f0402b8e64a6",
         "polygons": [
             [
                 [
@@ -5589,7 +6561,11 @@
         ]
     },
     "p03-185.png": {
-        "img_name": "p03-185.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "284042e4db4c44acce46d770a756681064acddbb472364a72caef2157e41267a",
         "polygons": [
             [
                 [
@@ -5612,7 +6588,11 @@
         ]
     },
     "p03-189.png": {
-        "img_name": "p03-189.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "5d70667931258206900ee89565d5f041b23af6209f2069b806050ca31134925d",
         "polygons": [
             [
                 [
@@ -5635,7 +6615,11 @@
         ]
     },
     "p06-030.png": {
-        "img_name": "p06-030.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "65d1a14eb31faeec6a1a366d1f64e2faa19b3e6656f3816a68d91bfc04565929",
         "polygons": [
             [
                 [
@@ -5658,7 +6642,11 @@
         ]
     },
     "p06-042.png": {
-        "img_name": "p06-042.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9fa5a1599d6a394fe7ff9afefef35fd2d7ae8ede553981f4aa97ba9866a14782",
         "polygons": [
             [
                 [
@@ -5681,7 +6669,11 @@
         ]
     },
     "p06-047.png": {
-        "img_name": "p06-047.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "beeb710ed50fd5d089ef2c49fed7e8c5ef6af9d23d612f108e9a74be2ee5e4af",
         "polygons": [
             [
                 [
@@ -5704,7 +6696,11 @@
         ]
     },
     "p06-052.png": {
-        "img_name": "p06-052.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "e09bc99113b78afe1dc1d009d7903db17818c001d0c8e7f42b56b1a392dad5ce",
         "polygons": [
             [
                 [
@@ -5727,7 +6723,11 @@
         ]
     },
     "p06-058.png": {
-        "img_name": "p06-058.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "bda5204cf8b49602b238b3282a6448a44556f1c34c57f516813ce21e15b4528e",
         "polygons": [
             [
                 [
@@ -5750,7 +6750,11 @@
         ]
     },
     "p06-069.png": {
-        "img_name": "p06-069.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a705212a0199429832eb48b0ba11cafb27e7f5bee38d3c3c22b9c063483a2d40",
         "polygons": [
             [
                 [
@@ -5773,7 +6777,11 @@
         ]
     },
     "p06-088.png": {
-        "img_name": "p06-088.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a1d873cb051f4b1e130c5aa44debc4f719416cce49c14704fa31a807ba0977d5",
         "polygons": [
             [
                 [
@@ -5796,7 +6804,11 @@
         ]
     },
     "p06-096.png": {
-        "img_name": "p06-096.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f45650cdca0ebcbc00574ed92dc467a6f9c758aad297dcfacb9e7c4ad913adce",
         "polygons": [
             [
                 [
@@ -5819,7 +6831,11 @@
         ]
     },
     "p06-104.png": {
-        "img_name": "p06-104.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "ebaa86f2657f76c0214624d1b6d6262a81040ef22bf774e122f8744f9fd7cfb4",
         "polygons": [
             [
                 [
@@ -5842,7 +6858,11 @@
         ]
     },
     "p06-242.png": {
-        "img_name": "p06-242.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9c569eff347047061586e37e8252eb7919046fbe2e721dc05d7aeff0304d394e",
         "polygons": [
             [
                 [
@@ -5865,7 +6885,11 @@
         ]
     },
     "p06-248.png": {
-        "img_name": "p06-248.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "643f93d2b1b0425c92bea6fd6776244198177a6e43250606c6f8649b144667c8",
         "polygons": [
             [
                 [
@@ -5888,7 +6912,11 @@
         ]
     },
     "r02-000.png": {
-        "img_name": "r02-000.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "c05b768abac34e613d72eec6c3937a21a241480f5b0f5e72189e07312f0c3f5d",
         "polygons": [
             [
                 [
@@ -5911,7 +6939,11 @@
         ]
     },
     "r02-003.png": {
-        "img_name": "r02-003.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "30005f0fa7cf3d3268bb475662e5c7a41406ab8100d28d7456f491211b2bb001",
         "polygons": [
             [
                 [
@@ -5934,7 +6966,11 @@
         ]
     },
     "r02-006.png": {
-        "img_name": "r02-006.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f8580318455556448f53b064c9bd4930261548c34b07991bd0f521b63e8e172a",
         "polygons": [
             [
                 [
@@ -5957,7 +6993,11 @@
         ]
     },
     "r02-010.png": {
-        "img_name": "r02-010.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f833685b3ccb91910b4d96bbf98292e2d0a6c086222dbf5ff25296ade3ad1333",
         "polygons": [
             [
                 [
@@ -5980,7 +7020,11 @@
         ]
     },
     "r02-013.png": {
-        "img_name": "r02-013.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "4da648e98d0a65c91a91bd707be61e84c850a3e98165bf1411022e695ff4c671",
         "polygons": [
             [
                 [
@@ -6003,7 +7047,11 @@
         ]
     },
     "r02-038.png": {
-        "img_name": "r02-038.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "1845abc1bfeb4d2d5adf19f3cbe557626f7dbf528b1d18f808e7d256384428ed",
         "polygons": [
             [
                 [
@@ -6026,7 +7074,11 @@
         ]
     },
     "r02-054.png": {
-        "img_name": "r02-054.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "2cad58e38f99e8bdd8db265ec706880cec1b3d864c79ac5ff87192c0a6a35b70",
         "polygons": [
             [
                 [
@@ -6049,7 +7101,11 @@
         ]
     },
     "r02-060.png": {
-        "img_name": "r02-060.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a6c1534e7ef5e3a9f33ed77a2ec3492315d9301de702b858ae994125a74a4fe8",
         "polygons": [
             [
                 [
@@ -6072,7 +7128,11 @@
         ]
     },
     "r02-065.png": {
-        "img_name": "r02-065.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "0ab14d8fcaa2fb5d7ddf8922f80943f9b8dbcc4de99b3ca4cf60879dd26eb320",
         "polygons": [
             [
                 [
@@ -6095,7 +7155,11 @@
         ]
     },
     "r02-070.png": {
-        "img_name": "r02-070.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "77d084ca7a7a10a0d6c7abc80b3c2641c83acfeadedbf3bc5e3b989960759708",
         "polygons": [
             [
                 [
@@ -6118,7 +7182,11 @@
         ]
     },
     "r02-078.png": {
-        "img_name": "r02-078.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "134e91025cde767ff8f6b1f595c90263a50e94e4533967788785c391c123c257",
         "polygons": [
             [
                 [
@@ -6141,7 +7209,11 @@
         ]
     },
     "r02-081.png": {
-        "img_name": "r02-081.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "25ccad3e0dca60a7a30db3c4d1da5d9e7e05da13c0e196e0ef61a689b1b3e68d",
         "polygons": [
             [
                 [
@@ -6164,7 +7236,11 @@
         ]
     },
     "r02-089.png": {
-        "img_name": "r02-089.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "0b6e2632dcb44cde324ffaab72f0ff16a14b4da8993caaa8ef6654ae7d6b2ad7",
         "polygons": [
             [
                 [
@@ -6187,7 +7263,11 @@
         ]
     },
     "r02-109.png": {
-        "img_name": "r02-109.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "50c1ea8da46e06d6f569bf7674e15331b5854fa01d07b946bcc05594e9df9c1c",
         "polygons": [
             [
                 [
@@ -6210,7 +7290,11 @@
         ]
     },
     "r02-117.png": {
-        "img_name": "r02-117.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "1c38b45e0f32e4b8865833d8a92f9e75c4e2919d226788588ede0dbdc5a24b07",
         "polygons": [
             [
                 [
@@ -6233,7 +7317,11 @@
         ]
     },
     "r02-127.png": {
-        "img_name": "r02-127.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "ebb95e4f9f99c37ad4f4a9cf21aeae437223807a530ac21a9afaf6cb81d92114",
         "polygons": [
             [
                 [
@@ -6256,7 +7344,11 @@
         ]
     },
     "r02-131.png": {
-        "img_name": "r02-131.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "0891d1956b1ccee18e00c053c2b8168089fb10bcffbda913b87941cb478d18a7",
         "polygons": [
             [
                 [
@@ -6279,7 +7371,11 @@
         ]
     },
     "r02-137.png": {
-        "img_name": "r02-137.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "83c8bf20f4fc8c8652f4ea016a0d9df9d43a5897f120df7fd4f6df36810e586f",
         "polygons": [
             [
                 [
@@ -6302,7 +7398,11 @@
         ]
     },
     "r02-146.png": {
-        "img_name": "r02-146.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d0483213b8ef3e6b4538ef9d25fad4701008fe9ba0af85efa6fba570e5414d7f",
         "polygons": [
             [
                 [
@@ -6325,7 +7425,11 @@
         ]
     },
     "r03-002.png": {
-        "img_name": "r03-002.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "2c63783c8619f299678a83c5ae5b046097deb056080abd09df239225f57c8391",
         "polygons": [
             [
                 [
@@ -6348,7 +7452,11 @@
         ]
     },
     "r03-007.png": {
-        "img_name": "r03-007.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "81deb20536803a843233e1087153840d44fc8bdf584a5ab6c7efb37c8f1d06f4",
         "polygons": [
             [
                 [
@@ -6371,7 +7479,11 @@
         ]
     },
     "r03-026.png": {
-        "img_name": "r03-026.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "5bc57220334f9ef90707d9c9b2fd382fb4b4feb80c618324bc89779903f7616b",
         "polygons": [
             [
                 [
@@ -6394,7 +7506,11 @@
         ]
     },
     "r03-030.png": {
-        "img_name": "r03-030.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9e6aaca9402509466b27323e0af8f71af74217af68fd21de1e700e5162ebbe36",
         "polygons": [
             [
                 [
@@ -6417,7 +7533,11 @@
         ]
     },
     "r03-035.png": {
-        "img_name": "r03-035.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "33acad2718a6438565dad0848036cf2876597dbaed58caa45613be32eb4dc49d",
         "polygons": [
             [
                 [
@@ -6440,7 +7560,11 @@
         ]
     },
     "r03-050.png": {
-        "img_name": "r03-050.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cbe06a60fe65816fdf534a77fe78352e15fb8d9f170fc3faa3ce3697b647f7b4",
         "polygons": [
             [
                 [
@@ -6463,7 +7587,11 @@
         ]
     },
     "r03-053.png": {
-        "img_name": "r03-053.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "242af08592d7fc78bed3d5401bb032bb753666c3a555881e8db688b9ee71cf82",
         "polygons": [
             [
                 [
@@ -6486,7 +7614,11 @@
         ]
     },
     "r03-056.png": {
-        "img_name": "r03-056.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "fbab86cb4a7b75dc97989a4bf82bec354ce9e82b359873d731dc02e6d1a3f719",
         "polygons": [
             [
                 [
@@ -6509,7 +7641,11 @@
         ]
     },
     "r03-065.png": {
-        "img_name": "r03-065.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "9f9df91ab10aeee16b8ee0c27a60d904341bd217b1e808f69d7871d9b94fa51e",
         "polygons": [
             [
                 [
@@ -6532,7 +7668,11 @@
         ]
     },
     "r03-084.png": {
-        "img_name": "r03-084.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d5fd125627aafac0b402c84d1728f61e15915faa316e03f0d193b5c89ccb1496",
         "polygons": [
             [
                 [
@@ -6555,7 +7695,11 @@
         ]
     },
     "r03-090.png": {
-        "img_name": "r03-090.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b074ce5c648a3be462affd17468c0e52b4814dc9afdb13f78155c16ec8e350bf",
         "polygons": [
             [
                 [
@@ -6578,7 +7722,11 @@
         ]
     },
     "r03-096.png": {
-        "img_name": "r03-096.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "89327dd496ea0f1c11ec60320f40175f23a508c44ea13993d982f7a56ea45c9e",
         "polygons": [
             [
                 [
@@ -6601,7 +7749,11 @@
         ]
     },
     "r03-110.png": {
-        "img_name": "r03-110.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "8b0ed19d4e4015729a3baa4aac20b48a1d1adec34cc531d61903e462af664f89",
         "polygons": [
             [
                 [
@@ -6624,7 +7776,11 @@
         ]
     },
     "r03-115.png": {
-        "img_name": "r03-115.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "b660afda9c917d1b19b7b8237162acc367c4802a14faff28d2540b407383ba87",
         "polygons": [
             [
                 [
@@ -6647,7 +7803,11 @@
         ]
     },
     "r06-000.png": {
-        "img_name": "r06-000.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "cfc1310757f166eb66774df040532b90b2b5f07b336114d7c7319aa4b66db2a7",
         "polygons": [
             [
                 [
@@ -6670,7 +7830,11 @@
         ]
     },
     "r06-003.png": {
-        "img_name": "r06-003.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f89aec90754bb22b6f059f85bee42af8945cf3eb116af5a99eaa962f3579df48",
         "polygons": [
             [
                 [
@@ -6693,7 +7857,11 @@
         ]
     },
     "r06-007.png": {
-        "img_name": "r06-007.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "65e1d2c93d749a9864a8abdba309eb675f01601ea458775a6d865dbfd4ffbf79",
         "polygons": [
             [
                 [
@@ -6716,7 +7884,11 @@
         ]
     },
     "r06-011.png": {
-        "img_name": "r06-011.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "de6e2868c4d5edda5b3819b6685504325151687d3adf9bf4653aac9ed218b146",
         "polygons": [
             [
                 [
@@ -6739,7 +7911,11 @@
         ]
     },
     "r06-018.png": {
-        "img_name": "r06-018.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "fea80af85420dd35cdbb730f0f6eadb4a6a4d767e27d63fdba245ab494157e59",
         "polygons": [
             [
                 [
@@ -6762,7 +7938,11 @@
         ]
     },
     "r06-022.png": {
-        "img_name": "r06-022.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "00a52d4ce2d41be60f48d33f5895dafcaae9e7f4206da23d8b798d3249b5281f",
         "polygons": [
             [
                 [
@@ -6785,7 +7965,11 @@
         ]
     },
     "r06-027.png": {
-        "img_name": "r06-027.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "bd1cea6579b2f92f82641a8dc2acfdf336fc8fd448e34d750c72aa96d2f9c6d8",
         "polygons": [
             [
                 [
@@ -6808,7 +7992,11 @@
         ]
     },
     "r06-035.png": {
-        "img_name": "r06-035.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "64374f94ddc1cddfc38bd98c82ad0dc08e8ee7395a4717272094233d92c6c368",
         "polygons": [
             [
                 [
@@ -6831,7 +8019,11 @@
         ]
     },
     "r06-041.png": {
-        "img_name": "r06-041.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "af9bffe71b8dc40d6cebc1c2296684686c033481a76938316380f29cd14fbbb4",
         "polygons": [
             [
                 [
@@ -6854,7 +8046,11 @@
         ]
     },
     "r06-044.png": {
-        "img_name": "r06-044.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "63c936cf6556affc42a9c5ba89c9d22985e4a0d9a31d41117e6970fbb38084e7",
         "polygons": [
             [
                 [
@@ -6877,7 +8073,11 @@
         ]
     },
     "r06-049.png": {
-        "img_name": "r06-049.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "95bb6aff58f254c665100e84b51eb73adca0c99d69f3d525ef4eecd40d23c4c3",
         "polygons": [
             [
                 [
@@ -6900,7 +8100,11 @@
         ]
     },
     "r06-053.png": {
-        "img_name": "r06-053.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a1998773e93a953fdba844298e9ca7fee53e79a18ffbf0dcb39f1d9a93a33375",
         "polygons": [
             [
                 [
@@ -6923,7 +8127,11 @@
         ]
     },
     "r06-057.png": {
-        "img_name": "r06-057.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "ccf17becd4c026730f0f3b7ce9382ae79bc47ac5f2567bfc36a369512e7d8158",
         "polygons": [
             [
                 [
@@ -6946,7 +8154,11 @@
         ]
     },
     "r06-062.png": {
-        "img_name": "r06-062.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "23fc34fdb50c83caafc3de27071c06d022926f65b62af5dc6963bdba4b0ba68c",
         "polygons": [
             [
                 [
@@ -6969,7 +8181,11 @@
         ]
     },
     "r06-066.png": {
-        "img_name": "r06-066.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "1c10c4c310540f2be15c8edc63c941ee56c8eb5e45b58eb0969457400e5ced17",
         "polygons": [
             [
                 [
@@ -6992,7 +8208,11 @@
         ]
     },
     "r06-070.png": {
-        "img_name": "r06-070.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "50969ceebfa98f27e82d23a72c8d0011a3713a937bf7f36201fe84e6a42249f5",
         "polygons": [
             [
                 [
@@ -7015,7 +8235,11 @@
         ]
     },
     "r06-076.png": {
-        "img_name": "r06-076.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "7518b79e16c50a8a34f039eb8899130ce31e7d7ce3136c4fe200d8b888b28eae",
         "polygons": [
             [
                 [
@@ -7038,7 +8262,11 @@
         ]
     },
     "r06-090.png": {
-        "img_name": "r06-090.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "70f725438063e2dc80cb826992887659ed0e652c093511dec37b8ebbd55517ac",
         "polygons": [
             [
                 [
@@ -7061,7 +8289,11 @@
         ]
     },
     "r06-097.png": {
-        "img_name": "r06-097.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f4f3f85f00e6a716c823e7d30dbc134c5dcd01bb81debd96deb3794b09f1aaed",
         "polygons": [
             [
                 [
@@ -7084,7 +8316,11 @@
         ]
     },
     "r06-103.png": {
-        "img_name": "r06-103.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "decf995237435a3be25224e8e458878900bc9999783667f21278a224d05c89a1",
         "polygons": [
             [
                 [
@@ -7107,7 +8343,11 @@
         ]
     },
     "r06-106.png": {
-        "img_name": "r06-106.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "5760af133801712ea9f175c2a0f9d30416d04e7a982cb7c683814029eb33f360",
         "polygons": [
             [
                 [
@@ -7130,7 +8370,11 @@
         ]
     },
     "r06-111.png": {
-        "img_name": "r06-111.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "d572400e1f9dd08d786bf01421a2aae93d8e96bb0b0e0402eaab941c6d81bfcd",
         "polygons": [
             [
                 [
@@ -7153,7 +8397,11 @@
         ]
     },
     "r06-115.png": {
-        "img_name": "r06-115.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f5fc2678e3528903ffacbb41013e77babf1bffb13a7670e85f920d69864a55ea",
         "polygons": [
             [
                 [
@@ -7176,7 +8424,11 @@
         ]
     },
     "r06-121.png": {
-        "img_name": "r06-121.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "12506225f6e0f46df35ca9c83cb6f2d8ec613549503534846fd1d4a2f447c7c4",
         "polygons": [
             [
                 [
@@ -7199,7 +8451,11 @@
         ]
     },
     "r06-126.png": {
-        "img_name": "r06-126.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "f1744283c6790748e4c35481584d7fdd1dbf8901b761f6e97c649a2b75ddf652",
         "polygons": [
             [
                 [
@@ -7222,7 +8478,11 @@
         ]
     },
     "r06-130.png": {
-        "img_name": "r06-130.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "a1f8e8519bc3c39085cff126cd7360aa3a072395c5a04cea9fb3117a1aef863d",
         "polygons": [
             [
                 [
@@ -7245,7 +8505,11 @@
         ]
     },
     "r06-137.png": {
-        "img_name": "r06-137.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "abdba85d60b7c8ea53540c4a9e6129358ec6ba99c1bba0c2a0748516b475e3ac",
         "polygons": [
             [
                 [
@@ -7268,7 +8532,11 @@
         ]
     },
     "r06-143.png": {
-        "img_name": "r06-143.png",
+        "img_dimensions": [
+            3542,
+            2479
+        ],
+        "img_hash": "44b3edb69a6bb8db0cefb0af15913ae9ea6e834fc55c18c9ec3162b06bc73ea6",
         "polygons": [
             [
                 [
