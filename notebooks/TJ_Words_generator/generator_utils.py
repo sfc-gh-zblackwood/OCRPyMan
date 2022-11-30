@@ -7,6 +7,11 @@ from matplotlib import cm
 import cv2
 import numpy as np
 
+import sys
+sys.path.insert(1, '../')
+import preprocessing as pp
+
+generated_images_path = '../../data/generated/'
 
 #########################################################################################################################
 # Longueur dans l'usage : la longueur moyenne d'un mot communément acceptée est de 5 caractères ou lettres.
@@ -22,7 +27,7 @@ import numpy as np
 #########################################################################################################################
 
 #Generation d'un mot aléatoire
-def gen_word(font):
+def gen_word(font, dest):
     nb_letters = np.random.randint(2, 14)
     font_size = np.random.randint(75, 150)
     # coeff sur la taille
@@ -35,7 +40,11 @@ def gen_word(font):
         #random_letter = random_letter.strip().lower()
         word = word + random_letter
 
-    #TODO add upper first
+    # Majuscule en premiere lettre? 30% oui
+    is_maj = np.random.randint(1, 10)
+    if is_maj >= 7:
+        word = word.capitalize() # converti la premiere lettre en majuscule
+    
     
     fpp = FontPreview(font) 
     fpp.font_text = str(word)
@@ -49,10 +58,24 @@ def gen_word(font):
     
     # print('word_images/' + filename + '.png')
     filename = font.split('\\')[-1][:-4] + '_' + word + '.png'   # exmple font = 'fonts\Amalfi Coast.ttf'
-    fpp.save('word_images/' + filename)
+    fpp.save(dest + filename)
 
 
-def show_some_images(all_files):
+# Pour générer x mots
+def words_generator(nb_words):
+    # Liste de toutes les fonts disponibles
+    fonts = pp.get_files('fonts', ext='', sub=False)
+
+    nb_img_per_font = nb_words // len(fonts)
+    for font in fonts:
+        for i in range(0,nb_img_per_font):
+            gen_word(font, generated_images_path)
+
+
+def show_some_images():
+    
+    all_files = pp.get_files(generated_images_path, ext='png', sub=False)
+    
     print('Total files : ', len(all_files))
 
     j = 1

@@ -15,11 +15,15 @@ from sklearn.model_selection import train_test_split
 
 import ressources as rss
 
+import sys
+sys.path.insert(1, '../')
+import preprocessing as pp
 
 
 # load du pickle de base, generation d'un dataset avec X="les chemins d'accès aux images", et y="la transcription"
 # puis map des fonctions de preprocessing et création des lots
-def get_dataset(canny = False):    
+# Attention, canny et augmented ne peuvent pas s'utiliser en meme temps (parceque les images canny sont générées indépendament, et non à la volée car ça crash)
+def get_dataset(canny = False, augmented = False):    
     
     df = pd.read_pickle('../pickle/df.pickle')
     # on filtre les chaines vides et les caractères inconnus (TODO à déplacer dans le preprocess du dataframe?)
@@ -27,10 +31,19 @@ def get_dataset(canny = False):
     df = df[(df['clean_trans'] != "") & (df['clean_trans'] == df['transcription'])]
 
     if canny:
-        df['canny_path'] = df['word_img_path'].apply(lambda x : '../data/canny/' + x.split('/')[-1])  # toutes les images au format canny seront stockées dans ce dossier
-        X_train, X_test, y_train, y_test = train_test_split(df['canny_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
-    else:
-        X_train, X_test, y_train, y_test = train_test_split(df['word_img_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
+        df['word_img_path'] = df['word_img_path'].apply(lambda x : '../data/canny/' + x.split('/')[-1])  # toutes les images au format canny seront stockées dans ce dossier
+        # X_train, X_test, y_train, y_test = train_test_split(df['canny_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
+    elif augmented:
+        # parcours des images générées artificiellement
+        generated_images_path = '../data/generated/'
+        generated_images = pp.get_files(generated_images_path, ext='png', sub=False)
+        transcripts = [x.split('_')[-1][:-4] for x in generated_images]  # le nom de fichier contient la transcription
+        # ajout au dataframe
+        augmented_df = pd.DataFrame(list(zip(generated_images, transcripts)), columns=['word_img_path', 'transcription'])
+        df = pd.concat([df,augmented_df], axis=0)
+            
+    
+    X_train, X_test, y_train, y_test = train_test_split(df['word_img_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
         
     dataset_train = tf.data.Dataset.from_tensor_slices((X_train, y_train))
     dataset_test = tf.data.Dataset.from_tensor_slices((X_test, y_test))
