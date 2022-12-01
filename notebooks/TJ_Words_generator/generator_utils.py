@@ -1,5 +1,5 @@
 import string
-from fontpreview import FontPreview
+from fontpreview import FontPreview   # doc : https://fontpreview.readthedocs.io/en/latest/example.html
 import numpy as np
 
 import matplotlib.pyplot as plt
@@ -28,8 +28,8 @@ generated_images_path = '../../data/generated/'
 
 #Generation d'un mot aléatoire
 def gen_word(font, dest):
-    nb_letters = np.random.randint(2, 14)
-    font_size = np.random.randint(75, 150)
+    nb_letters = np.random.randint(2, 12)
+    font_size = np.random.randint(100, 200)
     # coeff sur la taille
     size_coeff = np.random.randint(1, 30) / 100
     height = 70
@@ -74,8 +74,7 @@ def words_generator(nb_words):
 
 def show_some_images():
     
-    all_files = pp.get_files(generated_images_path, ext='png', sub=False)
-    
+    all_files = pp.get_files(generated_images_path, ext='png', sub=False)    
     print('Total files : ', len(all_files))
 
     j = 1

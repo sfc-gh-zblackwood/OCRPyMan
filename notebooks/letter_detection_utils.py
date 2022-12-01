@@ -14,15 +14,11 @@ import string
 from sklearn.model_selection import train_test_split
 
 import ressources as rss
-
-import sys
-sys.path.insert(1, '../')
 import preprocessing as pp
 
 
-# load du pickle de base, generation d'un dataset avec X="les chemins d'accès aux images", et y="la transcription"
-# puis map des fonctions de preprocessing et création des lots
-# Attention, canny et augmented ne peuvent pas s'utiliser en meme temps (parceque les images canny sont générées indépendament, et non à la volée car ça crash)
+# load du pickle de base, generation d'un dataset avec map des fonctions de preprocessing et création des lots
+# Attention, canny et augmented ne peuvent pas s'utiliser en meme temps (parceque les images canny sont générées indépendament, et non à la volée car ça crash, donc pas de canny pour les images générées)
 def get_dataset(canny = False, augmented = False):    
     
     df = pd.read_pickle('../pickle/df.pickle')
