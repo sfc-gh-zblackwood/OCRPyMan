@@ -1,4 +1,6 @@
 doctr/
 doctr/*
 text_detection_train/images/
+text_detection_train/full_images/
 text_detection_val/images/
+text_detection_val/full_images/
