@@ -6,7 +6,7 @@ import streamlit as st
 import config
 
 # TODO : you can (and should) rename and add tabs in the ./tabs folder, and import them here.
-from tabs import intro, second_tab, third_tab
+from tabs import intro , pre_processing_tab, model_training, third_tab
 
 
 st.set_page_config(
@@ -26,7 +26,8 @@ st.markdown(f"<style>{style}</style>", unsafe_allow_html=True)
 TABS = OrderedDict(
     [
         (intro.sidebar_name, intro),
-        (second_tab.sidebar_name, second_tab),
+        (pre_processing_tab.sidebar_name, pre_processing_tab),
+        (model_training.sidebar_name, model_training),
         (third_tab.sidebar_name, third_tab),
     ]
 )
@@ -37,7 +38,7 @@ def run():
         "https://dst-studio-template.s3.eu-west-3.amazonaws.com/logo-datascientest.png",
         width=200,
     )
-    tab_name = st.sidebar.radio("", list(TABS.keys()), 0)
+    tab_name = st.sidebar.radio("Menu", list(TABS.keys()), 0)
     st.sidebar.markdown("---")
     st.sidebar.markdown(f"## {config.PROMOTION}")
 

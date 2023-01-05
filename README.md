@@ -44,6 +44,18 @@ pip install -r requirements.txt
 
 ## Streamlit App
 
+**Manage envs with condas**
+
+export current packages list :
+```
+conda env export > environment.yaml
+```
+
+Reimport :
+```
+conda env create --file environment.yaml
+```
+
 **Add explanations on how to use the app.**
 
 To run the app :
