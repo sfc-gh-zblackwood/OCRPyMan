@@ -128,8 +128,9 @@ def show_predicts(models, models_desc):
         eval_df['cer'] = [ld_util.evaluate_character_level_accuracy(row.real, row.predicted) for index, row in eval_df.iterrows()]
 
         #  print("Le modèle ", model, " a une précision par mot de", eval_df['cer'].mean(), ' pour ', eval_df.shape[0], ' mots.')
-        st.write('xtest0:', X_test[0])
+        # st.write('xtest0:', X_test[0])
         
+        st.write("Le modèle ", model_name, " a une précision par mot de", eval_df['cer'].mean(), ' pour ', eval_df.shape[0], ' mots.')
         
         
         # rd.show_words_predictions_errors(X_test, y_test, y_pred, predicted_transcriptions)
