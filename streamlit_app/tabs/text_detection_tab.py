@@ -13,8 +13,8 @@ def run():
 
     st.markdown(
         """
-        This is the third sample tab.
+        To do the text detection part, we have decided to make use of the Doctr
+        API.
         """
     )
 
-    st.write(pd.DataFrame(np.random.randn(100, 4), columns=list("ABCD")))

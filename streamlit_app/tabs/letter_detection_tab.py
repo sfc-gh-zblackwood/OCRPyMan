@@ -2,12 +2,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from PIL import Image
-import cv2
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 import math 
 from sklearn.model_selection import train_test_split
-
+import tensorflow as tf
 
 title = "Letter detection"
 sidebar_name = "Letter detection"
@@ -158,6 +157,11 @@ def run():
         )
         """
     )
+
+def load_mlp_model():
+    model = tf.keras.models.load_model('../../pickle/image_letter_counter_mlp_model')
+    # {'loss': 1.7622537994384766, 'mae': 0.96719146}
+    # Out of 200 inputs 71 OK, 91 have one letter diff, 38 more than one
 
 @st.cache(allow_output_mutation=True)
 def plot_avg_width_per_string_length(df):
