@@ -8,6 +8,8 @@ import math
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
 
+from streamlit_drawable_canvas import st_canvas
+
 title = "Letter detection"
 sidebar_name = "Letter detection"
 
@@ -156,6 +158,10 @@ def run():
             metrics=['mae']
         )
         """
+    )
+
+    st.image(
+        "../images/letter_counter_mlp_diff.png"
     )
 
 def load_mlp_model():

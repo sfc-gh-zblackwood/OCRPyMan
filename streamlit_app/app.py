@@ -5,7 +5,7 @@ import streamlit as st
 # TODO : change TITLE, TEAM_MEMBERS and PROMOTION values in config.py.
 import config
 
-from tabs import intro , pre_processing_tab, text_recognition_tab, text_detection_tab, dataset_tab, letter_detection_tab
+from tabs import intro , pre_processing_tab, text_recognition_tab, text_detection_tab, dataset_tab, letter_detection_tab, letter_detection_test_tab
 
 
 st.set_page_config(
@@ -27,6 +27,7 @@ TABS = OrderedDict(
         (intro.sidebar_name, intro),
         (dataset_tab.sidebar_name, dataset_tab),
         (pre_processing_tab.sidebar_name, pre_processing_tab),
+        (letter_detection_test_tab.sidebar_name, letter_detection_test_tab),
         (letter_detection_tab.sidebar_name, letter_detection_tab),
         (text_detection_tab.sidebar_name, text_detection_tab),
         (text_recognition_tab.sidebar_name, text_recognition_tab),
