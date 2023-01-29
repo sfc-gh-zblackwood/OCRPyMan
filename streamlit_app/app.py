@@ -5,8 +5,7 @@ import streamlit as st
 # TODO : change TITLE, TEAM_MEMBERS and PROMOTION values in config.py.
 import config
 
-# TODO : you can (and should) rename and add tabs in the ./tabs folder, and import them here.
-from tabs import intro, second_tab, third_tab
+from tabs import intro , pre_processing_tab, text_recognition_tab, text_detection_tab, dataset_tab, letter_detection_tab, letter_detection_test_tab
 
 
 st.set_page_config(
@@ -26,8 +25,12 @@ st.markdown(f"<style>{style}</style>", unsafe_allow_html=True)
 TABS = OrderedDict(
     [
         (intro.sidebar_name, intro),
-        (second_tab.sidebar_name, second_tab),
-        (third_tab.sidebar_name, third_tab),
+        (dataset_tab.sidebar_name, dataset_tab),
+        (pre_processing_tab.sidebar_name, pre_processing_tab),
+        (letter_detection_test_tab.sidebar_name, letter_detection_test_tab),
+        (letter_detection_tab.sidebar_name, letter_detection_tab),
+        (text_detection_tab.sidebar_name, text_detection_tab),
+        (text_recognition_tab.sidebar_name, text_recognition_tab),
     ]
 )
 
@@ -37,16 +40,16 @@ def run():
         "https://dst-studio-template.s3.eu-west-3.amazonaws.com/logo-datascientest.png",
         width=200,
     )
-    tab_name = st.sidebar.radio("", list(TABS.keys()), 0)
+    #TODO Uncomment to get to first page on reload
+    # tab_name = st.sidebar.radio("Menu", list(TABS.keys()), 0)
+    tab_name = st.sidebar.radio("Menu", list(TABS.keys()), 3)
     st.sidebar.markdown("---")
     st.sidebar.markdown(f"## {config.PROMOTION}")
 
     st.sidebar.markdown("### Team members:")
     for member in config.TEAM_MEMBERS:
         st.sidebar.markdown(member.sidebar_markdown(), unsafe_allow_html=True)
-
     tab = TABS[tab_name]
-
     tab.run()
 
 

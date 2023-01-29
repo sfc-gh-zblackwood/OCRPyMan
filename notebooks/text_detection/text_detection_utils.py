@@ -75,19 +75,6 @@ def find_full_img_coords(clean_df):
             [arr[2] * width, arr[3] * height], #xmax #ymax
             [arr[0] * width, arr[3] * height], #xmin #ymax
         ] for arr in det_res[0]]
-        # # Plotting for a POC
-        # fig, ax = plt.subplots()
-        # fig.set_figwidth(12)
-        # fig.set_figheight(8)
-        # fig.set_dpi(142)
-        # plt.axis('off');
-        # ax.imshow(form_img_arr, cmap='gray')
-
-        # for trans_coord in trans_coords:
-        #     polygon = Polygon(trans_coord)
-        #     ax.add_patch(polygon)
-        # # End plotting
-        # break
         doctr_coords_json[form_img_path] = trans_coords
         
     with open("doctr_coords.json", "w") as outfile:

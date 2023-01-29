@@ -5,6 +5,7 @@ import preprocessing as pp
 from matplotlib import cm
 import cv2
 import tensorflow as tf
+import streamlit as st
 
 import letter_detection_utils as ld_util
 import ressources as rss
@@ -337,18 +338,20 @@ def show_words_predictions_errors(X_test, y_test, y_pred, predicted_transcriptio
             error_indexes += [i]
 
     j = 1
-    plt.figure(figsize=(20, 10))
+    fig = plt.figure(figsize=(20, 10))
     for i in np.random.choice(error_indexes, size = 20):
         img = cv2.imread(X_test[i]) 
         # img = img.reshape(32, 128)
         
-        plt.subplot(4, 5, j)
+        fig.subplot(4, 5, j)
         j = j + 1
-        plt.axis('off')
-        plt.imshow(img, cmap=cm.binary, interpolation='None')
-        plt.title('True Label: ' + str(y_test[i]) \
+        fig.axis('off')
+        fig.imshow(img, cmap=cm.binary, interpolation='None')
+        fig.title('True Label: ' + str(y_test[i]) \
                 + '\n' + 'Prediction: '+ str(predicted_transcriptions[i])) #\
                 #   + '\n' + 'Confidence: '+ str(round(test_pred[i][test_pred_class[i]], 2)))
+    
+    st.pyplot(fig)
 
 
 def show_iterator_batch(x,y, batch_id, batch_size=64):
