@@ -63,3 +63,4 @@ def correction(word, nb_correction):
     if not word.islower() and not word.isupper(): correction = correction.capitalize()
     elif word.isupper() : correction = correction.upper()
     return correction
+    
