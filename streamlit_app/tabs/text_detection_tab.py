@@ -1,16 +1,91 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon
 
 title = "Text detection"
 sidebar_name = "Text detection"
 
+DET_CKPT = "full_img/weights"
+from doctr.io import DocumentFile
+from doctr.models import ocr_predictor
 
 def run():
 
     st.title(title)
 
+    tab1, tab2 = st.tabs(["Theory", "Model"])
+    with tab1:
+        show_theory()
+    with tab2:
+        show_model()
+
+
+def show_model():
+    uploaded_file = st.file_uploader("Choose a file")
+    if uploaded_file is not None:
+        bytes_data = uploaded_file.read()
+        filename = "bbox.png"
+        with open(filename, "wb") as binary_file:
+            # Write bytes to file
+            binary_file.write(bytes_data)
+
+        custom_model = get_custom_model()
+        custom_doc, custom_res = show_bbox_from_file(custom_model, filename)
+        custom_res.show(custom_doc)
+
+###TODO refacto
+
+def get_box_coordinates_from_geometry(geometry, img_arr = None):
+    top_point, bottom_point = geometry
+    if img_arr is None:
+        return [
+            [top_point[0], top_point[1]],
+            [bottom_point[0], top_point[1]],
+            [bottom_point[0], bottom_point[1]],
+            [top_point[0], bottom_point[1]],
+        ]
+    return [
+        [top_point[0] * img_arr.shape[1], top_point[1] * img_arr.shape[0]],
+        [bottom_point[0] * img_arr.shape[1], top_point[1] * img_arr.shape[0]],
+        [bottom_point[0] * img_arr.shape[1], bottom_point[1] * img_arr.shape[0]],
+        [top_point[0] * img_arr.shape[1], bottom_point[1] * img_arr.shape[0]],
+    ]
+
+def get_all_found_box_coordinates(result, img_arr = None):
+    return [
+            get_box_coordinates_from_geometry(word.geometry, img_arr) 
+            for page in result.pages for block in page.blocks for line in block.lines for word in line.words
+        ]
+
+def show_bbox_from_file(model, filepath):
+    custom_res = DocumentFile.from_images(filepath)
+    custom_doc = model(custom_res)
+    img_arr = plt.imread(filepath);
+
+    fig, ax = plt.subplots()
+    fig.set_figwidth(12)
+    fig.set_figheight(8)
+    fig.set_dpi(142)
+    plt.axis('off');
+
+    box_coords = get_all_found_box_coordinates(custom_doc, img_arr)
+    for box_coord in box_coords:
+        polygon = Polygon(box_coord)
+        ax.add_patch(polygon)
+                    
+    ax.imshow(img_arr, cmap='gray'); 
+    return custom_doc, custom_res
+
+###TODO END refacto
+
+
+def get_custom_model():
+    custom_model = ocr_predictor(det_arch='db_resnet50', pretrained=True)
+    custom_model.det_predictor.model.load_weights(DET_CKPT)
+
+def show_theory():
     st.markdown(
         """
         To do the text detection part, we have decided to make use of the Doctr
