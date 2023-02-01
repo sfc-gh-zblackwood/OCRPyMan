@@ -46,6 +46,7 @@ def run():
     base_10epochs = st.checkbox('With original database, 10 epochs, LR=1.e-4') 
     base_20epochs = st.checkbox('With original database, 20 epochs, LR=1.e-4')
     base_20epochs_plateau = st.checkbox('With original database, 20 epochs, LR plateau') 
+    augmented_20epochs_plateau = st.checkbox('With augmented database, 20 epochs, LR plateau') 
 
     
 
@@ -61,7 +62,9 @@ def run():
         models.append('tj_ctc_base_20epochs_LR-plateau')
         models_desc.append('Base, 20 epochs, LR plateau. PPW : 91%')
 
-    
+    if augmented_20epochs_plateau:
+        models.append('tj_ctc_augmented_20epochs_LR-plateau')
+        models_desc.append('Augmented, 20 epochs, LR plateau. PPW : 94%')
     
     show_loss(models, models_desc)
     
