@@ -10,13 +10,12 @@ from member import Member
 TITLE = "OCRpyMan"
 
 TEAM_MEMBERS = [
-    Member(
-        name="John Doe",
-        linkedin_url="https://www.linkedin.com/in/charlessuttonprofile/",
-        github_url="https://github.com/charlessutton",
-    ),
     Member("David Beda"),
-    Member("Jean-Paul Bella"),
+    Member(
+        name="Jean-Paul Bella",
+        linkedin_url="https://www.linkedin.com/in/jean-paul-bella-84986a129/",
+        github_url="https://github.com/Jpec57",
+    ),
     Member("Thibault Joassard"),
 ]
 

@@ -32,31 +32,51 @@ def run():
 
     st.markdown(
         """
-        The first step is to analyse our dataset. 
-        In the `preprocessing` notebook, we are reading the numerous files and folders in order to
-        build a dataframe out of it.
-
-        We have gathered together the information on a specific word in the context of its 
-        own form.  
+        Once, we have our dataset, we can start the pre-processing phase.
+        This step is **one of the most important step** in a datascience project.
+        In the `preprocessing` notebook, we are reading the numerous files and folders and we are
+        building a dataframe out of it.
         """
     )
 
     df_before = pd.read_pickle('../pickle/preprocessing_word_df_before.pickle')
     st.dataframe(df_before.head(5))
-    # st.write(
-    #     df_before.describe()
-    # )
 
     st.markdown(
         """
         However the dataset was far from being clean and some images were either not readable
-        or simply of poor quality. We have therefore:
-        - remove the pictures where the segmentation was faulty to be sure that our labels are correct
-        - calculate for each image the michelson contrast to filter the picture where the contrast was 0. 
+        or simply of poor quality. 
         """
     )
     show_bad_constrast_imgs()
 
+    st.subheader("Cleaning steps:")
+
+    st.markdown(
+        """
+        We have therefore:
+        - removed the pictures where the segmentation was faulty to be sure that our labels/targets are correct
+        - calculated for each image the michelson contrast to filter the picture where the contrast was 0; indicating either a dot 
+        or a badly parsed image.
+
+        We have also gathered together the information we have on a specific word in the context of its 
+        own form.  
+        """
+    )
+    st.code(
+    """
+    def get_michelson_contrast(img_path):
+        try:
+            img = cv2.imread(img_path)
+            Y = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)[:,:,0]
+        except Exception:
+            return -1
+        min = int(np.min(Y))
+        max = int(np.max(Y))
+        if min == 0 and max == 0:
+            return 0 
+        return ((max - min) / (min + max))
+    """, language="python")
 
     df = pd.read_pickle('../pickle/df.pickle')
     st.markdown(
@@ -66,38 +86,22 @@ def run():
 
     st.markdown(
         """
-        Now, we can take a look at th
+        Now, we can take a look at a few images from our cleaned dataset.
         """
     )
 
-    # chart_data = pd.DataFrame(np.random.randn(20, 3), columns=list("abc"))
-    # st.line_chart(chart_data)
+    show_cleaned_imgs(df)
 
-    # st.markdown(
-    #     """
-    #     ## Test 2
-    #     The dataset is not perfect and some pictures were not 
 
-    #     """
-    # )
-
-    # st.area_chart(chart_data)
-
-    # st.markdown(
-    #     """
-    #     ## Test 3
-
-    #     You can also display images using [Pillow](https://pillow.readthedocs.io/en/stable/index.html).
-
-    #     ```python
-    #     import streamlit as st
-    #     from PIL import Image
-
-    #     st.image(Image.open("assets/sample-image.jpg"))
-
-    #     ```
-
-    #     """
-    # )
-
-    # st.image(Image.open("assets/sample-image.jpg"))
+def show_cleaned_imgs(df):
+    nb_rows = 2
+    nb_cols = 3
+    fig, axs = plt.subplots(nb_rows, nb_cols)
+    for i in range(0, nb_rows):
+        for j in range(0, nb_cols):
+            path = df.iloc[i + nb_cols * j].word_img_path[3:]
+            ax = axs[i, j]
+            img = plt.imread('../' + path)
+            ax.axis('off')
+            ax.imshow(img, cmap='gray')
+    st.pyplot(fig)
