@@ -12,6 +12,7 @@ import random
 import sys
 import string
 from sklearn.model_selection import train_test_split
+from sklearn.utils  import shuffle 
 
 import ressources as rss
 import preprocessing as pp
@@ -28,7 +29,7 @@ def get_dataset(canny = False, augmented = False):
 
     if canny:
         df['word_img_path'] = df['word_img_path'].apply(lambda x : '../data/canny/' + x.split('/')[-1])  # toutes les images au format canny seront stockées dans ce dossier
-        # X_train, X_test, y_train, y_test = train_test_split(df['canny_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
+
     elif augmented:
         # parcours des images générées artificiellement
         generated_images_path = '../data/generated/'
@@ -36,10 +37,21 @@ def get_dataset(canny = False, augmented = False):
         transcripts = [x.split('_')[-1][:-4] for x in generated_images]  # le nom de fichier contient la transcription
         # ajout au dataframe
         augmented_df = pd.DataFrame(list(zip(generated_images, transcripts)), columns=['word_img_path', 'transcription'])
-        df = pd.concat([df,augmented_df], axis=0)
+        
+        # Split features / target
+        X_train_aug = augmented_df['word_img_path'].to_numpy()
+        y_train_aug = augmented_df['transcription'].to_numpy()
             
     
     X_train, X_test, y_train, y_test = train_test_split(df['word_img_path'].values, df['transcription'].values, test_size=0.1, random_state=42)
+    
+    #Ajout des mots générés pour l'entrainement uniquement
+    if augmented:
+        X_train = np.concatenate((X_train, X_train_aug))
+        y_train = np.concatenate((y_train, y_train_aug))
+
+        X_train, y_train = shuffle(X_train, y_train)
+        
         
     dataset_train = tf.data.Dataset.from_tensor_slices((X_train, y_train))
     dataset_test = tf.data.Dataset.from_tensor_slices((X_test, y_test))
