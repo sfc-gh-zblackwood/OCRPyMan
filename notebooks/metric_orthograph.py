@@ -5,6 +5,8 @@ from collections import Counter
 import letter_detection_utils as ld_util
 import ressources as rss
 
+WORDS = Counter(words(open('../ressources/english_words/big.txt').read()))
+
 # Fonction de metrique des prédictions
 
 def metric(y_test, predicted_transcriptions, nb_correction):
@@ -29,8 +31,6 @@ def metric(y_test, predicted_transcriptions, nb_correction):
 # GROUPE de fonctions pour la correction orthographique
 
 def words(text): return re.findall(r'\w+', text.lower())
-
-WORDS = Counter(words(open('../data/english_words/big.txt').read()))
 
 def P(word, N=sum(WORDS.values())): return WORDS[word] / N
 
@@ -63,4 +63,3 @@ def correction(word, nb_correction):
     if not word.islower() and not word.isupper(): correction = correction.capitalize()
     elif word.isupper() : correction = correction.upper()
     return correction
-    
