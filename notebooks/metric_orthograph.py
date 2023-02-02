@@ -7,7 +7,6 @@ import ressources as rss
 
 WORDS = Counter(words(open('../ressources/english_words/big.txt').read()))
 
-
 # Fonction de metrique des prédictions
 
 def metric(y_test, predicted_transcriptions, nb_correction):
