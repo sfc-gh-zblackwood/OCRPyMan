@@ -86,6 +86,22 @@ def run():
 
     st.markdown(
         """
-        Now, we can take a look at th
+        Now, we can take a look at a few images from our cleaned dataset.
         """
     )
+
+    show_cleaned_imgs(df)
+
+
+def show_cleaned_imgs(df):
+    nb_rows = 2
+    nb_cols = 3
+    fig, axs = plt.subplots(nb_rows, nb_cols)
+    for i in range(0, nb_rows):
+        for j in range(0, nb_cols):
+            path = df.iloc[i + nb_cols * j].word_img_path[3:]
+            ax = axs[i, j]
+            img = plt.imread('../' + path)
+            ax.axis('off')
+            ax.imshow(img, cmap='gray')
+    st.pyplot(fig)

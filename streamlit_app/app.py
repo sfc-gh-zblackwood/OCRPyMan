@@ -1,12 +1,10 @@
 from collections import OrderedDict
 
 import streamlit as st
-
-# TODO : change TITLE, TEAM_MEMBERS and PROMOTION values in config.py.
+ 
 import config
 
-from tabs import intro , pre_processing_tab, text_recognition_tab, text_detection_tab, dataset_tab, letter_detection_tab, letter_detection_test_tab
-
+from tabs import intro ,pre_processing_tab, text_recognition_tab, text_detection_tab, dataset_tab, letter_detection_tab
 
 st.set_page_config(
     page_title=config.TITLE,
@@ -27,7 +25,6 @@ TABS = OrderedDict(
         (intro.sidebar_name, intro),
         (dataset_tab.sidebar_name, dataset_tab),
         (pre_processing_tab.sidebar_name, pre_processing_tab),
-        (letter_detection_test_tab.sidebar_name, letter_detection_test_tab),
         (letter_detection_tab.sidebar_name, letter_detection_tab),
         (text_detection_tab.sidebar_name, text_detection_tab),
         (text_recognition_tab.sidebar_name, text_recognition_tab),
@@ -40,8 +37,6 @@ def run():
         "https://dst-studio-template.s3.eu-west-3.amazonaws.com/logo-datascientest.png",
         width=200,
     )
-    #TODO Uncomment to get to first page on reload
-    # tab_name = st.sidebar.radio("Menu", list(TABS.keys()), 0)
     tab_name = st.sidebar.radio("Menu", list(TABS.keys()), 3)
     st.sidebar.markdown("---")
     st.sidebar.markdown(f"## {config.PROMOTION}")

@@ -83,3 +83,17 @@ section[tabindex="0"] .block-container {
   padding-top: 0px;
   padding-bottom: 0px;
 }
+
+:root {
+  background: #76797f;
+}
+
+
+section.main {
+  background: rgb(43 50 64) ;
+}
+
+.st-cc {
+  background: grey;
+  padding: 1rem;
+}

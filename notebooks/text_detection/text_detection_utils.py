@@ -327,3 +327,23 @@ def show_img_with_prediction_and_iou(custom_model, clean_df, form_id):
     for red in ground_truth_polygons:
         plt.plot(*red.exterior.xy, color='r')
     plt.title(f"Form {form_id} with IoU {iou:.2f}")
+
+
+def show_bbox_from_file(model, filepath):
+    custom_res = DocumentFile.from_images(filepath)
+    custom_doc = model(custom_res)
+    img_arr = plt.imread(filepath);
+
+    fig, ax = plt.subplots()
+    fig.set_figwidth(12)
+    fig.set_figheight(8)
+    fig.set_dpi(142)
+    plt.axis('off');
+
+    box_coords = get_all_found_box_coordinates(custom_doc, img_arr)
+    for box_coord in box_coords:
+        polygon = Polygon(box_coord)
+        ax.add_patch(polygon)
+                    
+    ax.imshow(img_arr, cmap='gray'); 
+    return custom_doc, custom_res
