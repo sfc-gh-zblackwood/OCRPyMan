@@ -4,6 +4,10 @@ from collections import Counter
 
 import letter_detection_utils as ld_util
 import ressources as rss
+from autocorrect import Speller   # https://github.com/filyp/autocorrect
+
+
+def words(text): return re.findall(r'\w+', text.lower())
 
 WORDS = Counter(words(open('../ressources/english_words/big.txt').read()))
 
@@ -30,7 +34,7 @@ def metric(y_test, predicted_transcriptions, nb_correction):
 
 # GROUPE de fonctions pour la correction orthographique
 
-def words(text): return re.findall(r'\w+', text.lower())
+
 
 def P(word, N=sum(WORDS.values())): return WORDS[word] / N
 
@@ -63,3 +67,24 @@ def correction(word, nb_correction):
     if not word.islower() and not word.isupper(): correction = correction.capitalize()
     elif word.isupper() : correction = correction.upper()
     return correction
+
+
+def ortho_corrector_liste(predicted_transcriptions = '', nb_correction=1):
+
+    fixed_transcriptions=[]
+
+    for i in range(len(predicted_transcriptions)):
+        fixed_transcriptions.append(mo.correction(predicted_transcriptions[i], nb_correction))
+        
+    return fixed_transcriptions
+
+# Utilise la librairie "autocorrect" 
+def autocorrect_liste(words):
+    spell = Speller(lang='en')    # , only_replacements=True
+    fixed_words = []
+    
+    for word in words:
+        tmp_word = spell(word) if len(word)>2 else word
+        fixed_words.append(tmp_word)
+    
+    return fixed_words

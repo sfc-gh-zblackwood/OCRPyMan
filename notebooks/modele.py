@@ -1,9 +1,12 @@
 import tensorflow as tf
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 from tensorflow.keras.layers import GRU, Bidirectional, Dense, Lambda
 from tensorflow.keras.layers import Conv2D, BatchNormalization, MaxPooling2D, LeakyReLU, Dropout
 
+import letter_detection_utils as ld_util
 
 # fonction de perte utilisée à l'entrainement du modele
 class CTCLoss(tf.keras.losses.Loss):
@@ -122,11 +125,23 @@ def create_modele():
 
 
 def show_loss(history):
-    plt.figure(figsize=(12,4))
+    ax = plt.figure(figsize=(12,4))
     plt.plot(history['loss'])
     plt.plot(history['val_loss'])
     plt.title('Model loss by epoch')
     plt.ylabel('loss')
     plt.xlabel('epoch')
     plt.legend(['train', 'test'], loc='right')
+    plt.grid(axis='y', which='minor')
+    plt.minorticks_on()
     plt.show();
+    
+def evaluate_prediction(target, predictions):
+    eval_data = list(zip(target, predictions))
+
+    eval_df = pd.DataFrame(data=np.array(eval_data), columns=['real', 'predicted'])
+    eval_df.head(10)
+
+    eval_df['cer'] = [ld_util.evaluate_character_level_accuracy(row.real, row.predicted) for index, row in eval_df.iterrows()]
+
+    print("Notre modèle a une précision par mot de", eval_df['cer'].mean(), ' pour ', eval_df.shape[0], ' mots.')
