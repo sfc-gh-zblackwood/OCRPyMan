@@ -7,14 +7,12 @@ from matplotlib.patches import Polygon
 title = "Text detection"
 sidebar_name = "Text detection"
 
-DET_CKPT = "full_img/weights"
+DET_CKPT = "../notebooks/text_detection/full_img/weights"
 from doctr.io import DocumentFile
 from doctr.models import ocr_predictor
 
 def run():
-
     st.title(title)
-
     tab1, tab2 = st.tabs(["Theory", "Model"])
     with tab1:
         show_theory()

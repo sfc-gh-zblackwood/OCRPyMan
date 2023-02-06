@@ -4,3 +4,5 @@ text_detection_train/images/
 text_detection_train/full_images/
 text_detection_val/images/
 text_detection_val/full_images/
+preprocessed_imgs/
+preprocessed_form_imgs/

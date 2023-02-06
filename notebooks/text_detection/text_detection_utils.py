@@ -6,10 +6,10 @@ import xml.etree.ElementTree as ET
 import numpy as np
 import hashlib
 import matplotlib.patches as patches
-from matplotlib.patches import Polygon
+# from matplotlib.patches import Polygon
 import pandas as pd
 import json 
-from shapely.geometry import box
+from shapely.geometry import box, Polygon
 from typing import List, Tuple
 
 IMG_DIM_ATTR_LABEL = 'img_dimensions'
@@ -158,16 +158,15 @@ def plot_img_with_polygons(key, data):
     filepath = "text_detection_train/images/" + key
 
     fig, ax = plt.subplots()
-    fig.set_figwidth(12)
-    fig.set_figheight(8)
-    fig.set_dpi(142)
+    # fig.set_figwidth(12)
+    # fig.set_figheight(8)
+    # fig.set_dpi(142)
     plt.axis('off')
+    ax.imshow(plt.imread(filepath), cmap='gray')
     for polygon_data in data['polygons']:
-        polygon = Polygon(polygon_data)
-        ax.add_patch(polygon)
-    plt.imshow(plt.imread(filepath), cmap='gray')
-    for x, y in data['polygons'][0]:
-        plt.plot(x, y)
+        x = np.array(polygon_data)[:,0] + polygon_data[0][0]
+        y = np.array(polygon_data)[:,1] + polygon_data[0][1]
+        ax.plot(x, y, color='red')
     plt.show()
 
 
