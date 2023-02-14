@@ -23,6 +23,7 @@ import preprocessing as pp
 def get_dataset(canny = False, augmented = False):    
     
     df = pd.read_pickle('../pickle/df.pickle')
+    
     # on filtre les chaines vides et les caractères inconnus (TODO à déplacer dans le preprocess du dataframe?)
     df['clean_trans'] = df.transcription.apply(lambda x: extract_allowed_chars_from_string(rss.charList, x))
     df = df[(df['clean_trans'] != "") & (df['clean_trans'] == df['transcription'])]
@@ -65,6 +66,7 @@ def get_dataset(canny = False, augmented = False):
         
         # pour debug :
         # img, y = tf.py_function(process_1_img_canny, [x, y], [tf.float32, tf.string])    
+    
     else:
         dataset_train = dataset_train.map(process_1_img)
         dataset_test = dataset_test.map(process_1_img)
@@ -77,25 +79,67 @@ def get_dataset(canny = False, augmented = False):
     
     
     # DEBUG :
-    # for x,y in dataset:
-    #     process_trancription(x,y)
-    #     # print(x.numpy())
+    # for x,y in dataset_train:
+    #     # process_trancription(x,y)
+    #     print(x.numpy())
     #     # print(y)
     #     break
     
     # on renvoie aussi X_test, y_test car ils seront utilisés plus tard pour des comparaisons (à revoir!)
     return dataset_train, dataset_test, X_test, y_test
 
+# Genere un dataset a partir des chemins des formulaire et des coordonnées des mots
+def get_dataset_for_prediction(debug=False, data=None):    
+            
+    #DEBUG
+    if debug:
+        df = pd.read_pickle('../pickle/df.pickle')    
+        # on filtre les chaines vides et les caractères inconnus (TODO à déplacer dans le preprocess du dataframe?)
+        df['clean_trans'] = df.transcription.apply(lambda x: extract_allowed_chars_from_string(rss.charList, x))
+        df = df[(df['clean_trans'] != "") & (df['clean_trans'] == df['transcription'])]
+        df = df.head(20)    
+        
+        print(df['clean_trans'])
+        for i in range(20):           
+            # print('plouf', df.at[i,'form_img_path_y'], df.at[i,'y'], df.at[i,'x'], df.at[i,'h'], df.at[i,'w'])
+            img = load_image_from_form(df.at[i,'form_img_path_y'], df.at[i,'y'], df.at[i,'x'], df.at[i,'h'], df.at[i,'w'])
+            img = preprocess(img, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)
+            plt.imshow(img ,cmap='gray')
+            plt.show()
 
+        
+    
+    dataset_test = tf.data.Dataset.from_tensor_slices((df['form_img_path_y'], df['y'], df['x'], df['h'], df['w']))
 
-# @tf.function
+    dataset_test = dataset_test.map(process_1_img_from_form)
+    dataset_test = dataset_test.batch(5)
+
+    # DEBUG :
+    # for x in dataset_test:
+    #     # print('paf:', x)
+    #     process_1_img_from_form(x)
+    #     break
+    
+    return dataset_test
+
+@tf.function
 def process_1_img(x, y):
     path = x
-              
-    img = preprocess(path, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)
+     
+    img = load_image(path)       
+    img = preprocess(img, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)
 
     return img, y
 
+@tf.function
+def process_1_img_from_form(form_path, offset_height, offset_width, target_height, target_width):
+   
+    img = load_image_from_form(form_path, offset_height, offset_width, target_height, target_width)              
+    img = preprocess(img, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)
+        
+    return img
+
+    
 # @tf.function
 def process_1_img_canny(x, y):
     
@@ -115,8 +159,8 @@ def process_1_img_canny(x, y):
         
     # except :
     #     print("Unexpected error:", sys.exc_info()[0])
-    
-    img = preprocess(x, img_size=rss.img_size,  data_augmentation=True, is_threshold=True, with_edge_detection=True)  
+    img = load_image(x) 
+    img = preprocess(img, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)  
     return img, y
 
 
@@ -126,6 +170,12 @@ def load_image(filepath):
     im = tf.image.decode_png(im, channels=0)
     return im
 
+@tf.function
+def load_image_from_form(filepath, offset_height, offset_width, target_height, target_width):
+    im = tf.io.read_file(filepath)
+    im = tf.image.decode_png(im, channels=0)
+    im = tf.image.crop_to_bounding_box(im, tf.cast(offset_height, tf.int32), tf.cast(offset_width, tf.int32), tf.cast(target_height, tf.int32), tf.cast(target_width, tf.int32))
+    return im
 
 ### Specific methods
 
@@ -190,7 +240,8 @@ def process_df_img(df, img_size = (32, 128), with_edge_detection=True):
 
           
         try:
-            new_row = preprocess(path, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
+            img = load_image(path) 
+            new_row = preprocess(img, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
             new_row = new_row.reshape(-1)
             data = np.append(data, [new_row], axis=0)
         except :
@@ -258,14 +309,12 @@ def upper_lower(string):
           'Upper case characters = %s' %upper)
 
 @tf.function
-def preprocess(filepath, img_size=(32, 128), data_augmentation=False, scale=0.8, is_threshold=False, with_edge_detection=False):
-    img = load_image(filepath)/255 # To work with values between 0 and 1
-    ### Ajout TJ
-    # img = tf.transpose(img, [1, 0, 2])  # np.swapaxes(img, 0, 1)    
-    if with_edge_detection:
-        padding_value = 0
-    else:
-        padding_value = 1
+def preprocess(img, img_size=(32, 128), data_augmentation=False, scale=0.8, is_threshold=False):
+    # img = load_image(path)/255  
+    
+    img = img/255  # load_image(filepath)/255 # To work with values between 0 and 1
+    
+    padding_value = 1
     #####
     img_original_size = tf.shape(img)
 

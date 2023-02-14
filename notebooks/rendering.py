@@ -303,7 +303,8 @@ def show_df_form_img(df, row_index):
 
 def show_preprocess_img_from_df(df, row_index, img_size = (32, 128)):
     row = df.iloc[row_index]
-    new_row = ld_util.preprocess(row.word_img_path, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
+    img = ld_util.load_image(row.word_img_path) 
+    new_row = ld_util.preprocess(img, img_size=img_size,  data_augmentation=True, is_threshold=True).numpy()
     plt.title(row.transcription + ' [' + str(row.length) + ']')
     plt.imshow(new_row, cmap='gray');
     plt.axis('off');
