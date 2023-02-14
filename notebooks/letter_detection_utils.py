@@ -89,7 +89,8 @@ def get_dataset(canny = False, augmented = False):
     return dataset_train, dataset_test, X_test, y_test
 
 # Genere un dataset a partir des chemins des formulaire et des coordonnées des mots
-def get_dataset_for_prediction(debug=False, data=None):    
+# Si debug, alors on charge les données d'origines, sinon on charge les données fournies avec file_path et coords
+def get_dataset_for_prediction(debug=False, file_path='', coords=None):    
             
     #DEBUG
     if debug:
@@ -107,9 +108,11 @@ def get_dataset_for_prediction(debug=False, data=None):
             plt.imshow(img ,cmap='gray')
             plt.show()
 
-        
+        dataset_test = tf.data.Dataset.from_tensor_slices((df['form_img_path_y'], df['y'], df['x'], df['h'], df['w']))
     
-    dataset_test = tf.data.Dataset.from_tensor_slices((df['form_img_path_y'], df['y'], df['x'], df['h'], df['w']))
+    else:  # Cas "normal"    
+        coords['file_path'] = file_path
+        dataset_test = tf.data.Dataset.from_tensor_slices((coords['file_path'], coords['y'], coords['x'], coords['h'], coords['w']))
 
     dataset_test = dataset_test.map(process_1_img_from_form)
     dataset_test = dataset_test.batch(5)
