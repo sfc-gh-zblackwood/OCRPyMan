@@ -2,6 +2,9 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from pathlib import Path
+import os
+import pickle
 
 from doctr.models import ocr_predictor
 from doctr.io import DocumentFile
@@ -198,20 +201,36 @@ def load_text_detection_model():
     straight_model.det_predictor.model.load_weights(DET_CKPT)
     return straight_model
 
-def make_ocr(text_detection_model, recognition_model, img_path, with_display = False):
-    # text_detection_model = load_text_detection_model()
-    doc = DocumentFile.from_images(img_path)
+def make_ocr(text_detection_model, recognition_model, img_path, with_display = False, with_caching=True):
+    if with_caching: 
+        basename = os.path.basename(img_path)
+        basename = basename.rsplit( ".", 1 )[0]
+        full_cache_dir = './ocr_cache/' + basename + '/'
 
     img_arr = load_image(img_path)
     img_size = (img_arr.shape[0], img_arr.shape[1])
-    doctr_bboxes = text_detection_model.det_predictor(doc)[0]
+
+    has_boxes_cached = False
+    if with_caching:
+        if not os.path.isdir(full_cache_dir):
+            os.makedirs(full_cache_dir)
+        if os.path.isfile(full_cache_dir + 'boxes.pickle'):
+            with open(full_cache_dir + 'boxes.pickle', 'rb') as box_pickle:
+                doctr_bboxes = pickle.load(box_pickle)
+                has_boxes_cached = True
+
+    if not has_boxes_cached:
+        doc = DocumentFile.from_images(img_path)
+        doctr_bboxes = text_detection_model.det_predictor(doc)[0]
+        if with_caching:
+            with open(full_cache_dir + 'boxes.pickle', 'wb') as pickle_fp:
+                pickle.dump(doctr_bboxes, pickle_fp)
+
+
     bounding_boxes = format_bounding_boxes(doctr_bboxes, (1,1))
     bounding_boxes_xyhw = format_bounding_boxes_xyhw(doctr_bboxes, img_size)
 
-    box_texts = []
-
-    # recognition_model = tf.keras.models.load_model("../pickle/tj_ctc_augmented_20epochs_LR-plateau", custom_objects={"CTCLoss": mdl.CTCLoss})
-    
+    box_texts = []    
     # https://www.tensorflow.org/api_docs/python/tf/image/crop_and_resize
     word_imgs = tf.image.crop_and_resize(
         tf.expand_dims(img_arr, 0),
@@ -220,47 +239,32 @@ def make_ocr(text_detection_model, recognition_model, img_path, with_display = F
         box_indices=[0 for i in range(len(bounding_boxes))] # We are always using the same img
     )
     
-    # DEBUG
-    # print("size :", img_size)
-    # print("coords 0:", *bounding_boxes[0])
-    # print("coords 1:", *bounding_boxes_xyhw[0])
-    
-    ### TENTATIVE  D'ORDRE SUR LES BOXES (les lignes font grosso modo 50 de hauteur, mais il faudrait le calculer)
-    bbox_list_sorted = sorted(bounding_boxes_xyhw, key=lambda bbox: (bbox[1]//50, bbox[0]))
-    
-    #######
-    
-    
     ### TEST AVEC NOTRE FONCTION PREPROCESS ###
-    #TODO : virer cette fake premiere itération en utilisant un tensor vide?    word_imgs_prepro = tf.zeros([1, 128, 32, 1]) ?
-    img = ld_util.process_1_img_from_form(img_path, *bbox_list_sorted[0])
-    img = tf.expand_dims([img], -1)
-    img = tf.squeeze(img, [3])
-    word_imgs_prepro = img
+    word_imgs_prepro = tf.zeros([1, 32, 128, 1])
     
-    for i in range(1,len(word_imgs)):
-        img = ld_util.process_1_img_from_form(img_path, *bbox_list_sorted[i])
+    for i in range(len(word_imgs)):
+        img = ld_util.process_1_img_from_form(img_path, *bounding_boxes_xyhw[i])
         img = tf.expand_dims([img], -1)
         img = tf.squeeze(img, [3])
         word_imgs_prepro = tf.concat([word_imgs_prepro, img], 0)
-    ######################################
     
     box_text_probs = recognition_model.predict(word_imgs_prepro) 
-    box_text = ld_util.greedy_decoder(box_text_probs, rss.charList)
+    box_texts = ld_util.greedy_decoder(box_text_probs, rss.charList)[1:]
     
-    # Ajout de la correction ortho
-    box_text_fixed = mo.autocorrect_liste(box_text)
-    
-    box_texts.append(box_text_fixed)
-    
+    # # Ajout de la correction ortho
+    corrected_box_texts = mo.autocorrect_liste(box_texts)
+        
 
     if with_display: 
+        plt.figure(figsize=(20, 10))
         plt.imshow(img_arr, cmap='gray')
-        for bounding_box in bounding_boxes_xyhw:
+        i = 0 
+        for i, bounding_box in enumerate(bounding_boxes_xyhw):
             x = bounding_box[0]
             y = bounding_box[1]
             h = bounding_box[2]
             w = bounding_box[3]
+            plt.text(x, y, corrected_box_texts[i])
             plt.plot([x, x+w, x+w, x, x], [y, y, y+h, y+h, y])
         plt.show()
 
