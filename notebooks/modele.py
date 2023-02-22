@@ -11,6 +11,7 @@ from tensorflow.keras.layers import Conv2D, BatchNormalization, MaxPooling2D, Le
 
 import letter_detection_utils as ld_util
 import ressources as rss
+import metric_orthograph as mo
 
 # fonction de perte utilisée à l'entrainement du modele
 class CTCLoss(tf.keras.losses.Loss):
@@ -224,16 +225,21 @@ def make_ocr(text_detection_model, recognition_model, img_path, with_display = F
     # print("coords 0:", *bounding_boxes[0])
     # print("coords 1:", *bounding_boxes_xyhw[0])
     
+    ### TENTATIVE  D'ORDRE SUR LES BOXES (les lignes font grosso modo 50 de hauteur, mais il faudrait le calculer)
+    bbox_list_sorted = sorted(bounding_boxes_xyhw, key=lambda bbox: (bbox[1]//50, bbox[0]))
+    
+    #######
+    
     
     ### TEST AVEC NOTRE FONCTION PREPROCESS ###
     #TODO : virer cette fake premiere itération en utilisant un tensor vide?    word_imgs_prepro = tf.zeros([1, 128, 32, 1]) ?
-    img = ld_util.process_1_img_from_form(img_path, *bounding_boxes_xyhw[0])
+    img = ld_util.process_1_img_from_form(img_path, *bbox_list_sorted[0])
     img = tf.expand_dims([img], -1)
     img = tf.squeeze(img, [3])
     word_imgs_prepro = img
     
     for i in range(1,len(word_imgs)):
-        img = ld_util.process_1_img_from_form(img_path, *bounding_boxes_xyhw[i])
+        img = ld_util.process_1_img_from_form(img_path, *bbox_list_sorted[i])
         img = tf.expand_dims([img], -1)
         img = tf.squeeze(img, [3])
         word_imgs_prepro = tf.concat([word_imgs_prepro, img], 0)
@@ -241,7 +247,12 @@ def make_ocr(text_detection_model, recognition_model, img_path, with_display = F
     
     box_text_probs = recognition_model.predict(word_imgs_prepro) 
     box_text = ld_util.greedy_decoder(box_text_probs, rss.charList)
-    box_texts.append(box_text)
+    
+    # Ajout de la correction ortho
+    box_text_fixed = mo.autocorrect_liste(box_text)
+    
+    box_texts.append(box_text_fixed)
+    
 
     if with_display: 
         plt.imshow(img_arr, cmap='gray')
