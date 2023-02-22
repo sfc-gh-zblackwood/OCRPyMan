@@ -201,31 +201,12 @@ def load_text_detection_model():
     straight_model.det_predictor.model.load_weights(DET_CKPT)
     return straight_model
 
-def make_ocr(text_detection_model, recognition_model, img_path, with_display = False, with_caching=True):
-    if with_caching: 
-        basename = os.path.basename(img_path)
-        basename = basename.rsplit( ".", 1 )[0]
-        full_cache_dir = './ocr_cache/' + basename + '/'
-
+def make_ocr(text_detection_model, recognition_model, img_path, with_display = False):
     img_arr = load_image(img_path)
     img_size = (img_arr.shape[0], img_arr.shape[1])
 
-    has_boxes_cached = False
-    if with_caching:
-        if not os.path.isdir(full_cache_dir):
-            os.makedirs(full_cache_dir)
-        if os.path.isfile(full_cache_dir + 'boxes.pickle'):
-            with open(full_cache_dir + 'boxes.pickle', 'rb') as box_pickle:
-                doctr_bboxes = pickle.load(box_pickle)
-                has_boxes_cached = True
-
-    if not has_boxes_cached:
-        doc = DocumentFile.from_images(img_path)
-        doctr_bboxes = text_detection_model.det_predictor(doc)[0]
-        if with_caching:
-            with open(full_cache_dir + 'boxes.pickle', 'wb') as pickle_fp:
-                pickle.dump(doctr_bboxes, pickle_fp)
-
+    doc = DocumentFile.from_images(img_path)
+    doctr_bboxes = text_detection_model.det_predictor(doc)[0]
 
     bounding_boxes = format_bounding_boxes(doctr_bboxes, (1,1))
     bounding_boxes_xyhw = format_bounding_boxes_xyhw(doctr_bboxes, img_size)
@@ -256,7 +237,7 @@ def make_ocr(text_detection_model, recognition_model, img_path, with_display = F
         
 
     if with_display: 
-        plt.figure(figsize=(20, 10))
+        plt.figure(figsize=(20, 15))
         plt.imshow(img_arr, cmap='gray')
         i = 0 
         for i, bounding_box in enumerate(bounding_boxes_xyhw):
