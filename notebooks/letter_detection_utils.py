@@ -177,7 +177,7 @@ def load_image(filepath):
 def load_image_from_form(filepath, offset_height, offset_width, target_height, target_width):
     im = tf.io.read_file(filepath)
     im = tf.image.decode_png(im, channels=0)
-    im = tf.image.crop_to_bounding_box(im, tf.cast(offset_height, tf.int32), tf.cast(offset_width, tf.int32), tf.cast(target_height, tf.int32), tf.cast(target_width, tf.int32))
+    im = tf.image.crop_to_bounding_box(im, tf.cast(offset_width, tf.int32), tf.cast(offset_height, tf.int32), tf.cast(target_height, tf.int32), tf.cast(target_width, tf.int32))
     return im
 
 ### Specific methods
