@@ -201,7 +201,15 @@ def load_text_detection_model():
     straight_model.det_predictor.model.load_weights(DET_CKPT)
     return straight_model
 
-def make_ocr(text_detection_model, recognition_model, img_path, with_display = False):
+def make_ocr(
+        text_detection_model, 
+        recognition_model,
+        img_path, 
+        with_display = True, 
+        with_preprocessing=True,
+        with_correction = True,
+        figsize = (20, 15)
+    ):
     img_arr = load_image(img_path)
     img_size = (img_arr.shape[0], img_arr.shape[1])
 
@@ -220,24 +228,28 @@ def make_ocr(text_detection_model, recognition_model, img_path, with_display = F
         box_indices=[0 for i in range(len(bounding_boxes))] # We are always using the same img
     )
     
-    ### TEST AVEC NOTRE FONCTION PREPROCESS ###
     word_imgs_prepro = tf.zeros([1, 32, 128, 1])
-    
     for i in range(len(word_imgs)):
-        img = ld_util.process_1_img_from_form(img_path, *bounding_boxes_xyhw[i])
-        img = tf.expand_dims([img], -1)
-        img = tf.squeeze(img, [3])
+        if with_preprocessing:
+            img = ld_util.process_1_img_from_form(img_path, *bounding_boxes_xyhw[i])
+            img = tf.expand_dims([img], -1)
+            img = tf.squeeze(img, [3])
+        else:
+            img = word_imgs[i] / 255
         word_imgs_prepro = tf.concat([word_imgs_prepro, img], 0)
-    
+    # Removing extra img due to initialization
+    word_imgs_prepro = word_imgs_prepro[1:]
+
     box_text_probs = recognition_model.predict(word_imgs_prepro) 
-    box_texts = ld_util.greedy_decoder(box_text_probs, rss.charList)[1:]
+    box_texts = ld_util.greedy_decoder(box_text_probs, rss.charList)
     
     # # Ajout de la correction ortho
-    corrected_box_texts = mo.autocorrect_liste(box_texts)
+    if with_correction:
+        box_texts = mo.autocorrect_liste(box_texts)
         
 
     if with_display: 
-        plt.figure(figsize=(20, 15))
+        plt.figure(figsize=figsize)
         plt.imshow(img_arr, cmap='gray')
         i = 0 
         for i, bounding_box in enumerate(bounding_boxes_xyhw):
@@ -245,7 +257,7 @@ def make_ocr(text_detection_model, recognition_model, img_path, with_display = F
             y = bounding_box[1]
             h = bounding_box[2]
             w = bounding_box[3]
-            plt.text(x, y, corrected_box_texts[i])
+            plt.text(x, y, box_texts[i])
             plt.plot([x, x+w, x+w, x, x], [y, y, y+h, y+h, y])
         plt.show()
 
