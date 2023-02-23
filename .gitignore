@@ -171,3 +171,4 @@ hs_err_*
 
 notebooks/text_recognition/tmp_model
 
+dev_*
