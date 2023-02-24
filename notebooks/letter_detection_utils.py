@@ -71,10 +71,10 @@ def get_dataset(canny = False, augmented = False):
         dataset_train = dataset_train.map(process_1_img)
         dataset_test = dataset_test.map(process_1_img)
         
-    dataset_train = dataset_train.batch(64)
+    dataset_train = dataset_train.batch(32)
     dataset_train = dataset_train.map(process_trancription)
     
-    dataset_test = dataset_test.batch(64)
+    dataset_test = dataset_test.batch(32)
     dataset_test = dataset_test.map(process_trancription)
     
     
