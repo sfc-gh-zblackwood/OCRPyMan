@@ -134,34 +134,27 @@ def process_1_img(x, y):
 
     return img, y
 
+# crop une image numpy array
+def crop_image(img):
+    mask = img!=1
+    mask = mask.any(2)
+    mask0,mask1 = mask.any(0),mask.any(1)
+    return img[np.ix_(mask1,mask0)]
+
 @tf.function
-def process_1_img_from_form(form_path, offset_height, offset_width, target_height, target_width):
+def process_1_img_from_form(form_path, offset_height, offset_width, target_height, target_width, data_augmentation=False):
    
-    img = load_image_from_form(form_path, offset_height, offset_width, target_height, target_width)              
-    img = preprocess(img, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)
+    img = load_image_from_form(form_path, offset_height, offset_width, target_height, target_width)     
+    img = crop_image(img.numpy())      
+    img = preprocess(img, img_size=rss.img_size,  data_augmentation=data_augmentation, is_threshold=True)
         
     return img
 
     
-# @tf.function
+@tf.function
 def process_1_img_canny(x, y):
     
-    # path_tmp = ''
-    # path= ''
-    
-    # path = x #.numpy().decode('utf-8')
-    # file_name = path.split('/')[-1]
-    # path_tmp = '../data/canny/' + file_name  # toutes les images au format canny seront stockées dans ce dossier
 
-    # if not os.path.exists(path_tmp):
-    #     image = cv2.imread(path) 
-    #     edged = cv2.Canny(image, 30, 200)
-    #     cv2.imwrite(path_tmp, edged)
-    # path = path_tmp
-                
-        
-    # except :
-    #     print("Unexpected error:", sys.exc_info()[0])
     img = load_image(x) 
     img = preprocess(img, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)  
     return img, y
