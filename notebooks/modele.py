@@ -132,11 +132,11 @@ def create_modele():
     return model
 
 
-def show_loss(history):
+def show_loss(history, text = ''):
     ax = plt.figure(figsize=(12,4))
     plt.plot(history['loss'])
     plt.plot(history['val_loss'])
-    plt.title('Model loss by epoch')
+    plt.title('Model loss by epoch' + text)
     plt.ylabel('loss')
     plt.xlabel('epoch')
     plt.legend(['train', 'test'], loc='right')
@@ -151,8 +151,12 @@ def evaluate_prediction(target, predictions):
     eval_df.head(10)
 
     eval_df['cer'] = [ld_util.evaluate_character_level_accuracy(row.real, row.predicted) for index, row in eval_df.iterrows()]
-
-    print("Notre modèle a une précision par mot de", eval_df['cer'].mean(), ' pour ', eval_df.shape[0], ' mots.')
+    precision = round(eval_df['cer'].mean()*100, 2)
+    print("Notre modèle a une précision par caractère de", precision, '% pour ', eval_df.shape[0], ' mots.')
+    
+    nb_correct_predictions = sum(x == y for x, y in zip(target, predictions))
+    precision = round(nb_correct_predictions/len(target)*100, 2)
+    print("Notre modèle a une précision par mot exact de ", precision, "%")
     
 
 def load_image(filepath, resize=None):
