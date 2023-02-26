@@ -224,6 +224,12 @@ def make_ocr(
     bounding_boxes_xyhw = format_bounding_boxes_xyhw(doctr_bboxes, img_size)
 
     box_texts = []    
+        
+    ### TENTATIVE  D'ORDRE SUR LES BOXES (les lignes font grosso modo 50 de hauteur, mais il faudrait le calculer)
+    bounding_boxes_xyhw = sorted(bounding_boxes_xyhw, key=lambda bbox: (bbox[1]//50, bbox[0]))
+    
+    #######  
+    
     # https://www.tensorflow.org/api_docs/python/tf/image/crop_and_resize
     word_imgs = tf.image.crop_and_resize(
         tf.expand_dims(img_arr, 0),
