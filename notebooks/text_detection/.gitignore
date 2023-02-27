@@ -6,3 +6,4 @@ text_detection_val/images/
 text_detection_val/full_images/
 preprocessed_imgs/
 preprocessed_form_imgs/
+form_iou/
