@@ -166,10 +166,9 @@ def load_image(filepath, resize=None):
         return tf.image.resize(im, resize)
     return im
 
-def load_text_detection_model():
-    DET_CKPT = "text_detection/straight_model/weights"
+def load_text_detection_model(model_weight_path = "text_detection/fine_tuning_final/weights"):
     straight_model = ocr_predictor(det_arch='db_resnet50', pretrained=True)
-    straight_model.det_predictor.model.load_weights(DET_CKPT)
+    straight_model.det_predictor.model.load_weights(model_weight_path)
     return straight_model
 
 def get_image_bounding_boxes(img_path):
@@ -198,12 +197,6 @@ def plot_bounding_boxes_xyhw(bounding_boxes):
         xmax = (bbox[3] + bbox[0])
         ymax = (bbox[2] + bbox[1])
         plt.plot([xmin, xmax, xmax, xmin, xmin], [ymin, ymin, ymax, ymax, ymin], color='red')
-
-def load_text_detection_model():
-    DET_CKPT = "text_detection/straight_model/weights"
-    straight_model = ocr_predictor(det_arch='db_resnet50', pretrained=True)
-    straight_model.det_predictor.model.load_weights(DET_CKPT)
-    return straight_model
 
 def make_ocr(
         text_detection_model, 
