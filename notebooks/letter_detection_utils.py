@@ -169,7 +169,7 @@ def load_image(filepath):
 @tf.function
 def load_image_from_form(filepath, offset_height, offset_width, target_height, target_width):
     im = tf.io.read_file(filepath)
-    im = tf.image.decode_png(im, channels=0)
+    im = tf.image.decode_png(im, channels=1)
     im = tf.image.crop_to_bounding_box(im, tf.cast(offset_width, tf.int32), tf.cast(offset_height, tf.int32), tf.cast(target_height, tf.int32), tf.cast(target_width, tf.int32))
     return im
 
@@ -357,7 +357,7 @@ def preprocess(img, img_size=(32, 128), data_augmentation=False, scale=0.8, is_t
 
     # FILTRE DU BRUIT DE L'IMAGE
     if is_threshold:
-        img = 1-(1-img)*tf.cast(img < 0.8, tf.float32)
+        img = 1-(1-img)*tf.cast(img < 0.5, tf.float32)
 
     img = tf.expand_dims(img, -1)
     return img
