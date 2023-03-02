@@ -357,7 +357,7 @@ def preprocess(img, img_size=(32, 128), data_augmentation=False, scale=0.8, is_t
 
     # FILTRE DU BRUIT DE L'IMAGE
     if is_threshold:
-        img = 1-(1-img)*tf.cast(img < 0.5, tf.float32)
+        img = 1-(1-img)*tf.cast(img < 0.6, tf.float32)
 
     img = tf.expand_dims(img, -1)
     return img
