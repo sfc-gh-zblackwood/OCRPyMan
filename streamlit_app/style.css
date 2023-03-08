@@ -9,6 +9,10 @@ code {
   color: #1ec3bc;
 }
 
+header[data-testid="stHeader"] {
+  background: transparent;
+}
+
 #MainMenu {
   display: none;
 }

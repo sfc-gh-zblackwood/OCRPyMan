@@ -9,6 +9,8 @@ title = "The dataset"
 sidebar_name = "The dataset"
 
 def run():
+    # TODO 1 slide de présentation des données (volumétrie, architecture, etc.).
+
     st.title(title)
     st.markdown(
         """
@@ -25,5 +27,28 @@ def run():
         """
     )
 
-    df_before_prepro = pd.read_pickle('../pickle/preprocessing_word_df_before.pickle')
-    st.write(df_before_prepro[['word_id', 'seg_res', 'transcription']].describe(include='all').fillna("").astype("str"))
+    df_before_prepro = read_pickle('../pickle/preprocessing_word_df_before.pickle')
+    df = read_pickle('../pickle/df.pickle')
+    # TODO Add some images of:
+    # - form, 
+    # - lines,
+    # - sentences,
+    # - words
+
+    st.markdown(
+        """
+        The dataset is exclusively composed of english words. As a consequence, our OCR will perform significantly better 
+        when detecting the english language. 
+        """
+    )
+
+
+
+
+    st.write("However, only")
+    st.write(len(df), "words out of ", len(df_before_prepro), " initials have been used. Why ? Because a *processing* phase was required.")
+
+
+@st.cache
+def read_pickle(filepath):
+    return pd.read_pickle(filepath)
