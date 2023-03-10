@@ -21,6 +21,10 @@ div[data-testid="stDecoration"] {
   display: none;
 }
 
+div {
+  color: white;
+}
+
 footer {
   display: none;
 }
