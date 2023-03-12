@@ -1,14 +1,7 @@
 import streamlit as st
-import pandas as pd
 import numpy as np
 from PIL import Image
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
-import math 
-from sklearn.model_selection import train_test_split
 import tensorflow as tf
-from numpy import asarray
-import pickle
 from streamlit_drawable_canvas import st_canvas
 
 

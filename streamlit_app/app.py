@@ -17,9 +17,6 @@ with open("style.css", "r") as f:
 st.markdown(f"<style>{style}</style>", unsafe_allow_html=True)
 
 
-# TODO: add new and/or renamed tab in this ordered dict by
-# passing the name in the sidebar as key and the imported tab
-# as value as follow :
 TABS = OrderedDict(
     [
         (intro.sidebar_name, intro),
@@ -38,7 +35,7 @@ def run():
          "assets/logo-datascientest.png",
         width=200,
     )
-    tab_name = st.sidebar.radio("Menu", list(TABS.keys()), 3)
+    tab_name = st.sidebar.radio("Menu", list(TABS.keys()), 5)
     st.sidebar.markdown("---")
     st.sidebar.markdown(f"## {config.PROMOTION}")
 
