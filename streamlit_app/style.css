@@ -25,6 +25,10 @@ div[data-testid="stDecoration"] {
   display: none;
 }
 
+div[class="css-184tjsw e16nr0p34"] {
+  color: black;
+}
+
 div {
   color: white;
 }
