@@ -10,6 +10,7 @@ import letter_detection_utils as ld_util
 import ressources as rss
 import modele as mdl
 
+from tabs import st_lib
 
 
 models = [['tj_ctc_base_10epochs_LRe-4', 'Original dataset, 10 epochs, LR 1e-4'],
@@ -19,14 +20,17 @@ models = [['tj_ctc_base_10epochs_LRe-4', 'Original dataset, 10 epochs, LR 1e-4']
 
 data_extract_words = '../images/data_extract/words'
 
+CANVAS_DEFAULT_FILENAME = "tmp/canvas_file.png"
+
 
 def show_data_extract():
     rss.init()
     
     st.write("See below the predictions with 4 different models for a selection of images.")
-
+    # st.button(label='Make new predictions', on_click=show_data_extract)
+    
     #liste les fichiers
-    images = load_images_from_path(data_extract_words)
+    images = load_images_from_path(data_extract_words, 12)
     
     for model, title in models:           
         desc = f"""Predictions using a model with : **{title}**"""
@@ -36,14 +40,51 @@ def show_data_extract():
         
         st.text("")  # saut de ligne
         st.text("")  # saut de ligne
+ 
+
+    
     
        
 def show_local():
     st.write("Browse your local files to get an image prediction")
         
+def on_image_uploaded(filename):
+    global input_random_key
+    input_random_key = st_lib.get_random_string()
+    
+    image  = ld_util.load_image(filename)       
+    
+    st.write("Image avant preprocessing :")
+    fig = plt.figure()
+    plt.imshow(image.numpy(), cmap='gray')
+    plt.axis('off')
+    st.pyplot(fig)
+    
+    
+    image = ld_util.preprocess(image, img_size=rss.img_size,  data_augmentation=False, is_threshold=False)
+    image = tf.expand_dims([image], -1)
+    image = tf.squeeze(image, [3])
+    
+    text = get_predictions(models[3][0], image)
+    
+    st.write("Vous avez écrit le texte : ", text[0]) 
+    st.write("")
+    st.write("")
+    
+    st.write("Image après preprocessing :")
+    fig = plt.figure()
+    plt.imshow(image.numpy().reshape(32, 128), cmap='gray')
+    plt.axis('off')
+    st.pyplot(fig)
+    # result.show(doc)
         
 def show_drawing():
-    st.write("Use your mouse to write and get a prediction")    
+    st.write("Use your mouse to write and get a prediction")  
+      
+    st_lib.render_canvas(
+            on_image_uploaded, 
+            filename = CANVAS_DEFAULT_FILENAME
+        )
 
 
 @st.cache  
@@ -57,7 +98,7 @@ def get_predictions(model, images):
 
 
 
-def load_images_from_path(path):
+def load_images_from_path(path, max_files=-1):
     
     #liste les fichiers
     images_path = pp.get_files(path, ext='png', sub=False)
@@ -66,7 +107,7 @@ def load_images_from_path(path):
     
     for image_path in images_path:
         image  = ld_util.load_image(image_path)       
-        image = ld_util.preprocess(image, img_size=rss.img_size,  data_augmentation=True, is_threshold=True)
+        image = ld_util.preprocess(image, img_size=rss.img_size,  data_augmentation=False, is_threshold=True)
         image = tf.expand_dims([image], -1)
         image = tf.squeeze(image, [3])
         word_imgs = tf.concat([word_imgs, image], 0)
@@ -83,6 +124,11 @@ def load_images_from_path(path):
     
     # Removing extra img due to initialization
     word_imgs = word_imgs[1:]
+    
+    if max_files > 0:
+        shuffled_word_imgs = tf.random.shuffle(word_imgs)
+        word_imgs = shuffled_word_imgs[:max_files]
+        
     
     return word_imgs
 
