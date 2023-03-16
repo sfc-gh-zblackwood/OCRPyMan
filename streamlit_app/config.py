@@ -10,7 +10,10 @@ from member import Member
 TITLE = "OCRpyMan"
 
 TEAM_MEMBERS = [
-    Member("David Beda"),
+    Member(
+        name="David Beda",
+        linkedin_url="https://www.linkedin.com/in/david-beda-b6943336/",
+    ),
     Member(
         name="Jean-Paul Bella",
         linkedin_url="https://www.linkedin.com/in/jean-paul-bella-84986a129/",
@@ -19,4 +22,4 @@ TEAM_MEMBERS = [
     Member("Thibault Joassard"),
 ]
 
-PROMOTION = "Promotion Continue Data Scientist - Juin 2021"
+PROMOTION = "Promotion Continu Data Scientist - Juin 2022"
