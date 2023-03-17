@@ -38,7 +38,7 @@ def run():
          "assets/logo-datascientest.png",
         width=200,
     )
-    tab_name = st.sidebar.radio("Menu", list(TABS.keys()), 5)
+    tab_name = st.sidebar.radio("Menu", list(TABS.keys()), 7)
     st.sidebar.markdown("---")
     st.sidebar.markdown(f"## {config.PROMOTION}")
 

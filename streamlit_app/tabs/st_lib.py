@@ -32,9 +32,9 @@ def render_canvas(callback, callback_args = {}, canvas_key="canvas", filename=No
     img_arr must therefore be used as a parameter for the callback
     """
     img_height = size[0]
-    img_width = size[0]
+    img_width = size[1]
 
-    stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 3)
+    stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 7)
     stroke_color = st.sidebar.color_picker("Stroke color hex: ")
     bg_color = st.sidebar.color_picker("Background color hex: ", "#fff")
 

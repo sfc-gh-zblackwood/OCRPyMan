@@ -2,7 +2,6 @@ import streamlit as st
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-
 import sys
 sys.path.insert(1, '../notebooks')
 import preprocessing as pp
@@ -47,36 +46,86 @@ def show_data_extract():
        
 def show_local():
     st.write("Browse your local files to get an image prediction")
-        
+
+
+
+def remove_white_space(image):
+    # Convertir l'image en niveaux de gris
+    # image_gray = tf.image.rgb_to_grayscale(image)
+    image_gray = image
+    
+
+    # Inverser les couleurs de l'image
+    image_inv = tf.math.subtract(255, image_gray)
+
+    # Appliquer un filtre de seuillage
+    threshold_value = 200
+    image_thresh = tf.where(image_inv > threshold_value, 255, 0)
+
+    # Recadrer l'image autour du texte en supprimant les zones blanches
+    bbox = tf.image.crop_to_bounding_box(image_thresh, 0, 0, tf.shape(image_thresh)[0], tf.shape(image_thresh)[1])
+    bbox = tf.cast(bbox, tf.uint8)
+    
+    # Inverser les couleurs de l'image
+    bbox_inv = tf.math.subtract(255, bbox)
+
+    return bbox_inv
+
+
+@tf.function     
+def is_empty_image(image):
+    # Convertir l'image en niveaux de gris
+    # image_gray = tf.image.rgb_to_grayscale(image)
+
+    # Somme de tous les pixels de l'image
+    sum_of_pixels = tf.reduce_sum(image)
+
+    # Vérifier si l'image contient quelque chose ou non
+    if sum_of_pixels > 0: # 2 pixels de marge
+        return False
+    else:
+        return True
+
+@tf.function   
 def on_image_uploaded(filename):
     global input_random_key
     input_random_key = st_lib.get_random_string()
     
-    image  = ld_util.load_image(filename)       
+    image  = ld_util.load_image(filename)  
+    if is_empty_image(image): 
+        return
     
-    st.write("Image avant preprocessing :")
-    fig = plt.figure()
-    plt.imshow(image.numpy(), cmap='gray')
-    plt.axis('off')
-    st.pyplot(fig)
-    
+    # image = ld_util.crop_image(image.numpy())   
+    # image = remove_white_space(image)      
     
     image = ld_util.preprocess(image, img_size=rss.img_size,  data_augmentation=False, is_threshold=False)
     image = tf.expand_dims([image], -1)
     image = tf.squeeze(image, [3])
     
-    text = get_predictions(models[3][0], image)
-    
+    text = get_predictions(models[3][0], image)    
+    st.write("Utilisation du modele : ", models[3][1])
     st.write("Vous avez écrit le texte : ", text[0]) 
     st.write("")
     st.write("")
     
-    st.write("Image après preprocessing :")
-    fig = plt.figure()
-    plt.imshow(image.numpy().reshape(32, 128), cmap='gray')
-    plt.axis('off')
-    st.pyplot(fig)
-    # result.show(doc)
+    text = get_predictions(models[2][0], image)    
+    st.write("Utilisation du modele : ", models[2][1])
+    st.write("Vous avez écrit le texte : ", text[0]) 
+    st.write("")
+    st.write("")
+    
+    text = get_predictions(models[1][0], image)    
+    st.write("Utilisation du modele : ", models[1][1])
+    st.write("Vous avez écrit le texte : ", text[0]) 
+    st.write("")
+    st.write("")
+    
+    text = get_predictions(models[0][0], image)    
+    st.write("Utilisation du modele : ", models[0][1])
+    st.write("Vous avez écrit le texte : ", text[0]) 
+    st.write("")
+    st.write("")
+    
         
 def show_drawing():
     st.write("Use your mouse to write and get a prediction")  
