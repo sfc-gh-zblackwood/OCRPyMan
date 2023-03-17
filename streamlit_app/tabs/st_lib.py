@@ -25,19 +25,18 @@ def render_file_uploader(default_filename, callback, callback_args = {}, uploade
             binary_file.write(bytes_data)
         callback(**callback_args, filename=filename)
 
-def render_canvas(callback, callback_args = {}, canvas_key="canvas", filename=None):
+def render_canvas(callback, callback_args = {}, canvas_key="canvas", filename=None, size = (32 * 5, 128 * 5)):
     """
     Render a canvas and trigger a callback
     with given args (dict) AND img_arr
     img_arr must therefore be used as a parameter for the callback
     """
-    magnifier = 5
-    img_height = 32
-    img_width = 128
+    img_height = size[0]
+    img_width = size[0]
 
     stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 3)
     stroke_color = st.sidebar.color_picker("Stroke color hex: ")
-    bg_color = st.sidebar.color_picker("Background color hex: ", "#eee")
+    bg_color = st.sidebar.color_picker("Background color hex: ", "#fff")
 
 
     # Create a canvas component
@@ -48,8 +47,8 @@ def render_canvas(callback, callback_args = {}, canvas_key="canvas", filename=No
         background_color=bg_color,
         background_image = None,
         update_streamlit = False,
-        height=img_height * magnifier,
-        width=img_width * magnifier,
+        height=img_height,
+        width=img_width,
         drawing_mode="freedraw",
         point_display_radius=0,
         display_toolbar=st.sidebar.checkbox("Display toolbar", True),
@@ -68,3 +67,11 @@ def render_canvas(callback, callback_args = {}, canvas_key="canvas", filename=No
             img_arr = np.array(im)
             img_arr = img_arr / 255.0
             callback(**callback_args, img_arr=img_arr)
+
+
+def add_bottom_space():
+    st.text("")
+    st.text("")
+    st.text("")
+    st.text("")
+    st.text("")

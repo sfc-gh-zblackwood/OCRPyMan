@@ -56,7 +56,8 @@ def render_selected_input_method(method_name, det_model, input_random_key):
         st_lib.render_canvas(
             on_image_uploaded, 
             {'det_model': det_model},
-            filename = CANVAS_DEFAULT_FILENAME
+            filename = CANVAS_DEFAULT_FILENAME,
+            size=(3542, 2479)
         )
         return
     if method_name == INPUT_METHOD_IMG_SELECT: 
@@ -78,17 +79,18 @@ def show_model():
     st.header("Input selection")
     input_method = st.selectbox(
         'Choose your input method',
-        (INPUT_METHOD_FILE_UPLOADER, INPUT_METHOD_CANVAS, INPUT_METHOD_IMG_SELECT)
+        (INPUT_METHOD_CANVAS, INPUT_METHOD_FILE_UPLOADER, INPUT_METHOD_IMG_SELECT)
     )
     render_selected_input_method(input_method, det_model, input_random_key)
+    st_lib.add_bottom_space()
+
 
 def on_image_uploaded(det_model, filename):
     global input_random_key
     input_random_key = st_lib.get_random_string()
     st.header("Result")
     doc, result = td_lib.show_bbox_from_file(det_model, filename)
-    st.write("")
-    st.write("")
-    st.write("")
+    st_lib.add_bottom_space()
+
     # result.show(doc)
 

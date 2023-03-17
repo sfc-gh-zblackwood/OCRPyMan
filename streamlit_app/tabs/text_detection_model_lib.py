@@ -39,11 +39,15 @@ def plot_img_with_bboxes(img_arr, bounding_boxes_xyhw, figsize = (20, 15)):
     st.pyplot(fig)
 
 
-def show_bbox_from_file(det_model, filepath):
+def show_bbox_from_file(det_model, filepath, resize = None):
     doc = DocumentFile.from_images(filepath)
-    img_arr = load_image(filepath)
+    img_arr = load_image(filepath, resize=resize)
+    if not resize is None:
+        img_arr /= 255
     res = det_model(doc)
     doctr_bboxes = det_model.det_predictor(doc)[0]
-    bounding_boxes_xyhw = format_bounding_boxes_xyhw(doctr_bboxes, size=(img_arr.shape[0], img_arr.shape[1]))
+    print((img_arr.shape[0], img_arr.shape[1]))
+    # size=(img_arr.shape[0], img_arr.shape[1])
+    bounding_boxes_xyhw = format_bounding_boxes_xyhw(doctr_bboxes, )
     plot_img_with_bboxes(img_arr, bounding_boxes_xyhw)
     return doc, res
