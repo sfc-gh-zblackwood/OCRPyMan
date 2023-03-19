@@ -18,6 +18,8 @@ INPUT_METHOD_CANVAS = 'Canvas'
 INPUT_METHOD_FILE_UPLOADER = 'File uploader'
 INPUT_METHOD_IMG_SELECT = 'Image selector'
 
+DEFAULT_CANVAS_SIZE = (3542, 2479)
+
 input_random_key = 'init'
 
 def run():
@@ -53,11 +55,16 @@ def render_selected_input_method(method_name, det_model, input_random_key):
         )
         return
     if method_name == INPUT_METHOD_CANVAS:
+        # height = st.slider("Canvas height: ", 50, DEFAULT_CANVAS_SIZE[0], DEFAULT_CANVAS_SIZE[0])
+        # width = st.slider("Canvas width: ", 50, DEFAULT_CANVAS_SIZE[1], DEFAULT_CANVAS_SIZE[1])
+        height = st.slider("Canvas height: ", 50, DEFAULT_CANVAS_SIZE[0], 500)
+        width = st.slider("Canvas width: ", 50, DEFAULT_CANVAS_SIZE[1], 500)
+
         st_lib.render_canvas(
             on_image_uploaded, 
             {'det_model': det_model},
             filename = CANVAS_DEFAULT_FILENAME,
-            size=(3542, 2479)
+            size=(height, width)
         )
         return
     if method_name == INPUT_METHOD_IMG_SELECT: 

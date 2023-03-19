@@ -46,8 +46,6 @@ def show_bbox_from_file(det_model, filepath, resize = None):
         img_arr /= 255
     res = det_model(doc)
     doctr_bboxes = det_model.det_predictor(doc)[0]
-    print((img_arr.shape[0], img_arr.shape[1]))
-    # size=(img_arr.shape[0], img_arr.shape[1])
-    bounding_boxes_xyhw = format_bounding_boxes_xyhw(doctr_bboxes, )
+    bounding_boxes_xyhw = format_bounding_boxes_xyhw(doctr_bboxes, (img_arr.shape[0], img_arr.shape[1]))
     plot_img_with_bboxes(img_arr, bounding_boxes_xyhw)
     return doc, res
