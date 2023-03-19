@@ -31,6 +31,8 @@ def run():
     st.write("This dataframe displays 5 lines of the **Words** data:")
     word_df = pd.read_pickle('../pickle/preprocessing_word_df_bad_contrast.pickle')
     word_df=word_df.drop('michelson_contrast', axis=1)
+    word_df['word_img_path'] = word_df['word_img_path'].apply(lambda x: x[3:])
+
     st.dataframe(word_df.head())
     size = word_df.shape[0]
     st.write('The dataset has ',size,'words.')
@@ -59,7 +61,7 @@ def run():
 
     
     
-    ### DB : Proposition de suprimer plus tard
+    ### DB : Proposition de supprimer plus tard
     # Distribution des mots sur l'image (position)
     st.markdown("""
     #### [DB] : La partie suivante sera remplacée

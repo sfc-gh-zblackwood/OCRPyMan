@@ -1,4 +1,5 @@
 import streamlit as st
+from tabs import st_lib
 
 
 sidebar_name = "Introduction"
@@ -32,3 +33,5 @@ def run():
        
         """
     )
+
+    st_lib.add_bottom_space()
