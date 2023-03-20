@@ -1,7 +1,7 @@
 import streamlit as st
 
 def show_content():
-    st.subheader("CTC model")
+    st.header("CTC model")
     st.markdown(
         """
         Handwriting is intrinsically very variable in both the geometric style (different patterns) but also in geometric disposition (different distortions, different spacing, etc.). And because of the latter, the main difficulty to overcome in handwriting recognition problems is the random alignment between the handwritten input and the digital output along the horizontal axis. 

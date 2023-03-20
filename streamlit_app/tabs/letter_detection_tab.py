@@ -7,8 +7,11 @@ from tabs import letter_detection_5 as subtab5
 from tabs import letter_detection_theory as theory
 from tabs import letter_detection_models as models
 
-title = "Letter detection"
-sidebar_name = "Letter detection"
+# Le tab était initiallement dédié au letter detection.
+# Mais, pour garder la cohérence avec le rapport, je propose de le transformer en Text Recognition Modeling
+
+title = "Text recognition modeling"
+sidebar_name = "Text recognition modeling"
 
 
 def run():

@@ -1,7 +1,7 @@
 import streamlit as st
 
 def show_content():
-    st.subheader("First modeling tries")
+    st.header("First modeling tries")
     st.markdown(
         """
         As part of the learning process, the first attempts of classification were incremental in scope and complexity.
