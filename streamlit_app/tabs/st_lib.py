@@ -25,7 +25,7 @@ def render_file_uploader(default_filename, callback, callback_args = {}, uploade
             binary_file.write(bytes_data)
         callback(**callback_args, filename=filename)
 
-def render_canvas(callback, callback_args = {}, canvas_key="canvas", filename=None, size = (32 * 5, 128 * 5)):
+def render_canvas(callback, callback_args = {}, canvas_key="canvas", filename=None, size = (32 * 5, 128 * 5), stroke_width=None, stroke_color=None, bg_color=None):
     """
     Render a canvas and trigger a callback
     with given args (dict) AND img_arr
@@ -34,9 +34,12 @@ def render_canvas(callback, callback_args = {}, canvas_key="canvas", filename=No
     img_height = size[0]
     img_width = size[1]
 
-    stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 7)
-    stroke_color = st.sidebar.color_picker("Stroke color hex: ")
-    bg_color = st.sidebar.color_picker("Background color hex: ", "#fff")
+    if stroke_width == None:
+        stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 7)
+    if stroke_color == None:
+        stroke_color = st.sidebar.color_picker("Stroke color hex: ")
+    if bg_color == None:
+        bg_color = st.sidebar.color_picker("Background color hex: ", "#fff")
 
 
     # Create a canvas component

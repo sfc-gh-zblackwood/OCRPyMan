@@ -25,12 +25,13 @@ input_random_key = 'init'
 
 def run():
     st.title(title)
-    tab1, tab2 = st.tabs(["Theory", "Model"])
+    tab1, tab2, tab3 = st.tabs(["Theory", "Model", "Comparison"])
     with tab1:
-        # text_detection_st.show_theory()
+        text_detection_st.show_theory()
+    with tab2:
         show_model()
-    # with tab2:
-    #     show_model()
+    with tab3:
+        text_detection_st.show_comparison()
 
 def get_text_detection_model_path(model_name):
     if model_name == TEXT_DET_MODEL_ALL:
@@ -49,7 +50,6 @@ def get_text_detection_model_path(model_name):
 # input_random_key parameter
 # @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def render_selected_input_method(method_name, models, input_random_key):
-    st.write("Using the cache key *{}*".format(input_random_key))
     if method_name == INPUT_METHOD_FILE_UPLOADER:
         st_lib.render_file_uploader(
             UPLOADER_DEFAULT_FILENAME,
@@ -58,16 +58,28 @@ def render_selected_input_method(method_name, models, input_random_key):
         )
         return
     if method_name == INPUT_METHOD_CANVAS:
-        # height = st.slider("Canvas height: ", 50, DEFAULT_CANVAS_SIZE[0], DEFAULT_CANVAS_SIZE[0])
-        # width = st.slider("Canvas width: ", 50, DEFAULT_CANVAS_SIZE[1], DEFAULT_CANVAS_SIZE[1])
-        height = st.slider("Canvas height: ", 50, DEFAULT_CANVAS_SIZE[0], 500)
-        width = st.slider("Canvas width: ", 50, DEFAULT_CANVAS_SIZE[1], 750)
+        # height = st.slider("Canvas height: ", 50, DEFAULT_CANVAS_SIZE[0], 500)
+        # width = st.slider("Canvas width: ", 50, DEFAULT_CANVAS_SIZE[1], 750)
+        height = 500
+        width = 750
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            stroke_width = st.slider("Stroke width: ", 1, 10, 3)
+        with col2:
+            stroke_color = st.color_picker("Stroke color hex: ")
+        with col3:
+            bg_color = st.color_picker("Background color hex: ", "#fff")
+
 
         st_lib.render_canvas(
             on_image_uploaded, 
             {'models': models},
             filename = CANVAS_DEFAULT_FILENAME,
-            size=(height, width)
+            size=(height, width),
+            stroke_width=stroke_width,
+            stroke_color=stroke_color,
+            bg_color=bg_color
         )
         return
     if method_name == INPUT_METHOD_IMG_SELECT: 
@@ -85,7 +97,6 @@ def show_model():
             TEXT_DET_MODEL_FINE_TUNING_FINAL,
         )
     )
-    #TODO Do in parallel and show the result one next to each other
     models = td_lib.load_text_detection_model(get_text_detection_model_path(model_name), [get_text_detection_model_path(model_name) for model_name in [TEXT_DET_MODEL_DEFAULT, TEXT_DET_MODEL_CUT_FINE_TUNING, TEXT_DET_MODEL_FINE_TUNING_FINAL]])
     
     st.header("Input selection")
