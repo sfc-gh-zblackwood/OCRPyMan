@@ -1,54 +1,82 @@
 import streamlit as st
 
 def show_content():
-    st.header("CTC model")
+    st.header("Data augmentation")
+    
+    st.subheader("#1: Random word generator")
+    st.markdown("The data augmentation through word generation is represented in the following flowchart:")
+    st.image("../images/letter_detection_DB300.png")
     st.markdown(
         """
-        Handwriting is intrinsically very variable in both the geometric style (different patterns) but also in geometric disposition (different distortions, different spacing, etc.). And because of the latter, the main difficulty to overcome in handwriting recognition problems is the random alignment between the handwritten input and the digital output along the horizontal axis. 
+        Another technique used for data augmentation of our dataset was to add automatically generated words using the fontpreview package with handwritten-like font types. The Figure below shows a sample of the generated words.
         """
     )
+    st.image("../images/letter_detection_DB35.png")
     st.markdown(
         """
-        The strategy for this type of model can be summarized as follows:
+        Various elements vary randomly for each generated word:
+        - the number of letters (between 2 and 11)
+        - the font size (ranging from single to double)
+        - a coefficient applied to the height of the image
+        - whether or not there is a capital letter at the beginning of the word (30%).
 
-        - The image is cut in fragments along the writing axis which are fed through different CNN layers for visual feature extraction.
+        In this project, we chose to generate 50 000 words with this algorithm, equally distributed on 30 fonts, which represents a 52% increase in the size of the dataset. The word generator notebook runs independently from the rest of the project.
+
+        It should be noted that since the generated words correspond to a random assembly of characters, they have no lexical meaning. Furthermore, because we are going to implement a spelling corrector to improve the accuracy of the classification model, these words are excluded from the test set.
+
         """
-    )
-    st.image("../images/letter_detection_DB21.png", width = 320)
-    #st.markdown("---")
-    st.markdown(
-        """
-        - The result of the previous step which can be seen as a group of timesteps is fed into a bidirectional RNN which will map the probabilities of each fragment corresponding to a given character.
-        """
-    )
-    st.image("../images/letter_detection_DB22.png", width = 320)
-    st.markdown(
-        """
-        - Concerning the CTC layer, when the model is being trained:
-            - The CTC loss function will encode all the possible alignments (or paths) for the known output (transcription) on the RNN output matrix. Each path has a calculated probability.
-            - The objective of the training is to maximize the probability of matching the output and to minimize the loss. So, the loss is then calculated as the negative sum of log-probabilities of all the encoded paths.
-            - To train the model, the gradient of the loss function is calculated in respect to the different trainable parameters which are updated at each iteration.
-        """
-    )
-    st.markdown(
-        """
-        - Concerning the CTC layer, when the model is predicting:
-            - With an input image, the forward propagation through the CNN and RNN layers will yield a matrix of probabilities for all possible paths.
-            - The predicted output is obtained by looking for the best path (with the highest probability). In this project with a CTC greedy decoder.
-            - The Figure below represented this prediction process.
-"""
-    )
-    st.image("../images/letter_detection_DB23.png", width=400)
-    st.markdown(
-        """
-        The following diagram gives a representation of the chosen model:
-        - When training: back-propagation to minimize the CTC loss and update the NN parameters.
-        - When predicting: forward propagation and CTC decoding of the best path to predict the output.
-        """
-    )
-    st.image("../images/letter_detection_DB24.png")
-    st.markdown(
-        """
-        The model was implemented with the TensorFlow framework. It has 1.4 million trainable parameters."""
     )
     st.markdown(" ")
+    st.markdown("---")
+
+    
+    st.subheader("#2: Image preprocessing")
+    
+    st.markdown("The data augmentation through image processing is represented in the following flowchart:")
+    st.image("../images/letter_detection_DB301.png")
+    st.markdown(
+        """
+        The following Figure shows a batch of 64 original word images (without any preprocessing).
+        """
+    )
+    st.image("../images/letter_detection_DB31.png")
+    st.markdown(
+        """
+        Before being fed to a training model theses images with go through a preprocessing function which objectives are the following:
+        - to introduce some random geometric variability to the images (as a reminder, the dataset has a limited number of writers),
+        - to clean the images (for example, the background noise),
+        - to harmonize the size of all files.
+        These techniques were also tested with the ImageGenerator of the Keras package but this solution was not kept, essentially due to image stretching.
+        """
+    )
+    st.markdown(
+        """
+        #### Aspect ratio
+
+        The aspect ratio of each image is changed by tinkering randomly with the horizontal dimension. So in the following Figure, the images have all different stretches:
+        - images stretched horizontally have a positive w_delta,
+        - images stretched vertically have a negative w_delta.
+        """
+    )
+    st.image("../images/letter_detection_DB32.png")
+    st.markdown(
+        """
+        #### Resizing and shifting
+
+        To be used on our model, images need to have the same size. For our model, the chosen size was 32 by 128 pixels.
+
+        To harmonize the size of the images, padding is added either to horizontal dimension or vertical dimension. In the following Figure, all the images have been padded (padding is represented as gray bands for visualization) and are now the same size.
+
+        Once padding is added, the image is shifted randomly from left to right (for images padded horizontally) or from top to bottom (for images padded vertically).The parameter ‘shift’ shows how much (from 0 to 1) images were shifted.
+        """
+    )
+    st.image("../images/letter_detection_DB33.png")
+    
+    st.markdown(
+        """
+        #### Background noise filtering
+
+        Different images have different levels of background noise. To help our classification algorithm to differentiate the letters and the background, a simple filtering technique was applied (threshold). Pixels with value < 0.8 (0 being white and 1 black) are considered noise. These pixels, shown in the following Figure in black color, are filtered out of all the images.
+        """
+    )
+    st.image("../images/letter_detection_DB34.png")

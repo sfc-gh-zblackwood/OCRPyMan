@@ -33,9 +33,11 @@ def run():
 
     st.markdown(
         """
-        The pre-processing of our Words dataset consisted of the following 4 steps.
+        The pre-processing of our Words dataset consisted of the following 4 steps represented in the following flowchart:
         """
     )
+    st.image('../images/preprocessing_DB0.png')
+    st.markdown("---")
     st.subheader("Step 1:")
     st.markdown(
         """
@@ -98,23 +100,25 @@ def run():
     )
     st.markdown("---")
 
-    st.subheader("Conclusion")   
-    df_before = pd.read_pickle('../pickle/preprocessing_word_df_before.pickle')
-    df = pd.read_pickle('../pickle/df.pickle')
+    #st.subheader("Conclusion")   
+    #df_before = pd.read_pickle('../pickle/preprocessing_word_df_before.pickle')
+    #df = pd.read_pickle('../pickle/df.pickle')
     st.markdown(
         "Thus, after cleaning our dataset, there are 94897 images of words remaining out of the initial 115320. The list of these images was saved to a pickle file for later use on the text recognition model construction.")
+    st.markdown(" ")
+    
     #st.markdown(
     #    "Thus, after cleaning our dataset, only **{}** pictures of words remain out of the **{}** given.".format(len(df), len(df_before))
     #)
-    st.dataframe(df.head(5))
+    #st.dataframe(df.head(5))
 
-    st.markdown(
-        """
-        Now, we can take a look at a few images from our cleaned dataset.
-        """
-    )
+    #st.markdown(
+    #    """
+    #    Now, we can take a look at a few images from our cleaned dataset.
+    #    """
+    #)
 
-    show_cleaned_imgs(df)
+    #show_cleaned_imgs(df)
 
 
 def show_cleaned_imgs(df):

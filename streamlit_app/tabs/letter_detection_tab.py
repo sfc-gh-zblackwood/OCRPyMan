@@ -17,8 +17,8 @@ sidebar_name = "Text recognition modeling"
 def run():
     st.title(title)
     tab1, tab2, tab3, tab4, tab5= st.tabs(["First tries",
-                                "CTC model",
                                 "Data augmentation",
+                                "CTC model",
                                 "Training & Tuning",
                                 "Spelling corrector"])
     with tab1:

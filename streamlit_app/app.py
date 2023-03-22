@@ -23,7 +23,7 @@ TABS = OrderedDict(
     [
         (intro.sidebar_name, intro),
         (dataset_tab.sidebar_name, dataset_tab),
-        (dataviz_tab.sidebar_name, dataviz_tab),
+        #(dataviz_tab.sidebar_name, dataviz_tab),
         (pre_processing_tab.sidebar_name, pre_processing_tab),
         (letter_detection_tab.sidebar_name, letter_detection_tab),
         (text_detection_tab.sidebar_name, text_detection_tab),
@@ -38,7 +38,7 @@ def run():
          "assets/logo-datascientest.png",
         width=200,
     )
-    tab_name = st.sidebar.radio("Menu", list(TABS.keys()), 5)
+    tab_name = st.sidebar.radio("Menu", list(TABS.keys()), 0)
     st.sidebar.markdown("---")
     st.sidebar.markdown(f"## {config.PROMOTION}")
 
