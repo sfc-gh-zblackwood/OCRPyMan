@@ -30,7 +30,7 @@ def show_bad_constrast_imgs():
 def run():
 
     st.title(title)
-
+    st.markdown("---")
     st.markdown(
         """
         The pre-processing of our Words dataset consisted of the following 4 steps represented in the following flowchart:

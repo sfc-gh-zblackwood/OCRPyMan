@@ -11,6 +11,7 @@ def run():
     # TODO 1 slide de présentation des données (volumétrie, architecture, etc.).
 
     st.title(title)
+    st.markdown("---")
     tab1, tab2, tab3 = st.tabs(["Description", "Forms", "Words"])
     with tab1:
         show_description()
