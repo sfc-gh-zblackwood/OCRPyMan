@@ -31,6 +31,8 @@ def run():
     st.write("This dataframe displays 5 lines of the **Words** data:")
     word_df = pd.read_pickle('../pickle/preprocessing_word_df_bad_contrast.pickle')
     word_df=word_df.drop('michelson_contrast', axis=1)
+    word_df['word_img_path'] = word_df['word_img_path'].apply(lambda x: x[3:])
+
     st.dataframe(word_df.head())
     size = word_df.shape[0]
     st.write('The dataset has ',size,'words.')
@@ -54,53 +56,6 @@ def run():
 
     st.write('The dataset has ',size,'forms.')
     
-
-
-
-    
-    
-    ### DB : Proposition de suprimer plus tard
-    # Distribution des mots sur l'image (position)
-    st.markdown("""
-    #### [DB] : La partie suivante sera remplacée
-    """)
-    st.image("../images/text_box_position.png")
-    st.markdown(
-        """
-        As we can see, the text boxes in our dataset are 
-        always positioned in lines, in a delimited space in our forms.
-        This biais could pushes our model to recognize only *straight* boxes
-        not too far from the center. 
-        
-        As a consequence, a word placed in a corner and slightly 
-        rotated may not be easily detected 
-        """
-    )
-
-    # Graphe distribution des lettres + comparaison langue anglaise
-    st.image("../images/viz_letters.png")
-    st.image("../images/english_letter_distribution.png")
-    st.image("../images/viz_letters2.png")
-    st.markdown(
-        """
-        TODO Dire que c'est fortement lié à la langue anglaise 
-        donc si on prend une langue comme le grecque, pas ouf car
-        pas même frequence + bien sur des lettres non présentes
-        
-        Souligner le pb des majuscules sous représentées (éventuellement rajouter 
-        un ratio du nombre de lettres majuscules minuscules) 
-        ratio_a = nb_a / nb_A ?
-        """
-    )
-
-    st.image("../images/viz_letter_count_word.png")
-    st.markdown(
-        """
-        TODO Dire que les mots ne sont généralement pas longs <= 5 voire 10
-        => L'allemand risque de poser problème si on devait détecter des boxes 
-        ...
-        """
-    )
 
 @st.cache
 def read_pickle(filepath):

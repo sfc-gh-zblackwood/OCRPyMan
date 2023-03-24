@@ -19,11 +19,19 @@ def format_bounding_boxes_xyhw(bounding_boxes, size = (1, 1)):
 
 # @st.cache_resource
 @st.cache(allow_output_mutation=True)
-def load_text_detection_model(model_weight_path=None):
+def load_text_detection_model(model_weight_path=None, paths = []):
+    if model_weight_path == 'all' and len(paths) > 0:
+        models = []
+        for path in paths:
+            model = ocr_predictor(det_arch='db_resnet50', pretrained=True)
+            if not path is None:
+                model.det_predictor.model.load_weights(path)
+            models.append(model)
+        return models
     model = ocr_predictor(det_arch='db_resnet50', pretrained=True)
     if not model_weight_path is None:
         model.det_predictor.model.load_weights(model_weight_path)
-    return model
+    return [model]
 
 def plot_img_with_bboxes(img_arr, bounding_boxes_xyhw, figsize = (20, 15)):
     fig = plt.figure(figsize=figsize)
@@ -46,8 +54,6 @@ def show_bbox_from_file(det_model, filepath, resize = None):
         img_arr /= 255
     res = det_model(doc)
     doctr_bboxes = det_model.det_predictor(doc)[0]
-    print((img_arr.shape[0], img_arr.shape[1]))
-    # size=(img_arr.shape[0], img_arr.shape[1])
-    bounding_boxes_xyhw = format_bounding_boxes_xyhw(doctr_bboxes, )
+    bounding_boxes_xyhw = format_bounding_boxes_xyhw(doctr_bboxes, (img_arr.shape[0], img_arr.shape[1]))
     plot_img_with_bboxes(img_arr, bounding_boxes_xyhw)
     return doc, res

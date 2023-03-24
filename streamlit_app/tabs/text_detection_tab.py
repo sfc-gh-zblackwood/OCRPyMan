@@ -10,6 +10,7 @@ sidebar_name = "Text detection"
 UPLOADER_DEFAULT_FILENAME = "tmp/uploaded_file.png"
 CANVAS_DEFAULT_FILENAME = "tmp/canvas_file.png"
 
+TEXT_DET_MODEL_ALL = "All"
 TEXT_DET_MODEL_DEFAULT = "Default"
 TEXT_DET_MODEL_CUT_FINE_TUNING = "Cut fine tuning"
 TEXT_DET_MODEL_FINE_TUNING_FINAL = "Fine tuning final"
@@ -18,18 +19,23 @@ INPUT_METHOD_CANVAS = 'Canvas'
 INPUT_METHOD_FILE_UPLOADER = 'File uploader'
 INPUT_METHOD_IMG_SELECT = 'Image selector'
 
+DEFAULT_CANVAS_SIZE = (3542, 2479)
+
 input_random_key = 'init'
 
 def run():
     st.title(title)
-    tab1, tab2 = st.tabs(["Theory", "Model"])
+    tab1, tab2, tab3 = st.tabs(["Theory", "Model", "Comparison"])
     with tab1:
-        # text_detection_st.show_theory()
+        text_detection_st.show_theory()
+    with tab2:
         show_model()
-    # with tab2:
-    #     show_model()
+    with tab3:
+        text_detection_st.show_comparison()
 
 def get_text_detection_model_path(model_name):
+    if model_name == TEXT_DET_MODEL_ALL:
+        return 'all'
     if model_name == TEXT_DET_MODEL_DEFAULT:
         return None
     if model_name == TEXT_DET_MODEL_CUT_FINE_TUNING:
@@ -43,21 +49,37 @@ def get_text_detection_model_path(model_name):
 # when something is uploaded because of a change in the 
 # input_random_key parameter
 # @st.cache(suppress_st_warning=True, allow_output_mutation=True)
-def render_selected_input_method(method_name, det_model, input_random_key):
-    st.write("Using the cache key *{}*".format(input_random_key))
+def render_selected_input_method(method_name, models, input_random_key):
     if method_name == INPUT_METHOD_FILE_UPLOADER:
         st_lib.render_file_uploader(
             UPLOADER_DEFAULT_FILENAME,
             on_image_uploaded, 
-            {'det_model': det_model}
+            {'models': models}
         )
         return
     if method_name == INPUT_METHOD_CANVAS:
+        # height = st.slider("Canvas height: ", 50, DEFAULT_CANVAS_SIZE[0], 500)
+        # width = st.slider("Canvas width: ", 50, DEFAULT_CANVAS_SIZE[1], 750)
+        height = 500
+        width = 750
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            stroke_width = st.slider("Stroke width: ", 1, 10, 3)
+        with col2:
+            stroke_color = st.color_picker("Stroke color hex: ")
+        with col3:
+            bg_color = st.color_picker("Background color hex: ", "#fff")
+
+
         st_lib.render_canvas(
             on_image_uploaded, 
-            {'det_model': det_model},
+            {'models': models},
             filename = CANVAS_DEFAULT_FILENAME,
-            size=(3542, 2479)
+            size=(height, width),
+            stroke_width=stroke_width,
+            stroke_color=stroke_color,
+            bg_color=bg_color
         )
         return
     if method_name == INPUT_METHOD_IMG_SELECT: 
@@ -68,29 +90,38 @@ def render_selected_input_method(method_name, det_model, input_random_key):
 
 def show_model():
     st.header("Model selection")
-    model_name = st.radio("Choose a model", (        
-            TEXT_DET_MODEL_DEFAULT,
+    model_name = st.radio("Choose a model", (    
+            TEXT_DET_MODEL_ALL,    
             TEXT_DET_MODEL_CUT_FINE_TUNING,
+            TEXT_DET_MODEL_DEFAULT,
             TEXT_DET_MODEL_FINE_TUNING_FINAL,
         )
     )
-    det_model = td_lib.load_text_detection_model(get_text_detection_model_path(model_name))
+    models = td_lib.load_text_detection_model(get_text_detection_model_path(model_name), [get_text_detection_model_path(model_name) for model_name in [TEXT_DET_MODEL_DEFAULT, TEXT_DET_MODEL_CUT_FINE_TUNING, TEXT_DET_MODEL_FINE_TUNING_FINAL]])
     
     st.header("Input selection")
     input_method = st.selectbox(
         'Choose your input method',
         (INPUT_METHOD_CANVAS, INPUT_METHOD_FILE_UPLOADER, INPUT_METHOD_IMG_SELECT)
     )
-    render_selected_input_method(input_method, det_model, input_random_key)
+    render_selected_input_method(input_method, models, input_random_key)
     st_lib.add_bottom_space()
 
 
-def on_image_uploaded(det_model, filename):
+def on_image_uploaded(models, filename):
     global input_random_key
     input_random_key = st_lib.get_random_string()
     st.header("Result")
-    doc, result = td_lib.show_bbox_from_file(det_model, filename)
+    cols = st.columns(len(models))
+
+    legends = ['Default', 'Cut fine tuning', 'Fine tuning']
+
+    for i, det_model in enumerate(models):
+        with cols[i]:
+            doc, result = td_lib.show_bbox_from_file(det_model, filename)
+            if len(models) > 1:
+                st.caption(legends[i])
+
     st_lib.add_bottom_space()
 
-    # result.show(doc)
 
