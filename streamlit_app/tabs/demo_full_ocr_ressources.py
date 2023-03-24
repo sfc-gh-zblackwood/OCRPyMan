@@ -19,29 +19,32 @@ models = [['tj_ctc_base_10epochs_LRe-4', 'Original dataset, 10 epochs, LR 1e-4']
 
 data_extract_words = '../images/data_extract/words'
 
-CANVAS_DEFAULT_FILENAME = "tmp/canvas_file.png"
+CANVAS_DEFAULT_FILENAME = "tmp/canvas_file_full.png"
 
 
 def show_data_extract():
     rss.init()
     
-    st.write("See below the predictions with 4 different models for a selection of images.")
-    rng = 0
-    if st.button(label='Load new predictions') == True:
-        images = load_images_from_path(data_extract_words, 12)
-        for model, title in models:           
-            desc = f"""Predictions using a model with : **{title}**"""
-            st.write(desc)
-            texts = get_predictions(model, images)
-            show_predictions_images(images, texts)
+    st.write("WORK IN PROGRESS")
+    
+    # st.write("See below the predictions with 4 different models for a selection of images.")
+    # rng = 0
+    # if st.button(label='Load new predictions') == True:
+    #     images = load_images_from_path(data_extract_words, 12)
+    #     for model, title in models:           
+    #         desc = f"""Predictions using a model with : **{title}**"""
+    #         st.write(desc)
+    #         texts = get_predictions(model, images)
+    #         show_predictions_images(images, texts)
             
-            st.text("")  # saut de ligne
-            st.text("")  # saut de ligne
+    #         st.text("")  # saut de ligne
+    #         st.text("")  # saut de ligne
 
 
         
     
 def show_images_batch():
+    
     #liste les fichiers
     images = load_images_from_path(data_extract_words, 12)
     
@@ -60,30 +63,7 @@ def show_images_batch():
        
 def show_local():
     st.write("Browse your local files to get an image prediction")
-
-
-
-def remove_white_space(image):
-    # Convertir l'image en niveaux de gris
-    # image_gray = tf.image.rgb_to_grayscale(image)
-    image_gray = image
-    
-
-    # Inverser les couleurs de l'image
-    image_inv = tf.math.subtract(255, image_gray)
-
-    # Appliquer un filtre de seuillage
-    threshold_value = 200
-    image_thresh = tf.where(image_inv > threshold_value, 255, 0)
-
-    # Recadrer l'image autour du texte en supprimant les zones blanches
-    bbox = tf.image.crop_to_bounding_box(image_thresh, 0, 0, tf.shape(image_thresh)[0], tf.shape(image_thresh)[1])
-    bbox = tf.cast(bbox, tf.uint8)
-    
-    # Inverser les couleurs de l'image
-    bbox_inv = tf.math.subtract(255, bbox)
-
-    return bbox_inv
+    st.write("WORK IN PROGRESS")
 
 
 @tf.function     
@@ -95,31 +75,39 @@ def is_empty_image(image):
     sum_of_pixels = tf.reduce_sum(image)
 
     # Vérifier si l'image contient quelque chose ou non
-    if sum_of_pixels > 0:
+    if sum_of_pixels > 0: 
         return False
     else:
         return True
 
 @tf.function   
 def on_image_uploaded(filename):
-  
+
     image  = ld_util.load_image(filename)  
     if is_empty_image(image): 
         return
     
-    # image = ld_util.crop_image(image.numpy())   
-    # image = remove_white_space(image)      
+
+    text_detection_model = mdl.load_text_detection_model("../notebooks/text_detection/fine_tuning_final/weights")
+    text_reco_model = tf.keras.models.load_model("../pickle/tj_ctc_augmented_20epochs_LR-plateau", custom_objects={"CTCLoss": mdl.CTCLoss})
     
-    image = ld_util.preprocess(image, img_size=rss.img_size,  data_augmentation=False, is_threshold=False)
-    image = tf.expand_dims([image], -1)
-    image = tf.squeeze(image, [3])
+    text, fig = mdl.make_ocr(text_detection_model, text_reco_model, filename, with_display=True, return_fig=True)
+    st.pyplot(fig)
+
+
+    st.write("Prédictions : ", text)
+
     
-    for i in range(len(models)):        
-        text = get_predictions(models[i][0], image)    
-        st.write("Utilisation du modele : ", models[i][1])
-        st.write("Vous avez écrit le texte : ", text[0]) 
-        st.write("")
-        st.write("")
+    # image = ld_util.preprocess(image, img_size=rss.img_size,  data_augmentation=False, is_threshold=False)
+    # image = tf.expand_dims([image], -1)
+    # image = tf.squeeze(image, [3])
+    
+    # for i in range(len(models)):        
+    #     text = get_predictions(models[i][0], image)    
+    #     st.write("Utilisation du modele : ", models[i][1])
+    #     st.write("Vous avez écrit le texte : ", text[0]) 
+    #     st.write("")
+    #     st.write("")
     
     
         
@@ -128,7 +116,8 @@ def show_drawing():
       
     st_lib.render_canvas(
             on_image_uploaded, 
-            filename = CANVAS_DEFAULT_FILENAME
+            filename = CANVAS_DEFAULT_FILENAME,
+            size = (32 * 5 * 5, 128 * 5 * 5)
         )
 
 

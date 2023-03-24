@@ -5,7 +5,7 @@ import streamlit as st
 import config
 
 from tabs import intro ,pre_processing_tab, dataviz_tab, text_detection_tab, dataset_tab, letter_detection_tab
-from tabs import demo_text_recognition
+from tabs import demo_text_recognition, demo_full_ocr
 
 
 st.set_page_config(
@@ -28,6 +28,7 @@ TABS = OrderedDict(
         (letter_detection_tab.sidebar_name, letter_detection_tab),
         (text_detection_tab.sidebar_name, text_detection_tab),
         (demo_text_recognition.sidebar_name, demo_text_recognition),
+        (demo_full_ocr.sidebar_name, demo_full_ocr),
     ]
 )
 

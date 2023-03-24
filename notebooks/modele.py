@@ -205,7 +205,8 @@ def make_ocr(
         with_display = True, 
         with_preprocessing=True,
         with_correction = True,
-        figsize = (20, 15)
+        figsize = (20, 15),
+        return_fig = False  # pour affichage streamlit
     ):
     img_arr = load_image(img_path)
     img_size = (img_arr.shape[0], img_arr.shape[1])
@@ -252,7 +253,7 @@ def make_ocr(
         
 
     if with_display: 
-        plt.figure(figsize=figsize)
+        fig = plt.figure(figsize=figsize)
         plt.imshow(img_arr, cmap='gray')
         i = 0 
         for i, bounding_box in enumerate(bounding_boxes_xyhw):
@@ -264,4 +265,7 @@ def make_ocr(
             plt.plot([x, x+w, x+w, x, x], [y, y, y+h, y+h, y])
         plt.show()
 
-    return box_texts
+    if return_fig:
+        return box_texts, fig
+    else:
+        return box_texts
