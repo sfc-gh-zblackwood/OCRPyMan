@@ -29,12 +29,19 @@ div[class="css-184tjsw e16nr0p34"] {
   color: black;
 }
 
+
 div {
   color: white;
 }
 
 footer {
   display: none;
+}
+
+
+button[class="css-1x8cf1d edgvbvh10"] {
+  color: black;
+  background-color: #8a9f80;
 }
 
 /* Radio buttons */

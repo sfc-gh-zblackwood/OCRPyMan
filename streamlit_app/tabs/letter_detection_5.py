@@ -47,7 +47,7 @@ def show_content():
         
         Here is an example of predictions with and without the spelling corrector:
             """)
-    st.image("../images/letter_detection_DB51.png")
+    st.image("../images/letter_detection_DB51.png", width=1000)
     
     st.markdown("---")
     st.subheader("Final results")

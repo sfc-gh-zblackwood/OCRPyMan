@@ -32,8 +32,7 @@ def show_description():
         - 1'539 pages of scanned text (forms),
         - 5'685 isolated and labeled sentences,
         - 13'353 isolated and labeled text lines,
-        - 115'320 isolated and labeled words (transcription) with the coordinates and size of the
-        respective bounding boxes and a boolean label (seg_res) for segmentation success.
+        - 115'320 isolated and labeled words (transcription) with the coordinates and size of the respective bounding boxes and a boolean label (seg_res) for segmentation success.
         
         The words are all in the English language.
         All form, line and word images are provided as PNG files in grayscale.

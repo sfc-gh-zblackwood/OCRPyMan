@@ -26,8 +26,22 @@ def show_data_extract():
     rss.init()
     
     st.write("See below the predictions with 4 different models for a selection of images.")
-    # st.button(label='Make new predictions', on_click=show_data_extract)
+    rng = 0
+    if st.button(label='Load new predictions') == True:
+        images = load_images_from_path(data_extract_words, 12)
+        for model, title in models:           
+            desc = f"""Predictions using a model with : **{title}**"""
+            st.write(desc)
+            texts = get_predictions(model, images)
+            show_predictions_images(images, texts)
+            
+            st.text("")  # saut de ligne
+            st.text("")  # saut de ligne
+
+
+        
     
+def show_images_batch():
     #liste les fichiers
     images = load_images_from_path(data_extract_words, 12)
     
@@ -102,29 +116,13 @@ def on_image_uploaded(filename):
     image = tf.expand_dims([image], -1)
     image = tf.squeeze(image, [3])
     
-    text = get_predictions(models[3][0], image)    
-    st.write("Utilisation du modele : ", models[3][1])
-    st.write("Vous avez écrit le texte : ", text[0]) 
-    st.write("")
-    st.write("")
+    for i in range(len(models)):        
+        text = get_predictions(models[i][0], image)    
+        st.write("Utilisation du modele : ", models[i][1])
+        st.write("Vous avez écrit le texte : ", text[0]) 
+        st.write("")
+        st.write("")
     
-    text = get_predictions(models[2][0], image)    
-    st.write("Utilisation du modele : ", models[2][1])
-    st.write("Vous avez écrit le texte : ", text[0]) 
-    st.write("")
-    st.write("")
-    
-    text = get_predictions(models[1][0], image)    
-    st.write("Utilisation du modele : ", models[1][1])
-    st.write("Vous avez écrit le texte : ", text[0]) 
-    st.write("")
-    st.write("")
-    
-    text = get_predictions(models[0][0], image)    
-    st.write("Utilisation du modele : ", models[0][1])
-    st.write("Vous avez écrit le texte : ", text[0]) 
-    st.write("")
-    st.write("")
     
         
 def show_drawing():
