@@ -23,7 +23,6 @@ CANVAS_DEFAULT_FILENAME = "tmp/canvas_file.png"
 
 
 def show_data_extract():
-    rss.init()
     
     st.write("See below the predictions with 4 different models for a selection of images.")
     rng = 0
@@ -123,7 +122,7 @@ def on_image_uploaded(filename):
     
     
         
-def show_drawing():
+def show_drawing():    
     st.write("Use your mouse to write and get a prediction")  
       
     st_lib.render_canvas(

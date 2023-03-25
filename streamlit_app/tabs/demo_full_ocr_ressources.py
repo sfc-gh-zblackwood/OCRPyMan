@@ -23,7 +23,6 @@ CANVAS_DEFAULT_FILENAME = "tmp/canvas_file_full.png"
 
 
 def show_data_extract():
-    rss.init()
     
     st.write("WORK IN PROGRESS")
     

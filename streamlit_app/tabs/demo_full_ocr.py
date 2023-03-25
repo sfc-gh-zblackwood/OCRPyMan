@@ -1,11 +1,17 @@
 import streamlit as st
 from tabs import demo_full_ocr_ressources as demo
 
+import sys
+sys.path.insert(1, '../notebooks')
+import ressources as rss
+
 title = "Demo Full OCR"
 sidebar_name = "Demo Full OCR"
 
 
 def run():
+    rss.init()
+    
     st.title(title)
     st.write("This page is intended to let you use the models we created.")
     st.markdown(
