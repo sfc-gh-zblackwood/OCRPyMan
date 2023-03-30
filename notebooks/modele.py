@@ -220,7 +220,7 @@ def make_ocr(
     box_texts = []    
         
     ### TENTATIVE  D'ORDRE SUR LES BOXES (les lignes font grosso modo 50 de hauteur, mais il faudrait le calculer)
-    bounding_boxes_xyhw = sorted(bounding_boxes_xyhw, key=lambda bbox: (bbox[1]//50, bbox[0]))
+    bounding_boxes_xyhw = sorted(bounding_boxes_xyhw, key=lambda bbox: (bbox[1]//100, bbox[0]))
     
     #######  
     

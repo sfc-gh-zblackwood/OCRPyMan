@@ -43,6 +43,7 @@ def show_content():
         - Optimizer: adam, learning_rate = .001
         - epochs = 20
         - batch size : downed to 32 because of crash when training on GPU
+        - test set : 10% of the dataset
         """
     )
     st.markdown(
