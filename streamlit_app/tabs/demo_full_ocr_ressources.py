@@ -20,7 +20,7 @@ models = [['tj_ctc_base_10epochs_LRe-4', 'Original dataset, 10 epochs, LR 1e-4']
 data_extract_forms = '../images/data_extract/forms'
 tmp_image = "tmp/tmp_image.png"
 CANVAS_DEFAULT_FILENAME = "tmp/canvas_file_full.png"
-
+UPLOADER_DEFAULT_FILENAME = "tmp/uploaded_form.png"
 
 def show_data_extract():
         
@@ -35,8 +35,13 @@ def show_data_extract():
     
        
 def show_local():
-    st.write("Browse your local files to get an image prediction")
-    st.write("WORK IN PROGRESS")
+    st.write("Browse your local files to get an image prediction")    
+    
+    uploaded_file = st_lib.render_file_uploader(UPLOADER_DEFAULT_FILENAME, on_image_uploaded)
+
+    # if uploaded_file is not None:
+    #     file_path = st_lib.uploaded_file_manager.save_file(uploaded_file)
+    #     st.write(f"Le fichier a été enregistré à l'emplacement suivant : {file_path}")
 
 
 @tf.function     
@@ -94,7 +99,7 @@ def show_drawing():
     st_lib.render_canvas(
             on_image_uploaded, 
             filename = CANVAS_DEFAULT_FILENAME,
-            size = (32 * 5 * 5, 128 * 5 * 5)
+            size = (32 * 5 * 4, 128 * 5 *1.5)
         )
 
 
