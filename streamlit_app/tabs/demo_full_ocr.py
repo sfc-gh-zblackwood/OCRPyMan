@@ -18,7 +18,7 @@ def run():
         """
         There is 3 ways to use them : 
         - Drawing with the mouse  
-        - Using an extract from the original data : 12 images ramdomly choosed among an 100-images subset
+        - Using an extract from the original data : 1 form ramdomly choosed among a 20-forms subset
         - Uploading a local image 
               
         """)

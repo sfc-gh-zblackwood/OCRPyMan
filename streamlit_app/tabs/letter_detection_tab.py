@@ -2,7 +2,6 @@ import streamlit as st
 from tabs import letter_detection_1 as subtab1
 from tabs import letter_detection_2 as subtab2
 from tabs import letter_detection_3 as subtab3
-from tabs import letter_detection_4 as subtab4
 from tabs import letter_detection_5 as subtab5
 from tabs import letter_detection_theory as theory
 from tabs import letter_detection_models as models

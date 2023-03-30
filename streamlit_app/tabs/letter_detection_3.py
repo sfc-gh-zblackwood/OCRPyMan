@@ -10,7 +10,7 @@ def show_content():
     )
     st.image("../images/letter_detection_DB401.png", width = 320)
     st.markdown("---")
-    st.subheader("Conncetionnist Temporal Classification (CTC)")
+    st.subheader("Connectionnist Temporal Classification (CTC)")
     st.markdown(
         """
         The model and training strategy are represented here:
@@ -42,11 +42,12 @@ def show_content():
             - Reduce learning rate on plateau
         - Optimizer: adam, learning_rate = .001
         - epochs = 20
+        - batch size : downed to 32 because of crash when training on GPU
         """
     )
     st.markdown(
         """
-        Regarding the model training, we have varied the number of epochs and the learning rate. Some training runs were made including the generated words.
+        Regarding the model training, we have varied the number of epochs and the learning rate. Some training runs were made including the generated words. We kept here 4 significant models. 
 
         We can see below what happened in some of our tests. We observe improvements in each of these tests : the loss is decreasing consistently, and the model's precision is improving.
         """

@@ -17,45 +17,19 @@ models = [['tj_ctc_base_10epochs_LRe-4', 'Original dataset, 10 epochs, LR 1e-4']
           ['tj_ctc_base_20epochs_LR-plateau', 'Original dataset, 20 epochs, LR on Plateau'],
           ['tj_ctc_augmented_20epochs_LR-plateau', 'Augmented dataset, 20 epochs, LR on Plateau']]
 
-data_extract_words = '../images/data_extract/words'
-
+data_extract_forms = '../images/data_extract/forms'
+tmp_image = "tmp/tmp_image.png"
 CANVAS_DEFAULT_FILENAME = "tmp/canvas_file_full.png"
 
 
 def show_data_extract():
-    
-    st.write("WORK IN PROGRESS")
-    
-    # st.write("See below the predictions with 4 different models for a selection of images.")
-    # rng = 0
-    # if st.button(label='Load new predictions') == True:
-    #     images = load_images_from_path(data_extract_words, 12)
-    #     for model, title in models:           
-    #         desc = f"""Predictions using a model with : **{title}**"""
-    #         st.write(desc)
-    #         texts = get_predictions(model, images)
-    #         show_predictions_images(images, texts)
-            
-    #         st.text("")  # saut de ligne
-    #         st.text("")  # saut de ligne
-
-
         
+    st.write("See below the predictions with 4 different models for one random form.")
     
-def show_images_batch():
-    
-    #liste les fichiers
-    images = load_images_from_path(data_extract_words, 12)
-    
-    for model, title in models:           
-        desc = f"""Predictions using a model with : **{title}**"""
-        st.write(desc)
-        texts = get_predictions(model, images)
-        show_predictions_images(images, texts)
+    if st.button(label='Load new prediction') == True:
+        image_path = random_file_path(data_extract_forms)        
+        on_image_uploaded(image_path)
         
-        st.text("")  # saut de ligne
-        st.text("")  # saut de ligne
- 
 
     
     
@@ -86,15 +60,19 @@ def on_image_uploaded(filename):
     if is_empty_image(image): 
         return
     
-
+    if tf.is_tensor(filename):
+        str_filename = filename.numpy().decode("utf-8")
+    else:
+        str_filename = filename
+        
     text_detection_model = mdl.load_text_detection_model("../notebooks/text_detection/fine_tuning_final/weights")
     text_reco_model = tf.keras.models.load_model("../pickle/tj_ctc_augmented_20epochs_LR-plateau", custom_objects={"CTCLoss": mdl.CTCLoss})
     
-    text, fig = mdl.make_ocr(text_detection_model, text_reco_model, filename, with_display=True, return_fig=True)
+    text, fig = mdl.make_ocr(text_detection_model, text_reco_model, str_filename, with_display=True, return_fig=True)
     st.pyplot(fig)
 
 
-    st.write("Prédictions : ", text)
+    st.write("Prédictions : ", *text)
 
     
     # image = ld_util.preprocess(image, img_size=rss.img_size,  data_augmentation=False, is_threshold=False)
@@ -131,39 +109,15 @@ def get_predictions(model, images):
 
 
 
-def load_images_from_path(path, max_files=-1):
+def random_file_path(path, ext='png'):
     
     #liste les fichiers
-    images_path = pp.get_files(path, ext='png', sub=False)
+    image_path = pp.get_files(path, ext=ext, sub=False)
     
-    word_imgs = tf.zeros([1, 32, 128, 1])
+    shuffled_word_imgs = tf.random.shuffle(image_path)
+    image_path = shuffled_word_imgs[0]  # on prend arbitrairement le premier, c'est au hasard
     
-    for image_path in images_path:
-        image  = ld_util.load_image(image_path)       
-        image = ld_util.preprocess(image, img_size=rss.img_size,  data_augmentation=False, is_threshold=True)
-        image = tf.expand_dims([image], -1)
-        image = tf.squeeze(image, [3])
-        word_imgs = tf.concat([word_imgs, image], 0)
-        
-        
-    # for i in range(len(word_imgs_prepro)):
-    #         img = ld_util.process_1_img_from_form(img_path, *bounding_boxes_xyhw[i])
-    #         img = tf.expand_dims([img], -1)
-    #         img = tf.squeeze(img, [3])
-    #     else:
-    #         img = word_imgs[i] / 255
-    #     word_imgs_prepro = tf.concat([word_imgs_prepro, img], 0)
-    
-    
-    # Removing extra img due to initialization
-    word_imgs = word_imgs[1:]
-    
-    if max_files > 0:
-        shuffled_word_imgs = tf.random.shuffle(word_imgs)
-        word_imgs = shuffled_word_imgs[:max_files]
-        
-    
-    return word_imgs
+    return image_path
 
 
 def show_predictions_images(images, textes):
