@@ -3,6 +3,7 @@ from tabs import letter_detection_1 as subtab1
 from tabs import letter_detection_2 as subtab2
 from tabs import letter_detection_3 as subtab3
 from tabs import letter_detection_5 as subtab5
+from tabs import demo_text_recognition as subtabdemo
 from tabs import letter_detection_theory as theory
 from tabs import letter_detection_models as models
 
@@ -16,10 +17,11 @@ sidebar_name = "Text recognition modeling"
 def run():
     st.title(title)
     st.markdown("---")
-    tab1, tab2, tab3, tab5= st.tabs(["First tries",
+    tab1, tab2, tab3, tab5, tabdemo= st.tabs(["First tries",
                                 "Data augmentation",
                                 "Model construction",
-                                "Model predicting"])
+                                "Model predicting",
+                                "Demo"])
     with tab1:
         subtab1.show_content()
 
@@ -31,4 +33,7 @@ def run():
 
     with tab5:
         subtab5.show_content()
+    
+    with tabdemo:
+        subtabdemo.run()
 

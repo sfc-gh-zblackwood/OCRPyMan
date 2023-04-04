@@ -18,7 +18,7 @@ The project conclusions concerning the project objectives are the following:
 
 __Implementation of a Handwritten Text Recognition (HTR) model with Deep Learning (DL) techniques from scratch.__
 
-We built and trained a CRNN to recognize the text in an image normally containing one word. From the results we got, we can conclude that our model has almost 94% precision per character and 86% per word when used with the database containing all the (well segmented) words.
+We built and trained a CRNN to recognize the text in an image normally containing one word, which has almost 94% precision per character and 86% per word.
 
 __Implementation of a Text Detection model with the pretrained package docTR.__
 
@@ -26,7 +26,7 @@ We have refined the base DocTR detection model having already an excellent preci
 
 __Combine the two previous models and present them through a Streamlit web application.__
 
-At first, the two models were running separately, so we had to update the output of the first and the input of the second to make them work together. When done, it was possible to run the whole solution and get the results : an image as an input, some text as the output.
+With the streamlit app, it is possible to run the whole solution and get the results : an image as an input, some text as the output.
 
         """
         )

@@ -26,7 +26,7 @@ TABS = OrderedDict(
         #(dataviz_tab.sidebar_name, dataviz_tab),
         (pre_processing_tab.sidebar_name, pre_processing_tab),
         (letter_detection_tab.sidebar_name, letter_detection_tab),
-        (demo_text_recognition.sidebar_name, demo_text_recognition),
+        # (demo_text_recognition.sidebar_name, demo_text_recognition),
         (text_detection_tab.sidebar_name, text_detection_tab),        
         (demo_full_ocr.sidebar_name, demo_full_ocr),
         (conclusion.sidebar_name, conclusion),
