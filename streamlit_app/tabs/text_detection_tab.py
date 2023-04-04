@@ -102,7 +102,7 @@ def show_model():
     st.header("Input selection")
     input_method = st.selectbox(
         'Choose your input method',
-        (INPUT_METHOD_CANVAS, INPUT_METHOD_FILE_UPLOADER, INPUT_METHOD_IMG_SELECT)
+        (INPUT_METHOD_CANVAS, INPUT_METHOD_FILE_UPLOADER,)
     )
     render_selected_input_method(input_method, models, input_random_key)
     st_lib.add_bottom_space()
