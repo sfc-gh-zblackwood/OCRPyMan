@@ -122,7 +122,7 @@ def on_image_uploaded(filename):
     
         
 def show_drawing():    
-    st.write("Use your mouse to write and get a prediction")  
+    st.write("Use your mouse to write and get a prediction by clicking the \"Send to Streamlit\" button")  
       
     st_lib.render_canvas(
             on_image_uploaded, 
