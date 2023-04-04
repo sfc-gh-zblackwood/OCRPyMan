@@ -22,6 +22,7 @@ tmp_image = "tmp/tmp_image.png"
 CANVAS_DEFAULT_FILENAME = "tmp/canvas_file_full.png"
 UPLOADER_DEFAULT_FILENAME = "tmp/uploaded_form.png"
 models_loaded={}
+models_detect_loaded={}
 
 def show_data_extract():
         
@@ -71,7 +72,7 @@ def on_image_uploaded(filename):
     else:
         str_filename = filename
         
-    text_detection_model = mdl.load_text_detection_model("../notebooks/text_detection/fine_tuning_final/weights")
+    text_detection_model = load_detect_model("../notebooks/text_detection/fine_tuning_final/weights") # mdl.load_text_detection_model("../notebooks/text_detection/fine_tuning_final/weights")
     text_reco_model = load_model("../pickle/tj_ctc_augmented_20epochs_LR-plateau", {"CTCLoss": mdl.CTCLoss})
     
     text, fig = mdl.make_ocr(text_detection_model, text_reco_model, str_filename, with_display=True, return_fig=True)
@@ -120,6 +121,14 @@ def load_model(path, cust_obj):
         model = tf.keras.models.load_model(path, custom_objects=cust_obj)
         models_loaded[path] = model
         return models_loaded[path]
+
+def load_detect_model(path):
+    if path in models_detect_loaded.keys():
+        return models_detect_loaded[path]
+    else:
+        model = mdl.load_text_detection_model(path)
+        models_detect_loaded[path] = model
+        return models_detect_loaded[path]
 
 def random_file_path(path, ext='png'):
     
