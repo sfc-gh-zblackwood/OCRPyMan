@@ -21,6 +21,7 @@ data_extract_words = '../images/data_extract/words'
 
 CANVAS_DEFAULT_FILENAME = "tmp/canvas_file.png"
 
+models_loaded={}
 
 def show_data_extract():
     
@@ -130,16 +131,23 @@ def show_drawing():
         )
 
 
-@st.cache  
+
 def get_predictions(model, images):
-    loaded_model = tf.keras.models.load_model("../pickle/"+model, custom_objects={"CTCLoss": mdl.CTCLoss})
+    loaded_model = load_model("../pickle/"+model, {"CTCLoss": mdl.CTCLoss}) # tf.keras.models.load_model("../pickle/"+model, custom_objects={"CTCLoss": mdl.CTCLoss})
     
     text_probs = loaded_model.predict(images) 
     text = ld_util.greedy_decoder(text_probs, rss.charList)
     
     return text
 
-
+ 
+def load_model(path, cust_obj):
+    if path in models_loaded.keys():
+        return models_loaded[path]
+    else:
+        model = tf.keras.models.load_model(path, custom_objects=cust_obj)
+        models_loaded[path] = model
+        return models_loaded[path]
 
 def load_images_from_path(path, max_files=-1):
     

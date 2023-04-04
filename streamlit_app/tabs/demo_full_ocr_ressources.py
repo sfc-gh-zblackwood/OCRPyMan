@@ -21,6 +21,7 @@ data_extract_forms = '../images/data_extract/forms'
 tmp_image = "tmp/tmp_image.png"
 CANVAS_DEFAULT_FILENAME = "tmp/canvas_file_full.png"
 UPLOADER_DEFAULT_FILENAME = "tmp/uploaded_form.png"
+models_loaded={}
 
 def show_data_extract():
         
@@ -71,7 +72,7 @@ def on_image_uploaded(filename):
         str_filename = filename
         
     text_detection_model = mdl.load_text_detection_model("../notebooks/text_detection/fine_tuning_final/weights")
-    text_reco_model = tf.keras.models.load_model("../pickle/tj_ctc_augmented_20epochs_LR-plateau", custom_objects={"CTCLoss": mdl.CTCLoss})
+    text_reco_model = load_model("../pickle/tj_ctc_augmented_20epochs_LR-plateau", {"CTCLoss": mdl.CTCLoss})
     
     text, fig = mdl.make_ocr(text_detection_model, text_reco_model, str_filename, with_display=True, return_fig=True)
     st.pyplot(fig)
@@ -103,16 +104,22 @@ def show_drawing():
         )
 
 
-@st.cache  
+
 def get_predictions(model, images):
-    loaded_model = tf.keras.models.load_model("../pickle/"+model, custom_objects={"CTCLoss": mdl.CTCLoss})
+    loaded_model = load_model("../pickle/"+model, {"CTCLoss": mdl.CTCLoss}) # tf.keras.models.load_model("../pickle/"+model, custom_objects={"CTCLoss": mdl.CTCLoss})
     
     text_probs = loaded_model.predict(images) 
     text = ld_util.greedy_decoder(text_probs, rss.charList)
     
     return text
 
-
+def load_model(path, cust_obj):
+    if path in models_loaded.keys():
+        return models_loaded[path]
+    else:
+        model = tf.keras.models.load_model(path, custom_objects=cust_obj)
+        models_loaded[path] = model
+        return models_loaded[path]
 
 def random_file_path(path, ext='png'):
     
