@@ -338,7 +338,7 @@ svgwrite==1.4.3
 # sympy @ file:///C:/ci/sympy_1647853873858/work
 tables==3.6.1
 tabulate==0.8.9
-TBB==0.2
+# TBB==0.2
 # tblib @ file:///Users/ktietz/demo/mc3/conda-bld/tblib_1629402031467/work
 # tenacity @ file:///C:/ci/tenacity_1626248381338/work
 tensorboard==2.10.0
