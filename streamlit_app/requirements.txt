@@ -8,7 +8,7 @@ absl-py==1.2.0
 
 altair==4.2.0
 
-anaconda-navigator==2.3.2
+anaconda-navigator
 
 appdirs==1.4.4
 
