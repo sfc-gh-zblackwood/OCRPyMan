@@ -181,7 +181,7 @@ mpmath==1.2.1
 # multipledispatch @ file:///C:/ci/multipledispatch_1607574329826/work
 munkres==1.1.4
 mypy-extensions==0.4.3
-navigator-updater==0.2.1
+# navigator-updater==0.2.1
 # nbclassic @ file:///opt/conda/conda-bld/nbclassic_1644943264176/work
 # nbclient @ file:///C:/ci/nbclient_1650290387259/work
 # nbconvert @ file:///C:/ci/nbconvert_1649741016669/work
