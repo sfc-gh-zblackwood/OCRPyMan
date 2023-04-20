@@ -310,7 +310,7 @@ semver==2.13.0
 # Send2Trash @ file:///tmp/build/80754af9/send2trash_1632406701022/work
 # service-identity @ file:///Users/ktietz/demo/mc3/conda-bld/service_identity_1629460757137/work
 Shapely==1.8.5.post1
-sip==4.19.13
+sip==5.0.1
 # six @ file:///tmp/build/80754af9/six_1644875935023/work
 # smart-open @ file:///tmp/build/80754af9/smart_open_1623928409369/work
 smmap==5.0.0
