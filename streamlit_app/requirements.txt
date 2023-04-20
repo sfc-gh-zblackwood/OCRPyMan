@@ -66,7 +66,7 @@ cssselect2==0.7.0
 # cycler @ file:///tmp/build/80754af9/cycler_1637851556182/work
 # Cython @ file:///C:/ci/cython_1647850559892/work
 cytoolz==0.11.0
-daal4py==2021.5.0
+# daal4py==2021.5.0
 # dask @ file:///opt/conda/conda-bld/dask-core_1647268715755/work
 # datashader @ file:///tmp/build/80754af9/datashader_1623782308369/work
 datashape==0.5.4
