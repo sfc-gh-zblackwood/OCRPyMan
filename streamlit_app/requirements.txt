@@ -157,7 +157,7 @@ inflection==0.5.1
 # jupyterlab-pygments @ file:///tmp/build/80754af9/jupyterlab_pygments_1601490720602/work
 # jupyterlab-server @ file:///opt/conda/conda-bld/jupyterlab_server_1644500396812/work
 # jupyterlab-widgets @ file:///tmp/build/80754af9/jupyterlab_widgets_1609884341231/work
-keras==2.10.0
+keras==2.12.0
 Keras-Preprocessing==1.1.2
 # keyring @ file:///C:/ci/keyring_1638531673471/work
 # kiwisolver @ file:///C:/ci/kiwisolver_1644962577370/work
