@@ -105,7 +105,7 @@ GitPython==3.1.29
 gobject==0.1.0
 # google-api-core @ file:///C:/ci/google-api-core-split_1613980333946/work
 # google-auth @ file:///tmp/build/80754af9/google-auth_1626320605116/work
-google-auth-oauthlib==0.4.6
+google-auth-oauthlib==0.5.3
 # google-cloud-core @ file:///tmp/build/80754af9/google-cloud-core_1625077425256/work
 # google-cloud-storage @ file:///tmp/build/80754af9/google-cloud-storage_1601307969662/work
 # google-crc32c @ file:///C:/ci/google-crc32c_1613234249694/work
