@@ -202,7 +202,7 @@ mypy-extensions==0.4.3
 # numpydoc @ file:///opt/conda/conda-bld/numpydoc_1643788541039/work
 oauthlib==3.2.1
 # olefile @ file:///Users/ktietz/demo/mc3/conda-bld/olefile_1629805411829/work
-onnx==1.13.1
+# onnx==1.13.1
 opencv-python==4.6.0.66
 # openpyxl @ file:///tmp/build/80754af9/openpyxl_1632777717936/work
 opt-einsum==3.3.0
