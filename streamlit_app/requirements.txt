@@ -344,7 +344,7 @@ tabulate==0.8.9
 # TBB==0.2
 # tblib @ file:///Users/ktietz/demo/mc3/conda-bld/tblib_1629402031467/work
 # tenacity @ file:///C:/ci/tenacity_1626248381338/work
-tensorboard==2.10.2
+tensorboard==2.10.1
 tensorboard-data-server==0.7.0
 tensorboard-plugin-wit==1.8.1
 tensorflow==2.10.0
