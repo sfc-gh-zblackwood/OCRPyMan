@@ -1,7 +1,8 @@
 numpy
 pandas
-matplotlib 
 streamlit
 streamlit-drawable-canvas
 opencv-python-headless
 tensorflow
+matplotlib
+protobuf==3.20.1
