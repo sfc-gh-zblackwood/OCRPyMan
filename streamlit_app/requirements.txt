@@ -1,7 +1,6 @@
 numpy
 pandas
-opencv-python
+streamlit
 streamlit-drawable-canvas
-protobuf>=3.20.3
+opencv-python-headless
 tensorflow
-
