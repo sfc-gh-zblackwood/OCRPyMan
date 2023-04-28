@@ -1,5 +1,6 @@
 numpy
 pandas
+matplotlib 
 streamlit
 streamlit-drawable-canvas
 opencv-python-headless
