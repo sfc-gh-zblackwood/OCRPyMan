@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 import sys
 sys.path.insert(1, '../notebooks/')
-from ocr_projects import rendering as rd
+from ocr_project import rendering as rd
 
 title = "Dataset visualisation"
 sidebar_name = "Dataset visualisation"
