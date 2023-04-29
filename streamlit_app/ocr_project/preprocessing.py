@@ -1,4 +1,4 @@
-import ressources as rss
+from ocr_project import ressources as rss
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
