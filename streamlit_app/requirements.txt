@@ -6,4 +6,3 @@ opencv-python-headless
 tensorflow
 matplotlib
 protobuf==3.20.1
-rendering
