@@ -9,3 +9,4 @@ protobuf==3.20.1
 lxml
 scikit-learn
 python-doctr
+libgl1-mesa-glx
