@@ -1,14 +1,14 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
-import preprocessing as pp
+from ocr_project import preprocessing as pp
 from matplotlib import cm
 import cv2
 import tensorflow as tf
 import streamlit as st
 
-import letter_detection_utils as ld_util
-import ressources as rss
+from ocr_project import letter_detection_utils as ld_util
+from ocr_project import ressources as rss
 
 def show_img(path):
     img = plt.imread(path)

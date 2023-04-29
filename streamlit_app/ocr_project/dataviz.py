@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-import preprocessing as pp
-import rendering as rd
+from ocr_project import preprocessing as pp
+from ocr_project import rendering as rd
 import pandas as pd
 
 from collections import Counter

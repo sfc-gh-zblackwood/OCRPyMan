@@ -14,8 +14,8 @@ import string
 from sklearn.model_selection import train_test_split
 from sklearn.utils  import shuffle 
 
-import ressources as rss
-import preprocessing as pp
+from ocr_project import ressources as rss
+from ocr_project import preprocessing as pp
 
 
 # load du pickle de base, generation d'un dataset avec map des fonctions de preprocessing et création des lots

@@ -2,8 +2,8 @@ import pandas as pd
 import re
 from collections import Counter
 
-import letter_detection_utils as ld_util
-import ressources as rss
+from ocr_project import letter_detection_utils as ld_util
+from ocr_project import ressources as rss
 from autocorrect import Speller   # https://github.com/filyp/autocorrect
 
 

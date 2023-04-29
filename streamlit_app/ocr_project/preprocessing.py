@@ -11,7 +11,7 @@ import os
 import sys
 import random
 
-import letter_detection_utils as ld_util
+from ocr_project import letter_detection_utils as ld_util
 
 
 # Fonction rassemblant les étapes de preprocessing pour les formulaires

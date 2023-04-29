@@ -12,9 +12,9 @@ from doctr.io import DocumentFile
 from tensorflow.keras.layers import GRU, Bidirectional, Dense, Lambda
 from tensorflow.keras.layers import Conv2D, BatchNormalization, MaxPooling2D, LeakyReLU, Dropout
 
-import letter_detection_utils as ld_util
-import ressources as rss
-import metric_orthograph as mo
+from ocr_project import letter_detection_utils as ld_util
+from ocr_project import ressources as rss
+from ocr_project import metric_orthograph as mo
 
 # fonction de perte utilisée à l'entrainement du modele
 class CTCLoss(tf.keras.losses.Loss):
