@@ -2,7 +2,7 @@ numpy==1.22.3
 pandas
 streamlit
 streamlit-drawable-canvas
-opencv-python-headless
+opencv-python
 tensorflow
 matplotlib
 protobuf==3.20.1
